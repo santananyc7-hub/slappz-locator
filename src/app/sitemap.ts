@@ -1,8 +1,7 @@
 import type { MetadataRoute } from 'next';
 
 import { listActive } from '@/lib/repository/retailers';
-
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://slappz.nyc';
+import { SITE_URL } from '@/lib/site';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const retailers = await listActive();

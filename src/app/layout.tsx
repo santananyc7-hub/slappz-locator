@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Archivo, Inter } from 'next/font/google';
 
 import { AgeGate } from '@/components/site/AgeGate';
+import { SITE_URL } from '@/lib/site';
 import './globals.css';
 
 /**
@@ -24,8 +25,6 @@ const inter = Inter({
   variable: '--font-inter',
   display: 'swap',
 });
-
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://slappz.nyc';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
