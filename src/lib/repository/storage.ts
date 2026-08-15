@@ -72,8 +72,26 @@ class MemoryStore implements DocumentStore {
 
 let store: DocumentStore | null = null;
 
+/**
+ * Serverless hosts (Vercel, Netlify, Lambda) give you a read-only filesystem outside /tmp,
+ * so the file adapter would throw on the first admin save or demand submission. Detecting
+ * that here means a deploy works out of the box instead of 500-ing on the first write.
+ *
+ * MemoryStore does NOT survive a cold start — it is correct for a preview deploy, and the
+ * signal that it is time to write the Postgres/Supabase adapter before this carries real
+ * traffic. Set SLAPPZ_STORE explicitly to override the detection either way.
+ */
+function isServerless(): boolean {
+  return Boolean(process.env.VERCEL || process.env.NETLIFY || process.env.AWS_LAMBDA_FUNCTION_NAME);
+}
+
 export function getStore(): DocumentStore {
   if (store) return store;
-  store = process.env.SLAPPZ_STORE === 'memory' ? new MemoryStore() : new FileStore();
+
+  const configured = process.env.SLAPPZ_STORE;
+  if (configured === 'memory') store = new MemoryStore();
+  else if (configured === 'file') store = new FileStore();
+  else store = isServerless() ? new MemoryStore() : new FileStore();
+
   return store;
 }
