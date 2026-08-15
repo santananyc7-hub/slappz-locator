@@ -1,0 +1,327 @@
+@import 'tailwindcss';
+
+/* =========================================================================
+   SLAPPZ DESIGN TOKENS
+   Derived from /brand/SLAPPZ_DIGITAL_SYSTEM.md. Change values there first.
+   ========================================================================= */
+
+@theme {
+  /* Brand */
+  --color-acid: #96e60b;
+  --color-acid-dim: #7bbd09;
+  --color-violet: #6e2bd9;
+  --color-violet-dim: #4a1c94;
+  --color-magenta: #ff2fa0;
+  --color-cab: #ffc20e;
+
+  /* Neutrals */
+  --color-ink: #000000;
+  --color-surface: #0b0b0c;
+  --color-raised: #161618;
+  --color-hairline: #26262a;
+  --color-hairline-strong: #3a3a41;
+  --color-muted: #8a8a93;
+  --color-paper: #ffffff;
+
+  /* Type */
+  --font-display: var(--font-archivo), 'Arial Black', system-ui, sans-serif;
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+
+  /* Motion — snappy and mechanical, matching the hard-edged graphic language */
+  --ease-slappz: cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* =========================================================================
+   BASE
+   ========================================================================= */
+
+:root {
+  color-scheme: dark;
+  /* Real viewport height inside the Instagram in-app browser, where 100vh lies. */
+  --vh: 1dvh;
+}
+
+* {
+  min-width: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-ink);
+  color: var(--color-paper);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-acid);
+  color: var(--color-ink);
+}
+
+/* Focus: acid ring, always visible, never removed. */
+:focus-visible {
+  outline: 2px solid var(--color-acid);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* =========================================================================
+   TYPOGRAPHY UTILITIES
+   Display type is ALL CAPS, tight, and slightly condensed — the campaign-graphic voice.
+   ========================================================================= */
+
+@utility display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-variation-settings: 'wdth' 88;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  line-height: 0.9;
+}
+
+/* Letterspaced small caps — the counterweight to the display type. */
+@utility meta {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  line-height: 1.2;
+}
+
+@utility tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* =========================================================================
+   SIGNATURE DEVICE — THE BLOCK SHADOW
+   The SLAPPZ wordmark is acid type on a violet 3D extrude. That single construction,
+   reduced to a hard offset shadow, is what makes this interface unmistakably SLAPPZ.
+   Hard offsets only. Never a blur.
+   ========================================================================= */
+
+@utility block-shadow {
+  box-shadow: 4px 4px 0 0 var(--color-violet);
+}
+
+@utility block-shadow-sm {
+  box-shadow: 3px 3px 0 0 var(--color-violet);
+}
+
+@utility block-shadow-acid {
+  box-shadow: 3px 3px 0 0 var(--color-acid);
+}
+
+/* The pressed state travels along the shadow's diagonal and shortens it. */
+@utility block-press {
+  transition:
+    transform 90ms var(--ease-slappz),
+    box-shadow 90ms var(--ease-slappz);
+
+  &:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 0 var(--color-violet);
+  }
+}
+
+/* =========================================================================
+   TEXTURE
+   A faint monochrome grain over black, so large dark fields read as printed
+   matter rather than as an empty div.
+   ========================================================================= */
+
+@utility grain {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.5;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.32'/%3E%3C/svg%3E");
+  }
+}
+
+/* =========================================================================
+   MARQUEE — drop-culture ticker strip
+   ========================================================================= */
+
+@keyframes slappz-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: slappz-marquee 28s linear infinite;
+  will-change: transform;
+}
+
+/* =========================================================================
+   ENTRANCE
+   ========================================================================= */
+
+@keyframes slappz-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 8px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.rise {
+  animation: slappz-rise 240ms var(--ease-slappz) both;
+}
+
+.rise-1 {
+  animation-delay: 60ms;
+}
+.rise-2 {
+  animation-delay: 120ms;
+}
+.rise-3 {
+  animation-delay: 180ms;
+}
+
+@keyframes slappz-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slappz-pin-pop {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.12);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* =========================================================================
+   MAPLIBRE OVERRIDES
+   The default map chrome is the fastest way to make this look like every other locator.
+   ========================================================================= */
+
+.maplibregl-map {
+  font-family: var(--font-sans) !important;
+}
+
+.maplibregl-ctrl-attrib {
+  background: rgba(0, 0, 0, 0.72) !important;
+  font-size: 9px !important;
+}
+
+.maplibregl-ctrl-attrib a {
+  color: var(--color-muted) !important;
+}
+
+.maplibregl-ctrl-group {
+  background: var(--color-surface) !important;
+  border: 1px solid var(--color-hairline) !important;
+  border-radius: 2px !important;
+  box-shadow: none !important;
+}
+
+.maplibregl-ctrl-group button + button {
+  border-top: 1px solid var(--color-hairline) !important;
+}
+
+.maplibregl-ctrl-group button .maplibregl-ctrl-icon {
+  filter: invert(1);
+}
+
+.maplibregl-canvas:focus-visible {
+  outline: 2px solid var(--color-acid);
+  outline-offset: -2px;
+}
+
+/* Desaturate the basemap so the acid pins are the only saturated thing on screen.
+   Brightness is nudged up rather than down — CARTO's dark basemap is already near-black,
+   and darkening it further leaves the street grid invisible. */
+.slappz-map .maplibregl-canvas {
+  filter: saturate(0.35) contrast(1.15) brightness(1.15);
+}
+
+/* =========================================================================
+   AGE GATE
+   The gate ships in the HTML and is removed by these rules, not by JavaScript
+   deciding to mount it — that ordering is what prevents a flash of the site
+   behind the modal for anyone who has already confirmed.
+   ========================================================================= */
+
+/* Confirmed within the last 30 days — the inline script in layout.tsx sets this
+   attribute before first paint. */
+:root[data-age-ok] #age-gate {
+  display: none;
+}
+
+/* Nothing behind the gate should scroll while it is up. */
+:root:not([data-age-ok]):has(#age-gate) body {
+  overflow: hidden;
+}
+
+/* The no-JS escape hatch lives in a <noscript> block in layout.tsx — a class-based rule
+   would itself need JavaScript to remove the class, which defeats the point. */
+
+/* =========================================================================
+   SCROLLBARS
+   ========================================================================= */
+
+@media (pointer: fine) {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-hairline-strong) transparent;
+  }
+}
+
+/* =========================================================================
+   REDUCED MOTION
+   Collapse to opacity-only or nothing. Non-negotiable.
+   ========================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .marquee-track {
+    animation: none;
+    transform: none;
+  }
+
+  .rise {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
