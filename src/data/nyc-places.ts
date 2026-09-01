@@ -156,6 +156,22 @@ export const zipCentroids: Record<string, PlaceEntry> = {
   '10304': { lat: 40.6098, lon: -74.0838, label: 'Stapleton, Staten Island, NY' },
   '10306': { lat: 40.5698, lon: -74.1183, label: 'New Dorp, Staten Island, NY' },
   '10314': { lat: 40.6018, lon: -74.1646, label: 'Bulls Head, Staten Island, NY' },
+
+  // ---- Other New York markets SLAPPZ now reaches ----
+  // Added when distribution moved past the five boroughs. Without these, a search from
+  // Kenmore or Schenectady falls through to the remote geocoder — it still works, it is
+  // just a network round-trip for a market we already know we serve.
+  '10550': { lat: 40.9126, lon: -73.8371, label: 'Mount Vernon, NY' },
+  '10552': { lat: 40.9312, lon: -73.8243, label: 'Mount Vernon, NY' },
+  '10553': { lat: 40.9074, lon: -73.8262, label: 'Mount Vernon, NY' },
+  '10701': { lat: 40.9312, lon: -73.8988, label: 'Yonkers, NY' },
+  '10801': { lat: 40.9115, lon: -73.7824, label: 'New Rochelle, NY' },
+  '12306': { lat: 42.8047, lon: -73.9807, label: 'Schenectady, NY' },
+  '12308': { lat: 42.8175, lon: -73.9276, label: 'Schenectady, NY' },
+  '14217': { lat: 42.9662, lon: -78.8712, label: 'Kenmore, NY' },
+  '14201': { lat: 42.8895, lon: -78.8797, label: 'Buffalo, NY' },
+  '14202': { lat: 42.8867, lon: -78.8784, label: 'Buffalo, NY' },
+  '14701': { lat: 42.0959, lon: -79.2353, label: 'Jamestown, NY' },
 };
 
 /**

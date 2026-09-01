@@ -3,7 +3,7 @@
 Living record of every brand asset the product depends on, where it came from, and whether it is
 production-ready. **Update this file whenever an asset is added, replaced, or requested.**
 
-Last updated: 2026-08-14
+Last updated: 2026-08-31
 
 ---
 
@@ -208,37 +208,54 @@ or referenced here** — only what each post established. Originals must come fr
 
 ## 8. RETAILER DATA PROVENANCE
 
-Not brand assets, but held to the same evidence standard. Seeded in `src/data/retailers.ts`.
+Not brand assets, but held to the same evidence standard. Live in `src/data/retailers.ts`.
 
-| Retailer | Address | SLAPPZ evidence | Address/licence source | Confidence |
-| --- | --- | --- | --- | --- |
-| Terp Bros — Ozone Park | 135-26 Cross Bay Blvd, Ozone Park, NY 11417 | Dedicated SLAPPZ brand page on retailer site; retailer comments on SLAPPZ posts | [terpbrosnyc.com/brands/slappz](https://terpbrosnyc.com/brands/slappz) · OCM-CAURD-25-000294 | **High** |
-| Weedside | 50-22 72nd St, Woodside, NY 11377 | SLAPPZ HQ "FIRST POP UP AT WEEDSIDE" post; store visit posts | [weedsideny.com](https://weedsideny.com/) | **High** |
-| IGNYTE | 145-18 14th Ave, Whitestone, NY 11357 | SLAPPZ pop-up at IGNYTE 2nd anniversary post | [ignyteny.com](https://ignyteny.com/) · [QNS coverage](https://qns.com/2024/07/whitestone-first-licensed-cannabis-retailer-preparing-open/) | **High** |
-| GreenCup | 95-38 Queens Blvd, Rego Park, NY 11374 | Branded GreenCup activation in SLAPPZ posts | [greencup.nyc](https://greencup.nyc/) · OCM-CAURD-24-000174 | **Medium** |
-| Torches NYC | 12 E 42nd St, New York, NY 10017 | Torches shopping bag featured in SLAPPZ post | [torches.nyc](https://torches.nyc/) · OCM-CAURD-24-000077 | **Medium** |
+**26 licensed stores across 6 New York markets** — Queens (12), Brooklyn (6), Manhattan (3),
+Westchester (2), Western New York (2), Capital Region (1).
 
-Coordinates for all five were geocoded from their verified street addresses (OpenStreetMap/Nominatim), not estimated.
+### How this list was built
 
-### 🟡 Pending verification — **not** in the app
+1. **SLAPPZ HQ supplied the store list.** For its own distribution, the brand is the authoritative
+   source — this is the strongest verification tier in `CLAUDE.md` § RETAILER RULES.
+2. **Every store was cross-checked against the NYS OCM licence registry**
+   ([`jskf-tt3q`](https://data.ny.gov/resource/jskf-tt3q.json) on data.ny.gov) to confirm the licensed
+   street address and licence number — rather than trusting a search result or a menu aggregator.
+3. **Every coordinate was geocoded from that confirmed address.** None are estimated.
 
-Named in SLAPPZ story highlights but **not confirmed** as stocking retailers. They are recorded here and
-deliberately excluded from `retailers.ts` until SLAPPZ or the retailer confirms.
+That is why each entry carries a real `licenseNumber`: it is the state's record, not ours.
 
-`Indoor NYC` · `Quality Roots` · `The Emerald` · `Late Bloomers` · `Swan Marina` · `Flywlkr` · `Kushia` ·
-`Big City Flav's` · `Fanatics NYC`
+### 🟠 Open questions for SLAPPZ
 
-### ⛔ Explicitly excluded
+These are in the app with a `notes` field recording the discrepancy. They are **not** errors to quietly
+"fix" — each needs a human answer.
 
-**Happy Hits** — appears in the background of SLAPPZ post imagery. **Do not add it as a retailer.** Excluded
-at the client's instruction, not for lack of evidence, so do not "correct" this in a future session.
+| Store | Question |
+| --- | --- |
+| **Flynnstoned** | Operates **12** licensed NY locations. Currently listed as the Brooklyn store (8112 5th Ave, Bay Ridge). Which location(s) actually stock SLAPPZ? |
+| **Gaea's Garden** | Matched to `Gaia Operations LLC` at 104-12 Lefferts Blvd — the registry carries no DBA for it. Confirm this is the right business. |
+| **Emerald (2nd location)** | SLAPPZ said "Upper West Side"; the licensed address is 1190 Lexington Ave, which is the Upper **East** Side. There is no UWS Emerald in the registry. |
+| **Kaya Bliss** | SLAPPZ said "Brooklyn Heights"; the licensed address is 8412 3rd Ave, which is **Bay Ridge**. |
+| **Terp Bros** | Not on the supplied list, but **retained** — Terp Bros publishes a dedicated SLAPPZ brand page, the strongest public evidence of any store here. Confirm before removing. |
 
-Some of these are almost certainly events, collabs, or merch drops rather than stockists — "Handball", "OG
-Anunoby" and "Fanatics NYC" in the same highlight list make clear the highlights mix retail with culture.
-**Ask SLAPPZ which are stockists** rather than guessing.
+### Stores with no menu link yet
+
+`menuUrl` drives the SHOP STORE button and is only set where a real online menu was confirmed:
+GreenCup, Herbarium, IGNYTE (both), Sweetlife, Terp Bros, Torches, Weedside. **The other 18 have no
+menu on file** — the button is simply not rendered for them, because a dead link is worse than no
+button. Send menu URLs and they light up.
+
+### Previously pending — now resolved
+
+The earlier "pending verification" list (Quality Roots, The Emerald, Late Bloomers, Big City Flav's)
+was confirmed by SLAPPZ and is now live. `Indoor NYC`, `Swan Marina`, `Flywlkr`, `Kushia`, `Handball`,
+`OG Anunoby` and `Fanatics NYC` were **not** on the supplied list — they appear to be events, collabs
+or merch drops rather than stockists, and remain out of the app.
+
+> **Note on Happy Alta:** an earlier instruction excluded it. SLAPPZ has since asked for it to be
+> included, so it is live at 66-33 Fresh Pond Rd, Ridgewood (OCM-RETL-24-000075). The earlier exclusion
+> no longer applies.
 
 ---
-
 ## 9. OPEN REQUESTS — SUMMARY FOR SLAPPZ
 
 1. Logo master files (SVG/AI/EPS/PNG) — **blocks production launch**
