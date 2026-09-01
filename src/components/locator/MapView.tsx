@@ -36,9 +36,6 @@ const BASEMAP_STYLE = 'https://tiles.openfreemap.org/styles/dark';
 
 const NYC_CENTER: [number, number] = [-73.9, 40.73];
 
-/** Room to reserve above a selected pin for its detail card, in pixels. */
-const CARD_ALLOWANCE = 240;
-
 function markerElement(label: string, active: boolean): HTMLButtonElement {
   const el = document.createElement('button');
   el.type = 'button';
@@ -107,14 +104,21 @@ function popupHtml(retailer: Retailer | RetailerResult): string {
     .filter(Boolean)
     .join('');
 
+  // The name doubles as the link to the store page. It used to be a separate "FULL DETAILS"
+  // row, but height is the binding constraint here: the map is ~364px on desktop and ~323px
+  // on a phone, and the card opens above the pin. Every row it loses is a row it no longer
+  // has to beg the camera to make room for.
+  // Place and distance ride on the kicker rather than taking a row of their own. Four rows is
+  // what makes the card fit above a pin in a 364px map without the camera having to help, and
+  // the neighbourhood was the one line whose information the address already carried.
+  const kicker = [where.toUpperCase(), distance].filter(Boolean).join(' · ');
+
   return `
     <div class="slappz-popup__body">
-      <p class="slappz-popup__kicker">SLAPPZ HERE${distance ? ` · ${esc(distance)}` : ''}</p>
-      <p class="slappz-popup__name">${esc(retailer.name)}</p>
-      ${where ? `<p class="slappz-popup__where">${esc(where)}</p>` : ''}
-      <p class="slappz-popup__addr">${esc(retailer.address.street)}<br>${esc(retailer.address.city)}, ${esc(retailer.address.state)} ${esc(retailer.address.zip)}</p>
+      <p class="slappz-popup__kicker">${esc(kicker || 'SLAPPZ HERE')}</p>
+      <a class="slappz-popup__name" href="/stores/${esc(retailer.slug)}">${esc(retailer.name)}</a>
+      <p class="slappz-popup__addr">${esc(retailer.address.street)}, ${esc(retailer.address.city)} ${esc(retailer.address.zip)}</p>
       <div class="slappz-popup__actions">${actions}</div>
-      <a class="slappz-popup__more" href="/stores/${esc(retailer.slug)}">FULL DETAILS &rarr;</a>
     </div>`;
 }
 
@@ -261,16 +265,17 @@ export default function MapView({
     ];
 
     const card = new maplibregl.Popup({
-      offset: 22,
+      offset: 10,
       closeButton: true,
       closeOnClick: false,
       className: 'slappz-popup',
       maxWidth: '272px',
-      // Always open ABOVE the pin. Left to choose, MapLibre picks whichever side has more
-      // room, and in a map this short that is often the bottom — where the card runs past
-      // the container edge and clips its own action buttons off. Anchoring up and making
-      // room below is predictable; letting it choose is not.
-      anchor: 'bottom',
+      // No fixed `anchor`. MapLibre already flips the card to whichever side of the pin has
+      // room inside the container, which is the whole problem solved by the library. Pinning
+      // it to one side and then trying to move the camera to compensate was strictly worse:
+      // the card's fit then depended on the camera landing exactly right, and across pins it
+      // did not — the same card sat 53px inside the map for one shop and 94px outside it for
+      // the next.
     })
       .setLngLat(lngLat)
       .setHTML(popupHtml(retailer))
@@ -279,20 +284,23 @@ export default function MapView({
     popup.current = card;
 
     /**
-     * Nudge the map down if the card still hangs over the top edge.
+     * Pan if the card still hangs over an edge.
      *
-     * MapLibre does not pan for popups, and no fixed allowance can be right: the card's
-     * height depends on which actions the retailer actually has, and the map is 323px tall on
-     * a phone against 400+ on a desktop. Measuring the rendered card and correcting by the
-     * real overflow is the only version that holds in both. Runs after `moveend` so it
-     * corrects the camera the selection ease actually landed on, not the one it started from.
+     * MapLibre flips the card to whichever side of the pin has room, which handles most of
+     * this — but a pin near the top or bottom of a short map can leave no good side, and it
+     * picks its anchor from where the pin is when the card opens, not where the camera is
+     * heading. Measuring the rendered card and panning by the real overflow catches the rest,
+     * in whichever direction it actually overflowed.
      */
     const nudge = () => {
       const el = card.getElement();
       if (!el || !popup.current) return;
-      const overflow =
-        instance.getContainer().getBoundingClientRect().top + 12 - el.getBoundingClientRect().top;
-      if (overflow > 1) instance.panBy([0, -overflow], { duration: 240 });
+      const mapRect = instance.getContainer().getBoundingClientRect();
+      const rect = el.getBoundingClientRect();
+      const over = mapRect.top + 8 - rect.top;
+      const under = rect.bottom - (mapRect.bottom - 8);
+      if (over > 1) instance.panBy([0, -over], { duration: 220 });
+      else if (under > 1) instance.panBy([0, under], { duration: 220 });
     };
 
     instance.once('moveend', nudge);
@@ -369,17 +377,11 @@ export default function MapView({
     const target = retailers.find((r) => r.slug === selectedSlug);
     if (!target) return;
 
-    // Sit the pin low enough that the detail card, which always opens above it, fits inside
-    // the map rather than running off the top. This is the ONLY place the camera reacts to
-    // selection — the popup effect deliberately does not move it too, because two effects
-    // easing the same map means the later one silently wins and the offset is lost.
-    const height = instance.getContainer().clientHeight;
-    const pinFromTop = Math.min(CARD_ALLOWANCE, Math.max(height - 48, height * 0.5));
-
+    // Centre and zoom only. Framing the card is the popup's job now — see the anchor note
+    // in the popup effect.
     instance.easeTo({
       center: [target.coordinates.longitude, target.coordinates.latitude],
       zoom: Math.max(instance.getZoom(), 13),
-      offset: [0, Math.round(pinFromTop - height / 2)],
       duration: 450,
     });
   }, [selectedSlug, retailers]);

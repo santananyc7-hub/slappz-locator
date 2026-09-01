@@ -339,8 +339,10 @@ body {
   outline-offset: -2px;
 }
 
+/* Tight on purpose. The card opens beside a pin inside a map that is only ~323px tall on a
+   phone; every pixel here is a pixel it might not have. */
 .slappz-popup__body {
-  padding: 12px 14px 12px;
+  padding: 9px 13px 10px;
 }
 
 .slappz-popup__kicker {
@@ -353,20 +355,22 @@ body {
 }
 
 .slappz-popup__name {
+  display: block;
   font-family: var(--font-archivo), system-ui, sans-serif;
   font-size: 18px;
   font-weight: 800;
   line-height: 1.05;
   margin-top: 4px;
   color: var(--color-paper);
+  text-decoration: none;
+  transition: color 150ms;
 }
-
-.slappz-popup__where {
-  font-size: 10.5px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  margin-top: 4px;
-  color: var(--color-muted);
+.slappz-popup__name:hover {
+  color: var(--color-acid);
+}
+.slappz-popup__name:focus-visible {
+  outline: 2px solid var(--color-acid);
+  outline-offset: 2px;
 }
 
 .slappz-popup__addr {
@@ -382,7 +386,7 @@ body {
   display: flex;
   flex-wrap: nowrap;
   gap: 5px;
-  margin-top: 10px;
+  margin-top: 9px;
 }
 
 /* 40px rather than the 44px used elsewhere: this sits inside a constrained
@@ -425,24 +429,8 @@ body {
   color: var(--color-acid);
 }
 
-.slappz-popup__more {
-  display: inline-block;
-  margin-top: 9px;
-  font-size: 10.5px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: var(--color-muted);
-  transition: color 150ms;
-}
-.slappz-popup__more:hover {
-  color: var(--color-acid);
-}
-
 .slappz-popup__go:focus-visible,
-.slappz-popup__act:focus-visible,
-.slappz-popup__more:focus-visible {
+.slappz-popup__act:focus-visible {
   outline: 2px solid var(--color-acid);
   outline-offset: 2px;
 }

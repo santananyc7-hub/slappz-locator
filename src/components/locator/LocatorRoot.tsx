@@ -2,7 +2,7 @@
 
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { SlappzWordmark } from '@/components/brand/SlappzWordmark';
 import { CheckIcon } from '@/components/brand/Icons';
@@ -192,9 +192,22 @@ export function LocatorRoot({
     track('retailer_view', { retailer: slug, placement: 'locator' });
   }, []);
 
-  const mapOrigin: Coordinates | null = origin
-    ? { latitude: origin.latitude, longitude: origin.longitude }
-    : null;
+  /**
+   * Memoised on the coordinates themselves, not on `origin`.
+   *
+   * This used to build a fresh object literal on every render, and MapView keys its "frame
+   * the map" effect on it — so every render re-ran fitBounds and yanked the camera back to
+   * the whole result set. It fought the ease that centres a selected shop, and it clipped the
+   * detail card by resetting the view out from under it. A new object that is deeply equal to
+   * the last one is still a changed dependency.
+   *
+   * Keyed on `origin` itself, which is state and therefore only changes when a search
+   * actually sets it — exactly when the map SHOULD reframe.
+   */
+  const mapOrigin: Coordinates | null = useMemo(
+    () => (origin ? { latitude: origin.latitude, longitude: origin.longitude } : null),
+    [origin],
+  );
 
   const mapRetailers = results && results.length > 0 ? results : allRetailers;
 
