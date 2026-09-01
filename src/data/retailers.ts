@@ -42,6 +42,13 @@ import type { Retailer } from "@/lib/types";
  *   4. `availableProducts` stays empty unless per-SKU availability was confirmed. Empty
  *      means "unverified", not "out of stock" — the UI never renders it as a claim.
  *   5. Update `lastVerified` whenever you re-check.
+ *
+ * HELD OUT ON PURPOSE
+ * -------------------
+ * Flynnstoned is NOT in this list, and its absence is a decision rather than an omission.
+ * They run 12 licensed NY locations; SLAPPZ has not said which of them stock SLAPPZ, so a
+ * single guessed storefront would have sent customers to a shop that may not carry it. Add
+ * it back when SLAPPZ names the locations — see /brand/ASSET_MANIFEST.md § 8.
  */
 export const retailers: Retailer[] = [
   {
@@ -148,35 +155,6 @@ export const retailers: Retailer[] = [
     },
     notes:
       "Website is live but its menu is still marked “coming soon”, so no menuUrl is set — the SHOP STORE button stays hidden until there is a real menu to send people to.",
-  },
-  {
-    id: "ret_flynnstoned_bay_ridge",
-    slug: "flynnstoned-bay-ridge",
-    name: "Flynnstoned",
-    address: {
-      street: "8112 5th Ave",
-      city: "Brooklyn",
-      state: "NY",
-      zip: "11209",
-    },
-    coordinates: { latitude: 40.624863, longitude: -74.024802 },
-    neighborhood: "Bay Ridge",
-    borough: "Brooklyn",
-    licenseNumber: "OCM-CAURD-25-000281",
-    website: "https://flynnstoned.com",
-    menuUrl:
-      "https://flynnstoned.com/stores/flynnstoned-cannabis-dispensary-brooklyn-bay-ridge-ny/",
-    phone: "(347) 909-7014",
-    active: true,
-    lastVerified: "2026-08-31",
-    verification: {
-      source:
-        "Supplied by SLAPPZ HQ as a stocking retailer; address and licence number cross-checked against the NYS OCM licence registry",
-      confidence: "high",
-      url: "https://data.ny.gov/resource/jskf-tt3q.json",
-    },
-    notes:
-      "Flynnstoned operates 12 licensed NY locations. This is the Brooklyn store — confirm which location(s) actually stock SLAPPZ.",
   },
   {
     id: "ret_gaeas_garden",

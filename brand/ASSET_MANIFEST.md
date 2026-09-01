@@ -223,7 +223,7 @@ or referenced here** — only what each post established. Originals must come fr
 
 Not brand assets, but held to the same evidence standard. Live in `src/data/retailers.ts`.
 
-**26 licensed stores across 6 New York markets** — Queens (12), Brooklyn (6), Manhattan (3),
+**25 licensed stores across 6 New York markets** — Queens (12), Brooklyn (5), Manhattan (3),
 Westchester (2), Western New York (2), Capital Region (1).
 
 ### How this list was built
@@ -254,7 +254,6 @@ These are in the app with a `notes` field recording the discrepancy. They are **
 
 | Store | Question |
 | --- | --- |
-| **Flynnstoned** | Operates **12** licensed NY locations. Currently listed as the Brooklyn store (8112 5th Ave, Bay Ridge). Which location(s) actually stock SLAPPZ? |
 | **Terp Bros** | Not on the supplied list, but **retained** — Terp Bros publishes a dedicated SLAPPZ brand page, the strongest public evidence of any store here. Confirm before removing. |
 
 ### ✅ Questions closed on 2026-08-31
@@ -264,11 +263,12 @@ These are in the app with a `notes` field recording the discrepancy. They are **
 | **Gaea's Garden** | SLAPPZ said Flushing and was right. An earlier build matched it to `Gaia Operations LLC` on Lefferts Blvd — the wrong business. Gaea's Garden holds a **microbusiness** licence (`OCM-MICR-24-000030`), which is why it never appeared in a retail-only registry query. Corrected to 134-24 Northern Blvd, Flushing. |
 | **Emerald (2nd location)** | SLAPPZ said "Upper West Side", but the brand's only Manhattan store is the Upper **East** Side one at 1190 Lexington Ave — its own site and the registry agree, and no UWS Emerald exists. |
 | **Kaya Bliss** | SLAPPZ said "Brooklyn Heights", but Kaya Bliss holds exactly one retail licence: 8412 3rd Ave, Bay Ridge. The Brooklyn Heights page on their site is a delivery service-area page, not a second store. |
+| **Flynnstoned** | **Held out at SLAPPZ's instruction.** They run 12 licensed NY locations and it was not clear which stock SLAPPZ, so the Bay Ridge listing was removed rather than guessed at. Add back when SLAPPZ names the stores. |
 
 ### Stores with no menu link yet
 
-`menuUrl` drives the SHOP STORE button and is only set where a real online menu was confirmed. **24 of
-26 stores now have one.** The two that do not:
+`menuUrl` drives the SHOP STORE button and is only set where a real online menu was confirmed. **23 of
+25 stores now have one.** The two that do not:
 
 | Store | Why |
 | --- | --- |

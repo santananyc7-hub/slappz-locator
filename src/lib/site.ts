@@ -14,9 +14,13 @@
  *      canonicals, sitemap and OG tags point at the real host instead of a placeholder.
  *      VERCEL_PROJECT_PRODUCTION_URL is the stable production domain;
  *      VERCEL_URL is per-deployment and only used if the former is missing.
+ *
+ * The fallback is the www host on purpose. SLAPPZ owns slappz.nyc through Porkbun and www is
+ * the canonical form; the apex should redirect to it at the DNS/host layer, not be served as a
+ * second origin, or every page ends up with two indexable URLs.
  */
 
-const FALLBACK = 'https://slappz.nyc';
+const FALLBACK = 'https://www.slappz.nyc';
 
 /** Returns a normalised origin, or null if the value is blank or not a valid URL. */
 function toOrigin(value: string | undefined): string | null {
