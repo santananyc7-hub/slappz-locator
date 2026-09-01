@@ -261,8 +261,8 @@ body {
 }
 
 /* Desaturate the basemap so the acid pins are the only saturated thing on screen.
-   Brightness is nudged up rather than down — CARTO's dark basemap is already near-black,
-   and darkening it further leaves the street grid invisible. */
+   Brightness is nudged up rather than down — the basemap is already near-black (OpenFreeMap’s
+   dark style paints rgb(12,12,12)), and darkening it further leaves the street grid invisible. */
 .slappz-map .maplibregl-canvas {
   filter: saturate(0.35) contrast(1.15) brightness(1.15);
 }

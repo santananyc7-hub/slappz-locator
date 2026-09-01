@@ -9,10 +9,15 @@ import type { Coordinates, Retailer, RetailerResult } from '@/lib/types';
 /**
  * Branded MapLibre map.
  *
- * Basemap: CARTO dark raster tiles — free, no API key, and stable. It is further desaturated
- * in CSS (`.slappz-map .maplibregl-canvas`) so the acid pins are the only saturated thing on
- * screen. An untreated default basemap is the fastest way to make this look like every other
- * dispensary locator.
+ * Basemap: OpenFreeMap's dark vector style — free, no API key, no rate limit, and licensed
+ * for commercial use. It is further desaturated in CSS (`.slappz-map .maplibregl-canvas`) so
+ * the acid pins are the only saturated thing on screen. An untreated default basemap is the
+ * fastest way to make this look like every other dispensary locator.
+ *
+ * This replaced CARTO's raster tiles, which SLAPPZ used until CARTO began stamping
+ * "API KEY REQUIRED" diagonally across every keyless tile — on a brand site that reads as a
+ * broken map. Before swapping this URL for another provider, fetch one tile and LOOK at it:
+ * the old endpoint still returns 200 with a perfectly valid PNG, watermark and all.
  *
  * Markers are DOM elements rather than a GL layer: there are only ever a handful of them,
  * DOM markers stay outside the canvas filter, and they can carry real focus and keyboard
@@ -22,21 +27,11 @@ import type { Coordinates, Retailer, RetailerResult } from '@/lib/types';
  * dependency in the project and must never block first paint or the search box.
  */
 
-const CARTO_DARK = 'https://basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}@2x.png';
-
-const STYLE: maplibregl.StyleSpecification = {
-  version: 8,
-  sources: {
-    carto: {
-      type: 'raster',
-      tiles: [CARTO_DARK],
-      tileSize: 256,
-      attribution:
-        '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> © <a href="https://carto.com/attributions">CARTO</a>',
-    },
-  },
-  layers: [{ id: 'carto', type: 'raster', source: 'carto' }],
-};
+/**
+ * A style URL, not an inline style object: the vector style carries its own glyphs, sprites
+ * and 47 layers, and none of them need overriding here — the markers are DOM, not GL.
+ */
+const BASEMAP_STYLE = 'https://tiles.openfreemap.org/styles/dark';
 
 const NYC_CENTER: [number, number] = [-73.9, 40.73];
 
@@ -105,7 +100,7 @@ export default function MapView({
 
     const instance = new maplibregl.Map({
       container: container.current,
-      style: STYLE,
+      style: BASEMAP_STYLE,
       center: NYC_CENTER,
       zoom: 10,
       attributionControl: { compact: true },

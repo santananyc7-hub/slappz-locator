@@ -74,7 +74,7 @@ writing one adapter in `lib/repository/storage.ts` — no component changes.
 | --- | --- | --- |
 | Framework | Next.js 16 App Router + TypeScript | Server rendering for the five-second bar |
 | Styling | Tailwind v4 + CSS custom properties | Brand tokens live in `app/globals.css` |
-| Map | MapLibre GL + CARTO dark raster | Free, **no API key**, fully restyleable, code-split |
+| Map | MapLibre GL + OpenFreeMap dark vector | Free, **no API key**, no rate limit, fully restyleable, code-split |
 | Geocoding | Local NYC ZIP/place table → Nominatim | Instant for the common case, free, no key |
 | Storage | Repository + JSON file adapter | One file to swap for a real database |
 

@@ -330,7 +330,7 @@ Do not rebuild working functionality unnecessarily.
 | --- | --- | --- |
 | Framework | Next.js 16 (App Router) + TypeScript | Server rendering for the 5-second bar, route handlers for API |
 | Styling | Tailwind v4 + CSS custom properties | Brand tokens in `src/app/globals.css`, no config file needed |
-| Map | MapLibre GL + CARTO dark basemap | Free, **no API key required**, fully restyleable. Mapbox needs a token SLAPPZ doesn't have yet |
+| Map | MapLibre GL + OpenFreeMap dark vector style | Free, **no API key required**, no rate limit, fully restyleable. CARTO now stamps “API KEY REQUIRED” across its keyless tiles; Mapbox needs a token SLAPPZ doesn’t have |
 | Geocoding | Nominatim (server-side, cached) + local NYC ZIP/neighborhood table | Free, no key; local table makes NYC ZIP searches instant |
 | Persistence | Repository interface + JSON file adapter | Swap for Supabase/Postgres by writing one adapter |
 

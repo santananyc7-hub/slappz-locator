@@ -22,43 +22,49 @@ Last updated: 2026-08-31
 
 | Asset | Type | Source | Usage | Approx. dimensions | Production ready | Master needed |
 | --- | --- | --- | --- | --- | --- | --- |
-| `Slappz Logo.png` | PNG (RGBA, opaque) | **Supplied by SLAPPZ** | Original as delivered — kept untouched | 188 × 137 | 🟡 Low-res | Higher-res master |
-| `slappz-wordmark.png` | PNG | Copy of the above under a URL-safe name | Archival / fallback | 188 × 137 | 🟡 Low-res | Higher-res master |
-| `slappz-wordmark@4x.webp` | WebP q95 | Lanczos3 resample of the above | **In use** — header, hero, footer, admin | 752 × 548, 45KB | 🟡 Resampled | Higher-res master |
+| `SlappzLogo.jpeg` | JPEG (artwork on solid black) | **Supplied by SLAPPZ** | Master, kept untouched | 1024 × 1024, 66KB | 🟢 Yes | — |
+| `slappz-wordmark.png` | PNG (RGBA, transparent) | Built from the above by `scripts/build-wordmark.mjs` | **In use** — header, hero, footer, garments, admin | 892 × 436, 588KB | 🟢 Yes | Vector still wanted |
 | `SlappzMark` (React component, compact `S`) | Inline SVG | Built in-repo | Map pins, favicon | 28–512px | 🟡 Placeholder | **Yes — icon SVG** |
-| Wordmark, true transparent, ring-free | SVG/PNG | — | Any non-black surface | — | 🔴 Needed | **Yes** |
 | Cab-yellow colorway wordmark | SVG | — | Trade/B2B pages | — | 🔴 Needed | Optional |
 
-> **The real wordmark is now in use.** `SlappzWordmark` renders the supplied artwork rather than a typographic
-> stand-in. Two properties of the delivered file are handled in the component and are worth knowing about:
+> **The real wordmark is in use at full quality.** SLAPPZ supplied a 1024² master, which replaced an
+> Instagram avatar export that was 188 × 137 with the platform's story ring baked into the edges. Two
+> pieces of machinery went away with it: the elliptical mask that used to cut the ring off, and the crop
+> offsets that positioned a larger source behind a smaller window. The component is now just an image.
 >
-> 1. **The Instagram story ring is baked into the edges.** It is a platform artefact, not brand. The ring is an
->    ellipse that cuts *inside* the wordmark's bounding box at the corners, so no rectangular crop can remove it
->    without clipping the `S` — the component masks it off with a matching ellipse instead.
-> 2. **The file is fully opaque on a near-black ground (`#0c1014`), not transparent.** Invisible against this
->    product's black surfaces, but it means the mark cannot currently be placed on a light background. The brand
->    has no light lockup anyway (see `SLAPPZ_DIGITAL_SYSTEM.md` § 2), so nothing is blocked today.
+> **The build is one reproducible step.** `node scripts/build-wordmark.mjs` crops the master to the mark's
+> content bounds and keys out its black plate. Nothing is redrawn or re-traced — every drawn pixel passes
+> through untouched, which is the rule in `CLAUDE.md` § NEVER.
 >
-> **Sharpness.** At hero size the browser was upscaling the 188px source ~1.5× with bilinear filtering, which is
-> what made it look soft. The asset actually served is now `@4x` — a Lanczos3 resample with a light unsharp pass —
-> so the browser always *downscales* it. Downscaling is sharp; upscaling never is.
+> **Why the plate had to go.** The artwork sits on solid black. That is invisible on the black surfaces
+> the brand uses everywhere else, but the hero puts the mark over a photograph, where an opaque black
+> rectangle reads as a mistake. The mark now sits on any surface, dark or light.
 >
-> That is better resampling, **not new detail**. It is deliberately not an AI upscale: super-resolution on a
-> custom letterform invents edge detail and produces a subtly wrong logo, which is the one thing this repo must
-> not do. A genuine high-resolution master is still the real fix — it is request #1 below.
+> **Why a flood fill and not a threshold.** The letterforms carry a heavy black keyline. "Make all black
+> transparent" would eat it and leave the green floating. The fill runs inwards from the border and only
+> takes black *connected* to the outside; the artwork's purple rim seals the keyline off from the plate.
+> On the supplied master the plate is 27.5% of the image while black overall is 48.7% — that gap is the
+> keyline being preserved.
 >
-> The compact `S` used on map pins is still built in-repo — the full wordmark is illegible at 28px, so a proper
-> square icon is a separate asset request.
+> **Why the source is a PNG and not a WebP.** Next's image optimiser silently flattens alpha when the
+> source file is WebP, which put the black rectangle straight back over the hero. From a PNG it keeps the
+> transparency. The browser never downloads this PNG — Next re-encodes it per size — so the file size
+> costs nothing at runtime. Do not "optimise" it to a `.webp` source.
+>
+> **Sharpness is no longer a concern.** At 436px of source height every rendered size downscales, and
+> downscaling is sharp. The old 188px source had to be upscaled, which is what made it look soft.
+>
+> The compact `S` used on map pins is still built in-repo — the full wordmark is illegible at 28px, so a
+> proper square icon remains a separate asset request.
 
 ### 🔴 Request from SLAPPZ
 
-1. **Primary wordmark at full resolution** — `SVG` (outlined paths) preferred, plus `AI`/`EPS` source.
-   The supplied 188×137 PNG works for the header but caps how large the mark can ever be shown.
-2. **A version with a real alpha channel and no story ring** — the delivered file is an avatar export.
-3. **Compact `S` mark / icon** — `SVG`, square-safe, legible at 24px (map pins, favicon, app icon).
-4. Confirmation of the **exact brand hex values** (this repo's are sampled from screenshots — see
+1. **Primary wordmark as vector** — `SVG` (outlined paths) preferred, plus `AI`/`EPS` source. The supplied
+   1024² raster is enough for every current surface; vector is what makes print and large-format safe.
+2. **Compact `S` mark / icon** — `SVG`, square-safe, legible at 24px (map pins, favicon, app icon).
+3. Confirmation of the **exact brand hex values** (this repo's are sampled from screenshots — see
    `SLAPPZ_DIGITAL_SYSTEM.md` §3).
-5. The **display typeface name/licence** used in campaign graphics.
+4. The **display typeface name/licence** used in campaign graphics.
 
 ---
 
@@ -125,8 +131,15 @@ because per-retailer availability has not been verified. Do not populate `availa
 | Merch on customers (tees, bucket hats) | 📎 IG reference | Brand strip | 🔴 Needed |
 | Boat / marina content | 📎 IG reference | Brand strip | 🔴 Needed |
 
+| `slappz-stand.webp` | **Supplied by SLAPPZ** | On the bench — not currently placed | 🟢 Yes, 768 × 1024, 71KB |
+
 Currently the `FROM SLAPPZ HQ` section renders **brand-built graphic tiles**, not photography, precisely so
 that no Instagram CDN URL is ever hotlinked. Swap to real imagery when originals arrive.
+
+> **`slappz-stand.webp` is a real SLAPPZ photograph** — the branded display stand, tubes and tray. It was
+> briefly placed at the head of the culture strip and SLAPPZ asked for the generated tile back, so it is
+> kept here rather than deleted. It is the only real product-in-situ photo the repo has; reach for it first
+> if that section ever moves to photography.
 
 ---
 
@@ -220,9 +233,19 @@ Westchester (2), Western New York (2), Capital Region (1).
 2. **Every store was cross-checked against the NYS OCM licence registry**
    ([`jskf-tt3q`](https://data.ny.gov/resource/jskf-tt3q.json) on data.ny.gov) to confirm the licensed
    street address and licence number — rather than trusting a search result or a menu aggregator.
-3. **Every coordinate was geocoded from that confirmed address.** None are estimated.
+3. **Every NYC coordinate comes from the NYC Department of City Planning geocoder**
+   ([geosearch.planninglabs.nyc](https://geosearch.planninglabs.nyc)), resolved from that licensed
+   address. None are estimated.
+4. **Every `website` and `menuUrl` was requested and returned 200** with the expected page before it
+   was written down.
 
 That is why each entry carries a real `licenseNumber`: it is the state's record, not ours.
+
+> **Use the Planning geocoder for anything inside the five boroughs.** Nominatim cannot resolve
+> hyphenated Queens house numbers and silently falls back to a street or neighbourhood centroid. That
+> is not a rounding error — it once put Weedside a full kilometre from its own front door. Every NYC
+> coordinate was re-cut on 2026-08-31; the largest correction was 1,070m, and eight more moved by
+> 5–130m.
 
 ### 🟠 Open questions for SLAPPZ
 
@@ -232,17 +255,27 @@ These are in the app with a `notes` field recording the discrepancy. They are **
 | Store | Question |
 | --- | --- |
 | **Flynnstoned** | Operates **12** licensed NY locations. Currently listed as the Brooklyn store (8112 5th Ave, Bay Ridge). Which location(s) actually stock SLAPPZ? |
-| **Gaea's Garden** | Matched to `Gaia Operations LLC` at 104-12 Lefferts Blvd — the registry carries no DBA for it. Confirm this is the right business. |
-| **Emerald (2nd location)** | SLAPPZ said "Upper West Side"; the licensed address is 1190 Lexington Ave, which is the Upper **East** Side. There is no UWS Emerald in the registry. |
-| **Kaya Bliss** | SLAPPZ said "Brooklyn Heights"; the licensed address is 8412 3rd Ave, which is **Bay Ridge**. |
 | **Terp Bros** | Not on the supplied list, but **retained** — Terp Bros publishes a dedicated SLAPPZ brand page, the strongest public evidence of any store here. Confirm before removing. |
+
+### ✅ Questions closed on 2026-08-31
+
+| Store | How it was settled |
+| --- | --- |
+| **Gaea's Garden** | SLAPPZ said Flushing and was right. An earlier build matched it to `Gaia Operations LLC` on Lefferts Blvd — the wrong business. Gaea's Garden holds a **microbusiness** licence (`OCM-MICR-24-000030`), which is why it never appeared in a retail-only registry query. Corrected to 134-24 Northern Blvd, Flushing. |
+| **Emerald (2nd location)** | SLAPPZ said "Upper West Side", but the brand's only Manhattan store is the Upper **East** Side one at 1190 Lexington Ave — its own site and the registry agree, and no UWS Emerald exists. |
+| **Kaya Bliss** | SLAPPZ said "Brooklyn Heights", but Kaya Bliss holds exactly one retail licence: 8412 3rd Ave, Bay Ridge. The Brooklyn Heights page on their site is a delivery service-area page, not a second store. |
 
 ### Stores with no menu link yet
 
-`menuUrl` drives the SHOP STORE button and is only set where a real online menu was confirmed:
-GreenCup, Herbarium, IGNYTE (both), Sweetlife, Terp Bros, Torches, Weedside. **The other 18 have no
-menu on file** — the button is simply not rendered for them, because a dead link is worse than no
-button. Send menu URLs and they light up.
+`menuUrl` drives the SHOP STORE button and is only set where a real online menu was confirmed. **24 of
+26 stores now have one.** The two that do not:
+
+| Store | Why |
+| --- | --- |
+| **Cannafamily** | Website is live, but its menu is still marked "coming soon". |
+| **Brooklyn Urban** | No public website or menu found. Some directories still call it "in buildout"; the OCM registry has it Active, so the listing stands. |
+
+The button simply is not rendered for those two, because a dead link is worse than no button.
 
 ### Previously pending — now resolved
 
@@ -253,7 +286,8 @@ or merch drops rather than stockists, and remain out of the app.
 
 > **Note on Happy Alta:** an earlier instruction excluded it. SLAPPZ has since asked for it to be
 > included, so it is live at 66-33 Fresh Pond Rd, Ridgewood (OCM-RETL-24-000075). The earlier exclusion
-> no longer applies.
+> no longer applies. Some aggregators call it "formerly Polanco Brothers" — that is wrong. Its licensee
+> is Juicy Wellness Inc.; Polanco Brothers Corp is the licensee behind **Torches NYC**. Do not merge them.
 
 ---
 ## 9. OPEN REQUESTS — SUMMARY FOR SLAPPZ

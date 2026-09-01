@@ -246,7 +246,7 @@ How the system translates to interface. These are binding for this repo.
 - Active/selected: the fill inverts to acid, mark goes black, shadow stays violet, pin scales ~1.15×.
 - The user's own location is a **violet dot with a soft violet halo** — deliberately *not* acid, so "you" never
   competes with "SLAPPZ is here."
-- Basemap is a dark CARTO style, further desaturated so pins are the only saturated thing on screen.
+- Basemap is OpenFreeMap’s dark vector style, further desaturated so pins are the only saturated thing on screen.
 
 ### Search form
 

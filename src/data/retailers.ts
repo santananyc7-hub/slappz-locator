@@ -12,12 +12,26 @@ import type { Retailer } from "@/lib/types";
  * The store list was supplied by SLAPPZ HQ, which is the authoritative source for its own
  * distribution. Each store was then cross-checked against the New York State Office of
  * Cannabis Management licence registry (dataset `jskf-tt3q` on data.ny.gov) to confirm the
- * licensed street address and licence number, rather than trusting a search result. Every
- * coordinate was geocoded from that confirmed address — none are estimated.
+ * licensed street address and licence number, rather than trusting a search result.
+ *
+ * GEOCODING
+ * ---------
+ * Every NYC coordinate comes from the NYC Department of City Planning geocoder
+ * (geosearch.planninglabs.nyc), resolved from the licensed address. None are estimated.
+ * This matters: Nominatim cannot resolve hyphenated Queens house numbers and silently falls
+ * back to a street or neighbourhood centroid, which once put Weedside a kilometre from its
+ * own front door. Use the Planning geocoder for anything inside the five boroughs.
+ *
+ * WEBSITES AND MENUS
+ * ------------------
+ * Every `website` and `menuUrl` here was requested and returned 200 with the expected page
+ * before it was written down. Stores whose menu is not live yet carry a `website` and no
+ * `menuUrl`, so the SHOP STORE button stays hidden rather than pointing somewhere useless.
  *
  * A handful of entries carry `notes` where SLAPPZ's description and the licensed record
- * disagree (neighbourhood mismatches, chains with many locations). Those are open questions
- * for SLAPPZ, not errors to quietly "fix" — the note is the record of the discrepancy.
+ * disagreed (neighbourhood mismatches, chains with many locations, aggregators conflating two
+ * businesses). The note is the record of the discrepancy and how it was settled — read it
+ * before "fixing" an entry that looks wrong.
  *
  * RULES FOR ADDING A RETAILER
  * ---------------------------
@@ -40,7 +54,7 @@ export const retailers: Retailer[] = [
       state: "NY",
       zip: "11374",
     },
-    coordinates: { latitude: 40.730069, longitude: -73.863454 },
+    coordinates: { latitude: 40.730072, longitude: -73.863448 },
     neighborhood: "Rego Park",
     borough: "Queens",
     website: "https://greencup.nyc",
@@ -66,7 +80,7 @@ export const retailers: Retailer[] = [
       state: "NY",
       zip: "11385",
     },
-    coordinates: { latitude: 40.706992, longitude: -73.911936 },
+    coordinates: { latitude: 40.707002, longitude: -73.911935 },
     neighborhood: "Ridgewood",
     borough: "Queens",
     website: "https://herbarium.co",
@@ -91,10 +105,13 @@ export const retailers: Retailer[] = [
       state: "NY",
       zip: "11385",
     },
-    coordinates: { latitude: 40.707991, longitude: -73.897463 },
+    coordinates: { latitude: 40.708014, longitude: -73.897439 },
     neighborhood: "Ridgewood",
     borough: "Queens",
     licenseNumber: "OCM-RETL-24-000075",
+    website: "https://happyaltaridgewood.com",
+    menuUrl: "https://happyaltaridgewood.com/menu/",
+    phone: "(347) 227-7084",
     active: true,
     lastVerified: "2026-08-31",
     verification: {
@@ -103,6 +120,8 @@ export const retailers: Retailer[] = [
       confidence: "high",
       url: "https://data.ny.gov/resource/jskf-tt3q.json",
     },
+    notes:
+      "Some aggregators list this as “formerly Polanco Brothers”. That is wrong: the licensee here is Juicy Wellness Inc., while Polanco Brothers Corp is the licensee behind Torches NYC at 12 E 42nd St. Do not merge the two.",
   },
   {
     id: "ret_cannafamily",
@@ -114,10 +133,11 @@ export const retailers: Retailer[] = [
       state: "NY",
       zip: "11414",
     },
-    coordinates: { latitude: 40.659952, longitude: -73.830781 },
+    coordinates: { latitude: 40.659954, longitude: -73.830799 },
     neighborhood: "Howard Beach",
     borough: "Queens",
     licenseNumber: "OCM-CAURD-25-000279",
+    website: "https://cannafamilynyc.com",
     active: true,
     lastVerified: "2026-08-31",
     verification: {
@@ -126,6 +146,8 @@ export const retailers: Retailer[] = [
       confidence: "high",
       url: "https://data.ny.gov/resource/jskf-tt3q.json",
     },
+    notes:
+      "Website is live but its menu is still marked “coming soon”, so no menuUrl is set — the SHOP STORE button stays hidden until there is a real menu to send people to.",
   },
   {
     id: "ret_flynnstoned_bay_ridge",
@@ -137,10 +159,14 @@ export const retailers: Retailer[] = [
       state: "NY",
       zip: "11209",
     },
-    coordinates: { latitude: 40.624862, longitude: -74.024821 },
+    coordinates: { latitude: 40.624863, longitude: -74.024802 },
     neighborhood: "Bay Ridge",
     borough: "Brooklyn",
     licenseNumber: "OCM-CAURD-25-000281",
+    website: "https://flynnstoned.com",
+    menuUrl:
+      "https://flynnstoned.com/stores/flynnstoned-cannabis-dispensary-brooklyn-bay-ridge-ny/",
+    phone: "(347) 909-7014",
     active: true,
     lastVerified: "2026-08-31",
     verification: {
@@ -157,15 +183,18 @@ export const retailers: Retailer[] = [
     slug: "gaeas-garden",
     name: "Gaea’s Garden",
     address: {
-      street: "104-12 Lefferts Blvd",
-      city: "South Richmond Hill",
+      street: "134-24 Northern Blvd",
+      city: "Flushing",
       state: "NY",
-      zip: "11419",
+      zip: "11354",
     },
-    coordinates: { latitude: 40.685764, longitude: -73.824239 },
-    neighborhood: "South Richmond Hill",
+    coordinates: { latitude: 40.762409, longitude: -73.83375 },
+    neighborhood: "Flushing",
     borough: "Queens",
-    licenseNumber: "OCM-CAURD-26-000326",
+    licenseNumber: "OCM-MICR-24-000030",
+    website: "https://gaeas.garden/",
+    menuUrl: "https://gaeas.garden/",
+    phone: "(347) 506-0350",
     active: true,
     lastVerified: "2026-08-31",
     verification: {
@@ -175,7 +204,7 @@ export const retailers: Retailer[] = [
       url: "https://data.ny.gov/resource/jskf-tt3q.json",
     },
     notes:
-      "Matched to Gaia Operations LLC in the OCM registry, which carries no DBA on file. Confirm this is the intended Gaea’s Garden.",
+      "Corrected 2026-08-31 on SLAPPZ HQ’s word that this store is in Flushing. An earlier build matched it to Gaia Operations LLC on Lefferts Blvd — wrong business. Gaea’s Garden holds a MICROBUSINESS licence (OCMMICR), not a retail one, which is why it does not appear in a retail-only registry query. Grows its own flower on site.",
   },
   {
     id: "ret_ignyte_whitestone",
@@ -187,7 +216,7 @@ export const retailers: Retailer[] = [
       state: "NY",
       zip: "11357",
     },
-    coordinates: { latitude: 40.786795, longitude: -73.821662 },
+    coordinates: { latitude: 40.786803, longitude: -73.821663 },
     neighborhood: "Whitestone",
     borough: "Queens",
     website: "https://ignyteny.com",
@@ -214,7 +243,7 @@ export const retailers: Retailer[] = [
       state: "NY",
       zip: "11231",
     },
-    coordinates: { latitude: 40.675993, longitude: -74.014213 },
+    coordinates: { latitude: 40.676001, longitude: -74.014215 },
     neighborhood: "Red Hook",
     borough: "Brooklyn",
     website: "https://ignyteny.com",
@@ -240,10 +269,13 @@ export const retailers: Retailer[] = [
       state: "NY",
       zip: "11221",
     },
-    coordinates: { latitude: 40.697889, longitude: -73.92939 },
+    coordinates: { latitude: 40.697897, longitude: -73.929391 },
     neighborhood: "Bushwick",
     borough: "Brooklyn",
     licenseNumber: "OCM-CAURD-24-000057",
+    website: "https://theemeralddispensary.com",
+    menuUrl: "https://theemeralddispensary.com",
+    phone: "(917) 688-3025",
     active: true,
     lastVerified: "2026-08-31",
     verification: {
@@ -263,10 +295,13 @@ export const retailers: Retailer[] = [
       state: "NY",
       zip: "10028",
     },
-    coordinates: { latitude: 40.776441, longitude: -73.957988 },
+    coordinates: { latitude: 40.776482, longitude: -73.95806 },
     neighborhood: "Upper East Side",
     borough: "Manhattan",
     licenseNumber: "OCM-CAURD-24-000146",
+    website: "https://emeralddispensary.nyc",
+    menuUrl: "https://emeralddispensary.nyc",
+    phone: "(646) 329-6120",
     active: true,
     lastVerified: "2026-08-31",
     verification: {
@@ -276,7 +311,7 @@ export const retailers: Retailer[] = [
       url: "https://data.ny.gov/resource/jskf-tt3q.json",
     },
     notes:
-      "SLAPPZ listed this as Upper West Side; the licensed address is on Lexington Ave, which is the Upper East Side. Confirm.",
+      "Resolved 2026-08-31. SLAPPZ listed this as Upper West Side, but the brand’s only Manhattan store is the Upper East Side one at 1190 Lexington Ave — its own site (emeralddispensary.nyc) and the OCM registry agree, and there is no UWS Emerald. Same operator as the Bushwick store, different website.",
   },
   {
     id: "ret_sweetlife",
@@ -288,7 +323,7 @@ export const retailers: Retailer[] = [
       state: "NY",
       zip: "10028",
     },
-    coordinates: { latitude: 40.777225, longitude: -73.948792 },
+    coordinates: { latitude: 40.777233, longitude: -73.948794 },
     neighborhood: "Yorkville",
     borough: "Manhattan",
     website: "https://www.sweetlife.nyc",
@@ -314,7 +349,7 @@ export const retailers: Retailer[] = [
       state: "NY",
       zip: "11222",
     },
-    coordinates: { latitude: 40.721559, longitude: -73.940684 },
+    coordinates: { latitude: 40.721564, longitude: -73.940698 },
     neighborhood: "Greenpoint",
     borough: "Brooklyn",
     licenseNumber: "OCM-CAURD-26-000325",
@@ -326,6 +361,8 @@ export const retailers: Retailer[] = [
       confidence: "high",
       url: "https://data.ny.gov/resource/jskf-tt3q.json",
     },
+    notes:
+      "No public website or online menu found as of 2026-08-31. Some directories still list it as “in buildout”, but the OCM registry has ADC Retail LLC as Active at this address, so the listing stands.",
   },
   {
     id: "ret_late_bloomers",
@@ -337,10 +374,12 @@ export const retailers: Retailer[] = [
       state: "NY",
       zip: "11385",
     },
-    coordinates: { latitude: 40.700654, longitude: -73.903611 },
+    coordinates: { latitude: 40.700606, longitude: -73.903639 },
     neighborhood: "Ridgewood",
     borough: "Queens",
     licenseNumber: "OCM-CAURD-24-000074",
+    website: "https://latebloomers-nyc.com",
+    menuUrl: "https://latebloomers-nyc.com",
     active: true,
     lastVerified: "2026-08-31",
     verification: {
@@ -364,6 +403,9 @@ export const retailers: Retailer[] = [
     neighborhood: "Mount Vernon",
     borough: "Westchester",
     licenseNumber: "OCM-CAURD-23-000030",
+    website: "https://www.elevatecannabisny.com",
+    menuUrl: "https://www.elevatecannabisny.com",
+    phone: "(914) 966-1001",
     active: true,
     lastVerified: "2026-08-31",
     verification: {
@@ -383,7 +425,7 @@ export const retailers: Retailer[] = [
       state: "NY",
       zip: "11377",
     },
-    coordinates: { latitude: 40.746261, longitude: -73.893512 },
+    coordinates: { latitude: 40.736665, longitude: -73.8926 },
     neighborhood: "Woodside",
     borough: "Queens",
     website: "https://weedsideny.com",
@@ -399,6 +441,8 @@ export const retailers: Retailer[] = [
       confidence: "high",
       url: "https://data.ny.gov/resource/jskf-tt3q.json",
     },
+    notes:
+      "An earlier build had this store roughly a kilometre off — the old geocoder snapped hyphenated Queens addresses to the neighbourhood centroid instead of the building. All NYC coordinates were re-cut against the NYC Planning geocoder on 2026-08-31. Also note weedsideny.com gives the address as 50-22 72nd St while the OCM licence says 50-12; the licensed address is used here, and the two are about 18m apart on the same block.",
   },
   {
     id: "ret_big_city_flavors",
@@ -410,10 +454,12 @@ export const retailers: Retailer[] = [
       state: "NY",
       zip: "11419",
     },
-    coordinates: { latitude: 40.685192, longitude: -73.830479 },
+    coordinates: { latitude: 40.685232, longitude: -73.830495 },
     neighborhood: "South Richmond Hill",
     borough: "Queens",
     licenseNumber: "OCM-CAURD-25-000263",
+    website: "https://bigcityflavors.com",
+    menuUrl: "https://bigcityflavors.com/?page_id=315",
     active: true,
     lastVerified: "2026-08-31",
     verification: {
@@ -433,7 +479,7 @@ export const retailers: Retailer[] = [
       state: "NY",
       zip: "10017",
     },
-    coordinates: { latitude: 40.753227, longitude: -73.980513 },
+    coordinates: { latitude: 40.752994, longitude: -73.980771 },
     neighborhood: "Midtown",
     borough: "Manhattan",
     website: "https://torches.nyc",
@@ -459,10 +505,13 @@ export const retailers: Retailer[] = [
       state: "NY",
       zip: "11693",
     },
-    coordinates: { latitude: 40.587142, longitude: -73.813727 },
+    coordinates: { latitude: 40.586857, longitude: -73.81227 },
     neighborhood: "Rockaway Beach",
     borough: "Queens",
     licenseNumber: "OCM-CAURD-24-000203",
+    website: "https://munchiesdispensaryny.com",
+    menuUrl: "https://munchiesdispensaryny.com",
+    phone: "(347) 503-7099",
     active: true,
     lastVerified: "2026-08-31",
     verification: {
@@ -482,10 +531,13 @@ export const retailers: Retailer[] = [
       state: "NY",
       zip: "11209",
     },
-    coordinates: { latitude: 40.624749, longitude: -74.030791 },
+    coordinates: { latitude: 40.624757, longitude: -74.030793 },
     neighborhood: "Bay Ridge",
     borough: "Brooklyn",
     licenseNumber: "OCM-CAURD-24-000211",
+    website: "https://kayablissnyc.com",
+    menuUrl: "https://kayablissnyc.com/location/brooklyn-ny/shop/",
+    phone: "(718) 500-7400",
     active: true,
     lastVerified: "2026-08-31",
     verification: {
@@ -495,7 +547,7 @@ export const retailers: Retailer[] = [
       url: "https://data.ny.gov/resource/jskf-tt3q.json",
     },
     notes:
-      "SLAPPZ listed this as Brooklyn Heights; the licensed address is 3rd Ave in Bay Ridge. Confirm.",
+      "Resolved 2026-08-31. SLAPPZ listed this as Brooklyn Heights, but Kaya Bliss holds exactly one retail licence — 8412 3rd Ave, Bay Ridge. The Brooklyn Heights page on kayablissnyc.com is a delivery service-area page, not a second store.",
   },
   {
     id: "ret_seaweed_rockaway",
@@ -507,10 +559,13 @@ export const retailers: Retailer[] = [
       state: "NY",
       zip: "11692",
     },
-    coordinates: { latitude: 40.590646, longitude: -73.801735 },
+    coordinates: { latitude: 40.59058, longitude: -73.80185 },
     neighborhood: "Arverne",
     borough: "Queens",
     licenseNumber: "OCM-RETL-24-000120",
+    website: "https://seaweedrbny.com",
+    menuUrl: "https://seaweedrbny.com",
+    phone: "(718) 474-1851",
     active: true,
     lastVerified: "2026-08-31",
     verification: {
@@ -530,10 +585,13 @@ export const retailers: Retailer[] = [
       state: "NY",
       zip: "11216",
     },
-    coordinates: { latitude: 40.68642, longitude: -73.944733 },
+    coordinates: { latitude: 40.686429, longitude: -73.944735 },
     neighborhood: "Bedford-Stuyvesant",
     borough: "Brooklyn",
     licenseNumber: "OCM-CAURD-25-000241",
+    website: "https://qualityroots.nyc",
+    menuUrl: "https://qualityroots.nyc",
+    phone: "(347) 236-1146",
     active: true,
     lastVerified: "2026-08-31",
     verification: {
@@ -557,6 +615,9 @@ export const retailers: Retailer[] = [
     neighborhood: "Jamestown",
     borough: "Western New York",
     licenseNumber: "OCM-RETL-25-000410",
+    website: "https://www.buzzwny.com",
+    menuUrl: "https://www.buzzwny.com",
+    phone: "(716) 710-7202",
     active: true,
     lastVerified: "2026-08-31",
     verification: {
@@ -580,6 +641,9 @@ export const retailers: Retailer[] = [
     neighborhood: "Mount Vernon",
     borough: "Westchester",
     licenseNumber: "OCM-CAURD-24-000140",
+    website: "https://nunaharvest.com",
+    menuUrl: "https://nunaharvest.com/stores/nuna-harvest",
+    phone: "(914) 600-8124",
     active: true,
     lastVerified: "2026-08-31",
     verification: {
@@ -603,6 +667,9 @@ export const retailers: Retailer[] = [
     neighborhood: "Schenectady",
     borough: "Capital Region",
     licenseNumber: "OCM-RETL-24-000130",
+    website: "https://electriccitycannabisco.com",
+    menuUrl: "https://electriccitycannabisco.com/shop/",
+    phone: "(518) 579-0031",
     active: true,
     lastVerified: "2026-08-31",
     verification: {
@@ -626,6 +693,9 @@ export const retailers: Retailer[] = [
     neighborhood: "Kenmore",
     borough: "Western New York",
     licenseNumber: "OCM-RETL-24-000135",
+    website: "https://www.thekokoroway.com",
+    menuUrl: "https://www.thekokoroway.com/shop",
+    phone: "(716) 322-0327",
     active: true,
     lastVerified: "2026-08-31",
     verification: {
@@ -645,7 +715,7 @@ export const retailers: Retailer[] = [
       state: "NY",
       zip: "11417",
     },
-    coordinates: { latitude: 40.672937, longitude: -73.84369 },
+    coordinates: { latitude: 40.672879, longitude: -73.843946 },
     neighborhood: "Ozone Park",
     borough: "Queens",
     website: "https://terpbrosnyc.com",
