@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 
 import { SlappzWordmark } from '@/components/brand/SlappzWordmark';
 import { ArrowIcon } from '@/components/brand/Icons';
@@ -29,19 +29,43 @@ import { ArrowIcon } from '@/components/brand/Icons';
 const STORAGE_KEY = 'slappz:age-verified';
 const REMEMBER_DAYS = 30;
 
+/**
+ * Has the blocking script in layout.tsx already cleared this visitor?
+ *
+ * `data-age-ok` is the single source of truth for "confirmed and not expired" — the script
+ * sets it before paint and CSS hides the gate off it. React has to read the SAME signal, or
+ * the two disagree: the gate goes invisible while the component still believes it is up and
+ * holds `inert` on the whole site. That shipped, and it made every visit after the first
+ * render a perfect page where nothing could be clicked or focused.
+ *
+ * `useSyncExternalStore` rather than an effect + setState: the server cannot know the
+ * attribute, so it returns false there and the gate is in the server HTML as intended, and
+ * React swaps to the client value during hydration without a mismatch or a cascading render.
+ * Nothing needs to subscribe — the only thing that sets this attribute after load is
+ * `confirm()` below, which updates React state in the same breath.
+ */
+const NO_OP = () => () => {};
+const readAgeOk = () => document.documentElement.hasAttribute('data-age-ok');
+const SERVER_AGE_OK = () => false;
+
 export function AgeGate() {
   const [declined, setDeclined] = useState(false);
   const [dismissed, setDismissed] = useState(false);
   const confirmRef = useRef<HTMLButtonElement>(null);
 
+  const alreadyVerified = useSyncExternalStore(NO_OP, readAgeOk, SERVER_AGE_OK);
+  const open = !dismissed && !alreadyVerified;
+
   // While the gate is up, take the rest of the page out of the tab order entirely.
+  // `open`, not `!dismissed` — a returning visitor's gate is already hidden by CSS, and
+  // marking the site inert behind an invisible gate is exactly the bug described above.
   useEffect(() => {
-    if (dismissed) return;
+    if (!open) return;
     const root = document.getElementById('site-root');
     root?.setAttribute('inert', '');
     confirmRef.current?.focus();
     return () => root?.removeAttribute('inert');
-  }, [dismissed]);
+  }, [open]);
 
   function confirm() {
     try {
@@ -56,7 +80,7 @@ export function AgeGate() {
     setDismissed(true);
   }
 
-  if (dismissed) return null;
+  if (!open) return null;
 
   return (
     <div

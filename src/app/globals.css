@@ -268,6 +268,186 @@ body {
 }
 
 /* =========================================================================
+   MAP POPUP
+   The card that opens when a pin is tapped. MapLibre ships a white rounded
+   bubble with a drop shadow; dropped onto this map it reads as a different
+   website's UI. Restyled to the brand's own vocabulary — black surface,
+   hairline border, hard violet offset, acid only as text or as fill behind
+   dark text (never acid text on white — see CLAUDE.md § ACCESSIBILITY).
+   ========================================================================= */
+.slappz-popup .maplibregl-popup-content {
+  padding: 0;
+  border: 1px solid var(--color-acid);
+  border-radius: 0;
+  background: var(--color-ink);
+  /* Hard offset, never a blur — the brand's block-shadow device. */
+  box-shadow: 5px 5px 0 var(--color-violet);
+}
+
+/* The little arrow has to be recoloured per direction or it stays white. */
+.slappz-popup .maplibregl-popup-tip {
+  border-top-color: var(--color-acid);
+  border-bottom-color: var(--color-acid);
+  border-left-color: var(--color-acid);
+  border-right-color: var(--color-acid);
+}
+.slappz-popup.maplibregl-popup-anchor-top .maplibregl-popup-tip,
+.slappz-popup.maplibregl-popup-anchor-top-left .maplibregl-popup-tip,
+.slappz-popup.maplibregl-popup-anchor-top-right .maplibregl-popup-tip {
+  border-bottom-color: var(--color-acid);
+  border-top-color: transparent;
+  border-left-color: transparent;
+  border-right-color: transparent;
+}
+.slappz-popup.maplibregl-popup-anchor-bottom .maplibregl-popup-tip,
+.slappz-popup.maplibregl-popup-anchor-bottom-left .maplibregl-popup-tip,
+.slappz-popup.maplibregl-popup-anchor-bottom-right .maplibregl-popup-tip {
+  border-top-color: var(--color-acid);
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  border-right-color: transparent;
+}
+.slappz-popup.maplibregl-popup-anchor-left .maplibregl-popup-tip {
+  border-right-color: var(--color-acid);
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+}
+.slappz-popup.maplibregl-popup-anchor-right .maplibregl-popup-tip {
+  border-left-color: var(--color-acid);
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+}
+
+.slappz-popup .maplibregl-popup-close-button {
+  top: 2px;
+  right: 4px;
+  padding: 0 6px;
+  color: var(--color-muted);
+  font-size: 20px;
+  line-height: 1.2;
+  background: none;
+  border-radius: 0;
+}
+.slappz-popup .maplibregl-popup-close-button:hover {
+  color: var(--color-acid);
+  background: none;
+}
+.slappz-popup .maplibregl-popup-close-button:focus-visible {
+  outline: 2px solid var(--color-acid);
+  outline-offset: -2px;
+}
+
+.slappz-popup__body {
+  padding: 12px 14px 12px;
+}
+
+.slappz-popup__kicker {
+  font-family: var(--font-archivo), system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-acid);
+}
+
+.slappz-popup__name {
+  font-family: var(--font-archivo), system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.05;
+  margin-top: 4px;
+  color: var(--color-paper);
+}
+
+.slappz-popup__where {
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-top: 4px;
+  color: var(--color-muted);
+}
+
+.slappz-popup__addr {
+  font-size: 12px;
+  line-height: 1.4;
+  margin-top: 7px;
+  color: var(--color-paper);
+}
+
+.slappz-popup__actions {
+  /* One row, never two. Wrapping added ~46px and pushed the card past the height of the
+     map it lives inside, which clipped its own buttons off. */
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+/* 40px rather than the 44px used elsewhere: this sits inside a constrained
+   overlay, and the tap targets are still comfortably above the 24px floor
+   while leaving the card small enough not to swallow the map on a phone. */
+.slappz-popup__go,
+.slappz-popup__act {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  padding: 0 10px;
+  white-space: nowrap;
+  font-family: var(--font-archivo), system-ui, sans-serif;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background-color 150ms, color 150ms, border-color 150ms;
+}
+
+.slappz-popup__go {
+  flex: 1 1 auto;
+  min-width: 0;
+  background: var(--color-acid);
+  color: var(--color-ink);
+}
+.slappz-popup__go:hover {
+  background: var(--color-paper);
+}
+
+.slappz-popup__act {
+  flex: 0 0 auto;
+  border: 1px solid var(--color-hairline-strong);
+  color: var(--color-paper);
+}
+.slappz-popup__act:hover {
+  border-color: var(--color-acid);
+  color: var(--color-acid);
+}
+
+.slappz-popup__more {
+  display: inline-block;
+  margin-top: 9px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-muted);
+  transition: color 150ms;
+}
+.slappz-popup__more:hover {
+  color: var(--color-acid);
+}
+
+.slappz-popup__go:focus-visible,
+.slappz-popup__act:focus-visible,
+.slappz-popup__more:focus-visible {
+  outline: 2px solid var(--color-acid);
+  outline-offset: 2px;
+}
+
+/* =========================================================================
    AGE GATE
    The gate ships in the HTML and is removed by these rules, not by JavaScript
    deciding to mount it — that ordering is what prevents a flash of the site

@@ -5,6 +5,7 @@ import maplibregl, { type Map as MapLibreMap, type Marker } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 
 import type { Coordinates, Retailer, RetailerResult } from '@/lib/types';
+import { directionsUrl, formatDistance, formatPhone } from '@/lib/geo';
 
 /**
  * Branded MapLibre map.
@@ -35,6 +36,9 @@ const BASEMAP_STYLE = 'https://tiles.openfreemap.org/styles/dark';
 
 const NYC_CENTER: [number, number] = [-73.9, 40.73];
 
+/** Room to reserve above a selected pin for its detail card, in pixels. */
+const CARD_ALLOWANCE = 240;
+
 function markerElement(label: string, active: boolean): HTMLButtonElement {
   const el = document.createElement('button');
   el.type = 'button';
@@ -56,6 +60,62 @@ function markerElement(label: string, active: boolean): HTMLButtonElement {
             transform="translate(14 16) skewX(-9) translate(-14 -16)">S</text>
     </svg>`;
   return el;
+}
+
+/**
+ * Escape before interpolating into the popup's HTML.
+ *
+ * Retailer records are ours today, but they are editable through /admin and the repository
+ * layer exists so they can come from a feed later. Building markup from that data without
+ * escaping would make a store name an injection point the day either of those changes.
+ */
+function esc(value: string): string {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+/**
+ * The card that opens when a pin is tapped.
+ *
+ * Built as an HTML string rather than a React portal because MapLibre owns the popup's
+ * lifecycle and node — mounting a React tree inside something another library removes is how
+ * you get stale roots. It is styled in globals.css under `.slappz-popup`; the default
+ * MapLibre bubble is white with a drop shadow and would look like a different website.
+ */
+function popupHtml(retailer: Retailer | RetailerResult): string {
+  const where = [retailer.neighborhood, retailer.borough ?? retailer.address.city]
+    .filter(Boolean)
+    .join(' · ');
+  const distance =
+    'distanceMiles' in retailer && typeof retailer.distanceMiles === 'number'
+      ? formatDistance(retailer.distanceMiles)
+      : null;
+  const phone = formatPhone(retailer.phone);
+
+  // Only render an action when the data behind it exists — a dead button is worse than none,
+  // which is the same rule menuUrl follows everywhere else in this app.
+  const actions = [
+    `<a class="slappz-popup__go" href="${esc(directionsUrl(retailer))}" target="_blank" rel="noopener noreferrer">DIRECTIONS</a>`,
+    retailer.menuUrl
+      ? `<a class="slappz-popup__act" href="${esc(retailer.menuUrl)}" target="_blank" rel="noopener noreferrer">SHOP</a>`
+      : '',
+    phone ? `<a class="slappz-popup__act" href="tel:${esc(retailer.phone ?? '')}">CALL</a>` : '',
+  ]
+    .filter(Boolean)
+    .join('');
+
+  return `
+    <div class="slappz-popup__body">
+      <p class="slappz-popup__kicker">SLAPPZ HERE${distance ? ` · ${esc(distance)}` : ''}</p>
+      <p class="slappz-popup__name">${esc(retailer.name)}</p>
+      ${where ? `<p class="slappz-popup__where">${esc(where)}</p>` : ''}
+      <p class="slappz-popup__addr">${esc(retailer.address.street)}<br>${esc(retailer.address.city)}, ${esc(retailer.address.state)} ${esc(retailer.address.zip)}</p>
+      <div class="slappz-popup__actions">${actions}</div>
+      <a class="slappz-popup__more" href="/stores/${esc(retailer.slug)}">FULL DETAILS &rarr;</a>
+    </div>`;
 }
 
 function originElement(): HTMLDivElement {
@@ -85,6 +145,7 @@ export default function MapView({
   const map = useRef<MapLibreMap | null>(null);
   const markers = useRef(new Map<string, Marker>());
   const originMarker = useRef<Marker | null>(null);
+  const popup = useRef<maplibregl.Popup | null>(null);
   const ready = useRef(false);
 
   // Keep the latest onSelect without re-creating every marker on each parent render.
@@ -133,6 +194,8 @@ export default function MapView({
       activeMarkers.clear();
       originMarker.current?.remove();
       originMarker.current = null;
+      popup.current?.remove();
+      popup.current = null;
       instance.remove();
       map.current = null;
       ready.current = false;
@@ -173,6 +236,76 @@ export default function MapView({
 
       markers.current.set(retailer.slug, marker);
     }
+  }, [retailers, selectedSlug]);
+
+  /**
+   * Open the detail card for whatever is selected.
+   *
+   * Driven by `selectedSlug` rather than wired into the marker's own click handler, so a pin
+   * tap and a click on a result card in the list both land here and stay in sync — selection
+   * has one owner.
+   */
+  useEffect(() => {
+    const instance = map.current;
+    if (!instance) return;
+
+    popup.current?.remove();
+    popup.current = null;
+
+    const retailer = retailers.find((r) => r.slug === selectedSlug);
+    if (!retailer) return;
+
+    const lngLat: [number, number] = [
+      retailer.coordinates.longitude,
+      retailer.coordinates.latitude,
+    ];
+
+    const card = new maplibregl.Popup({
+      offset: 22,
+      closeButton: true,
+      closeOnClick: false,
+      className: 'slappz-popup',
+      maxWidth: '272px',
+      // Always open ABOVE the pin. Left to choose, MapLibre picks whichever side has more
+      // room, and in a map this short that is often the bottom — where the card runs past
+      // the container edge and clips its own action buttons off. Anchoring up and making
+      // room below is predictable; letting it choose is not.
+      anchor: 'bottom',
+    })
+      .setLngLat(lngLat)
+      .setHTML(popupHtml(retailer))
+      .addTo(instance);
+
+    popup.current = card;
+
+    /**
+     * Nudge the map down if the card still hangs over the top edge.
+     *
+     * MapLibre does not pan for popups, and no fixed allowance can be right: the card's
+     * height depends on which actions the retailer actually has, and the map is 323px tall on
+     * a phone against 400+ on a desktop. Measuring the rendered card and correcting by the
+     * real overflow is the only version that holds in both. Runs after `moveend` so it
+     * corrects the camera the selection ease actually landed on, not the one it started from.
+     */
+    const nudge = () => {
+      const el = card.getElement();
+      if (!el || !popup.current) return;
+      const overflow =
+        instance.getContainer().getBoundingClientRect().top + 12 - el.getBoundingClientRect().top;
+      if (overflow > 1) instance.panBy([0, -overflow], { duration: 240 });
+    };
+
+    instance.once('moveend', nudge);
+    // The selection ease is a no-op when the pin is already framed, and then `moveend` never
+    // fires — so a card opened on a stationary map would stay clipped without this.
+    const settle = window.setTimeout(nudge, 620);
+
+    return () => {
+      window.clearTimeout(settle);
+      instance.off('moveend', nudge);
+      popup.current?.remove();
+      popup.current = null;
+    };
   }, [retailers, selectedSlug]);
 
   // Sync the origin marker.
@@ -236,9 +369,17 @@ export default function MapView({
     const target = retailers.find((r) => r.slug === selectedSlug);
     if (!target) return;
 
+    // Sit the pin low enough that the detail card, which always opens above it, fits inside
+    // the map rather than running off the top. This is the ONLY place the camera reacts to
+    // selection — the popup effect deliberately does not move it too, because two effects
+    // easing the same map means the later one silently wins and the offset is lost.
+    const height = instance.getContainer().clientHeight;
+    const pinFromTop = Math.min(CARD_ALLOWANCE, Math.max(height - 48, height * 0.5));
+
     instance.easeTo({
       center: [target.coordinates.longitude, target.coordinates.latitude],
       zoom: Math.max(instance.getZoom(), 13),
+      offset: [0, Math.round(pinFromTop - height / 2)],
       duration: 450,
     });
   }, [selectedSlug, retailers]);
