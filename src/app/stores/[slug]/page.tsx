@@ -8,6 +8,8 @@ import { StoreActions } from '@/components/locator/StoreActions';
 import { listActive, findBySlug } from '@/lib/repository/retailers';
 import { productBySlug } from '@/data/products';
 import { formatPhone } from '@/lib/geo';
+import { JsonLd } from '@/components/site/JsonLd';
+import { storePageLd, breadcrumbLd } from '@/lib/seo';
 
 /**
  * Shareable retailer page.
@@ -43,6 +45,11 @@ export async function generateMetadata({
       title: `SLAPPZ at ${retailer.name}`,
       description: `Buy SLAPPZ in ${where}.`,
       url: `/stores/${retailer.slug}`,
+      // Declaring `openGraph` at all replaces the card inherited from the root
+      // `opengraph-image.tsx`, so these pages were shipping with no preview image — on the
+      // most-shared pages on the site, the ones campaigns and DMs point straight at. Naming
+      // the route explicitly puts it back.
+      images: [{ url: '/opengraph-image', width: 1200, height: 630 }],
     },
   };
 }
@@ -62,32 +69,14 @@ export default async function StorePage({ params }: { params: Promise<{ slug: st
     .map((s) => productBySlug.get(s))
     .filter((p): p is NonNullable<typeof p> => Boolean(p));
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Store',
-    name: retailer.name,
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: retailer.address.street,
-      addressLocality: retailer.address.city,
-      addressRegion: retailer.address.state,
-      postalCode: retailer.address.zip,
-      addressCountry: 'US',
-    },
-    geo: {
-      '@type': 'GeoCoordinates',
-      latitude: retailer.coordinates.latitude,
-      longitude: retailer.coordinates.longitude,
-    },
-    ...(retailer.phone ? { telephone: retailer.phone } : {}),
-    ...(retailer.website ? { url: retailer.website } : {}),
-  };
-
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      <JsonLd data={storePageLd(retailer)} />
+      <JsonLd
+        data={breadcrumbLd([
+          { name: 'Locations', path: '/where-to-buy-slappz' },
+          { name: retailer.name, path: `/stores/${retailer.slug}` },
+        ])}
       />
       <Header />
 

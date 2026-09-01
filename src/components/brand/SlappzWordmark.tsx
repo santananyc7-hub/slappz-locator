@@ -51,13 +51,20 @@ export function SlappzWordmark({
   withHq = true,
   className = '',
   decorative = false,
+  alt = 'SLAPPZ HQ',
 }: {
   size?: Size;
   /** Retained for API compatibility — `HQ` is part of the supplied artwork and cannot be split out. */
   withHq?: boolean;
   className?: string;
-  /** Set when an ancestor already conveys the name (e.g. an h1 with its own accessible text). */
+  /** Set when an ancestor already conveys the name (e.g. a heading that spells it out in text). */
   decorative?: boolean;
+  /**
+   * The mark's text equivalent. It lands on the `alt` attribute, so when this sits inside a
+   * heading it becomes part of that heading's text — which is the point. Pass a narrower
+   * value (`alt="SLAPPZ"`) where the surrounding words already supply the rest.
+   */
+  alt?: string;
 }) {
   void withHq;
 
@@ -65,14 +72,16 @@ export function SlappzWordmark({
     <span
       className={`relative block shrink-0 ${HEIGHTS[size]} ${className}`}
       style={{ aspectRatio: `${NATURAL.w} / ${NATURAL.h}` }}
-      {...(decorative
-        ? { 'aria-hidden': true as const }
-        : { role: 'img', 'aria-label': 'SLAPPZ HQ' })}
+      {...(decorative ? { 'aria-hidden': true as const } : {})}
     >
+      {/*
+        The text equivalent lives on `alt`, not on an `aria-label` on the wrapper with an
+        empty-alt image inside. Both spell the name for a screen reader, but only `alt` is
+        read as heading text by a crawler — and the hero mark IS the h1's second word.
+      */}
       <Image
         src={SRC}
-        alt=""
-        aria-hidden="true"
+        alt={decorative ? '' : alt}
         fill
         sizes="(min-width: 1024px) 260px, 200px"
         priority={size === 'hero'}

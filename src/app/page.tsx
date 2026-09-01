@@ -12,11 +12,13 @@ import { ThisIsSlappz } from '@/components/home/ThisIsSlappz';
 import { InTheWild } from '@/components/home/InTheWild';
 import { Merch } from '@/components/home/Merch';
 import { PullUpNext } from '@/components/home/PullUpNext';
-import { Faq } from '@/components/home/Faq';
+import { Faq, FAQS } from '@/components/home/Faq';
 import { CarrySlappz } from '@/components/home/CarrySlappz';
 import { geocode } from '@/lib/geocode';
 import { listActive, nearest } from '@/lib/repository/retailers';
 import { products } from '@/data/products';
+import { JsonLd } from '@/components/site/JsonLd';
+import { brandLd, organizationLd, faqLd, storeListLd } from '@/lib/seo';
 import type { GeocodeResult, RetailerResult } from '@/lib/types';
 
 export const metadata: Metadata = {
@@ -79,7 +81,12 @@ export default async function Page({
 
   return (
     <>
-      <JsonLd retailerCount={allRetailers.length} />
+      {/* Four nodes rather than one: the company, the product mark, the FAQ (rich-result
+          eligible) and the directory of shops this page actually lists. */}
+      <JsonLd data={organizationLd()} />
+      <JsonLd data={brandLd(allRetailers.length)} />
+      <JsonLd data={faqLd(FAQS)} />
+      <JsonLd data={storeListLd(allRetailers, 'Licensed New York dispensaries carrying SLAPPZ', '/')} />
       <Header />
       <Marquee />
 
@@ -138,30 +145,5 @@ export default async function Page({
 
       <Footer />
     </>
-  );
-}
-
-/**
- * Structured data. Describes the brand and its licensed availability — not fabricated
- * ratings, prices, or inventory.
- */
-function JsonLd({ retailerCount }: { retailerCount: number }) {
-  const data = {
-    '@context': 'https://schema.org',
-    '@type': 'Brand',
-    name: 'SLAPPZ',
-    alternateName: 'SLAPPZ HQ',
-    slogan: 'The brand that SLAPPZ',
-    description: `SLAPPZ is an NYC cannabis brand producing 1g pre-rolls, available at ${retailerCount} licensed New York dispensaries.`,
-    sameAs: ['https://www.instagram.com/slappz_hq/'],
-    areaServed: { '@type': 'City', name: 'New York City' },
-  };
-
-  return (
-    <script
-      type="application/ld+json"
-      // Static, developer-authored object — no user input reaches this string.
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
-    />
   );
 }

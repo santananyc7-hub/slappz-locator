@@ -10,7 +10,16 @@ import Link from 'next/link';
  * Native <details> so it works without JavaScript and stays keyboard-accessible.
  */
 
-const FAQS: { q: string; a: React.ReactNode }[] = [
+/**
+ * Each entry carries BOTH the rendered answer and a plain-text twin.
+ *
+ * `a` is what the page shows; `plain` is what goes into the FAQPage structured data in
+ * `src/lib/seo.ts`. Google requires the schema answer to match the visible answer, and
+ * flattening React nodes to a string at runtime would silently drift the first time someone
+ * edits the markup. Keeping the pair adjacent makes a mismatch obvious in review — if you
+ * change one, change the other.
+ */
+export const FAQS: { q: string; a: React.ReactNode; plain: string }[] = [
   {
     q: 'Where can I buy SLAPPZ?',
     a: (
@@ -26,6 +35,8 @@ const FAQS: { q: string; a: React.ReactNode }[] = [
         .
       </>
     ),
+    plain:
+      'At licensed New York dispensaries. Use the locator to find the closest one to you, or browse every verified market on the locations page.',
   },
   {
     q: 'Is the stock shown here live?',
@@ -37,6 +48,8 @@ const FAQS: { q: string; a: React.ReactNode }[] = [
         before you travel.
       </>
     ),
+    plain:
+      'No. Listings are verified periodically and do not reflect real-time inventory. Stock, hours and pricing are set by each retailer and can change without notice — call ahead or check the shop’s own menu before you travel.',
   },
   {
     q: 'Can I buy SLAPPZ directly from this site?',
@@ -46,6 +59,8 @@ const FAQS: { q: string; a: React.ReactNode }[] = [
         you find them and links straight to their menus where one exists.
       </>
     ),
+    plain:
+      'No. SLAPPZ is sold exclusively through licensed New York retailers. This site helps you find them and links straight to their menus where one exists.',
   },
   {
     q: 'What does SLAPPZ actually make?',
@@ -58,6 +73,8 @@ const FAQS: { q: string; a: React.ReactNode }[] = [
         . SLAPPZ holds a New York OCM Processor (Type 3) licence.
       </>
     ),
+    plain:
+      '1g pre-rolls, sold as singles and in 10-packs. SLAPPZ holds a New York OCM Processor (Type 3) licence.',
   },
   {
     q: 'Do I need to be 21?',
@@ -67,6 +84,8 @@ const FAQS: { q: string; a: React.ReactNode }[] = [
         for valid government-issued ID.
       </>
     ),
+    plain:
+      'Yes. Adult-use cannabis in New York is 21+, and every retailer listed here will ask for valid government-issued ID.',
   },
   {
     q: 'SLAPPZ isn’t near me. What now?',
@@ -80,6 +99,8 @@ const FAQS: { q: string; a: React.ReactNode }[] = [
         helps most.
       </>
     ),
+    plain:
+      'Tell us where you are. The demand form on the homepage feeds directly into how the next market gets picked — naming a specific shop helps most.',
   },
 ];
 

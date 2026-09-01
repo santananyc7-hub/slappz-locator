@@ -7,6 +7,8 @@ import { PageHero } from '@/components/site/PageHero';
 import { ProductCard } from '@/components/home/ProductCard';
 import { ArrowIcon } from '@/components/brand/Icons';
 import { products } from '@/data/products';
+import { JsonLd } from '@/components/site/JsonLd';
+import { productListLd, breadcrumbLd } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Products — SLAPPZ 1g Pre-Rolls',
@@ -25,6 +27,8 @@ export const metadata: Metadata = {
 export default function ProductsPage() {
   return (
     <>
+      <JsonLd data={productListLd(products, '/products')} />
+      <JsonLd data={breadcrumbLd([{ name: 'Products', path: '/products' }])} />
       <Header />
       <main>
         <PageHero

@@ -8,6 +8,8 @@ import { ArrowIcon } from '@/components/brand/Icons';
 import { listActive } from '@/lib/repository/retailers';
 import { buildMarkets } from '@/lib/markets';
 import { formatPhone } from '@/lib/geo';
+import { JsonLd } from '@/components/site/JsonLd';
+import { storeListLd, breadcrumbLd } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Where to Buy SLAPPZ — Licensed NYC Dispensaries',
@@ -31,6 +33,16 @@ export default async function WhereToBuyPage() {
 
   return (
     <>
+      {/* The payload for this page: every listed shop, addressed and geocoded, as one list.
+          Without it a crawler sees a wall of names; with it, a directory of N real places. */}
+      <JsonLd
+        data={storeListLd(
+          retailers,
+          'Licensed New York dispensaries carrying SLAPPZ',
+          '/where-to-buy-slappz',
+        )}
+      />
+      <JsonLd data={breadcrumbLd([{ name: 'Locations', path: '/where-to-buy-slappz' }])} />
       <Header />
       <main>
         <PageHero

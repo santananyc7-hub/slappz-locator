@@ -266,16 +266,18 @@ export function LocatorRoot({
           {/* "SLAPPZ" is the REAL logo artwork, not type. Setting the brand name in a web
               font next to a custom-drawn mark always reads as an imitation of it — using the
               actual lockup is both more correct and a stronger brand signal.
-              The h1 carries its own accessible text so the visuals can stay decorative. */}
+
+              The heading is built from exactly two pieces, each contributing one word: the
+              text "FIND", and the mark's alt text "SLAPPZ". An earlier version added a
+              third — an sr-only "Find SLAPPZ" with the rest hidden — which made the h1 of
+              the most important page on the site read "Find SLAPPZFIND" to anything
+              crawling text content. Do not reintroduce a hidden duplicate here: the visible
+              word and the alt already say it once each. */}
           <h1 className="rise">
-            <span className="sr-only">Find SLAPPZ</span>
-            <span
-              aria-hidden="true"
-              className="display block text-[64px] leading-[0.85] text-paper sm:text-[92px] lg:text-[80px]"
-            >
+            <span className="display block text-[64px] leading-[0.85] text-paper sm:text-[92px] lg:text-[80px]">
               FIND
             </span>
-            <SlappzWordmark size="hero" decorative className="mt-2 sm:mt-3" />
+            <SlappzWordmark size="hero" alt="SLAPPZ" className="mt-2 sm:mt-3" />
           </h1>
 
           <p className="meta rise rise-1 mt-4 max-w-lg text-muted">
