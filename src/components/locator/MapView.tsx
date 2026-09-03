@@ -104,13 +104,10 @@ function popupHtml(retailer: Retailer | RetailerResult): string {
     .filter(Boolean)
     .join('');
 
-  // The name doubles as the link to the store page. It used to be a separate "FULL DETAILS"
-  // row, but height is the binding constraint here: the map is ~364px on desktop and ~323px
-  // on a phone, and the card opens above the pin. Every row it loses is a row it no longer
-  // has to beg the camera to make room for.
-  // Place and distance ride on the kicker rather than taking a row of their own. Four rows is
-  // what makes the card fit above a pin in a 364px map without the camera having to help, and
-  // the neighbourhood was the one line whose information the address already carried.
+  // Height is the binding constraint: the map is ~364px on desktop and ~323px on a phone, and
+  // the card opens beside a pin inside it. Two rows were folded away to make it fit — place
+  // and distance ride on the kicker, and the name doubles as the link to the store page
+  // instead of a separate "FULL DETAILS" row. Neither lost any information.
   const kicker = [where.toUpperCase(), distance].filter(Boolean).join(' · ');
 
   return `
@@ -169,8 +166,12 @@ export default function MapView({
       center: NYC_CENTER,
       zoom: 10,
       attributionControl: { compact: true },
-      // The map lives inside a scrolling page on mobile — grabbing the scroll would be hostile.
-      scrollZoom: false,
+      // Wheel zooms, as asked for. Note what this costs: the map sits inside a scrolling page,
+      // so a wheel or two-finger trackpad gesture over it now zooms instead of scrolling past
+      // — the same behaviour as an embedded Google map. Touch is unaffected (no wheel events
+      // on a phone), so dragging the page on mobile still scrolls normally, and pinch-to-zoom
+      // continues to come from touchZoomRotate.
+      scrollZoom: true,
       dragRotate: false,
       pitchWithRotate: false,
       touchPitch: false,
@@ -187,6 +188,21 @@ export default function MapView({
       console.error('[slappz:map]', e.error?.message ?? e);
     });
 
+    /**
+     * Re-measure whenever the container's size changes.
+     *
+     * MapLibre reads the container once at construction and then only on window resize. A map
+     * built while its box is still zero-height — which is possible here, because the whole
+     * component is lazily imported and mounts on its own schedule — decides it needs no tiles
+     * and stays a blank rectangle forever, with no error to show for it. Observed exactly
+     * that: style, sprites and fonts all fetched 200, and not one map tile requested.
+     *
+     * A window resize is not enough on its own: the container can change size without the
+     * window doing so.
+     */
+    const resizeObserver = new ResizeObserver(() => instance.resize());
+    resizeObserver.observe(container.current);
+
     map.current = instance;
 
     // Copy the ref containers so cleanup operates on the same Maps this effect set up,
@@ -194,6 +210,7 @@ export default function MapView({
     const activeMarkers = markers.current;
 
     return () => {
+      resizeObserver.disconnect();
       activeMarkers.forEach((m) => m.remove());
       activeMarkers.clear();
       originMarker.current?.remove();
@@ -289,24 +306,32 @@ export default function MapView({
      * MapLibre flips the card to whichever side of the pin has room, which handles most of
      * this — but a pin near the top or bottom of a short map can leave no good side, and it
      * picks its anchor from where the pin is when the card opens, not where the camera is
-     * heading. Measuring the rendered card and panning by the real overflow catches the rest,
-     * in whichever direction it actually overflowed.
+     * heading. Measuring the rendered card and correcting by the real overflow catches the
+     * rest, in whichever direction it actually overflowed.
      */
     const nudge = () => {
       const el = card.getElement();
       if (!el || !popup.current) return;
+
       const mapRect = instance.getContainer().getBoundingClientRect();
       const rect = el.getBoundingClientRect();
       const over = mapRect.top + 8 - rect.top;
       const under = rect.bottom - (mapRect.bottom - 8);
-      if (over > 1) instance.panBy([0, -over], { duration: 220 });
-      else if (under > 1) instance.panBy([0, under], { duration: 220 });
+
+      // Only ever a CORRECTION. A large overflow means the camera has not arrived yet — the
+      // pin is still off somewhere else entirely — and panning by that much does not fix it,
+      // it cancels the ease that would have. That is exactly what happened to the far-western
+      // stores: selecting Buzz WNY from a New York frame panned 655px instead of flying there,
+      // and the map never made the trip.
+      const limit = mapRect.height / 2;
+      if (over > 1 && over < limit) instance.panBy([0, -over], { duration: 220 });
+      else if (under > 1 && under < limit) instance.panBy([0, under], { duration: 220 });
     };
 
+    // Correct once the camera has settled, and once more a beat later: the selection ease is
+    // a no-op when the pin is already framed, and then `moveend` never fires at all.
     instance.once('moveend', nudge);
-    // The selection ease is a no-op when the pin is already framed, and then `moveend` never
-    // fires — so a card opened on a stationary map would stay clipped without this.
-    const settle = window.setTimeout(nudge, 620);
+    const settle = window.setTimeout(nudge, 900);
 
     return () => {
       window.clearTimeout(settle);
@@ -377,13 +402,34 @@ export default function MapView({
     const target = retailers.find((r) => r.slug === selectedSlug);
     if (!target) return;
 
-    // Centre and zoom only. Framing the card is the popup's job now — see the anchor note
-    // in the popup effect.
-    instance.easeTo({
-      center: [target.coordinates.longitude, target.coordinates.latitude],
+    // Centre and zoom. Framing the card itself is the popup's job — see the anchor note in
+    // the popup effect.
+    //
+    // Always `flyTo`, never `easeTo`. `easeTo` interpolates linearly and, asked to cross the
+    // state from a New York frame to Jamestown or Buffalo, does not arrive — the far-western,
+    // Capital Region and even Rockaway stores simply never came into view when their pin was
+    // clicked. Branching on "is it already in view?" did not help either, because the idle map
+    // is framed on every shop at once, so that test says yes right up until it matters.
+    // `flyTo` handles a short hop and a cross-state jump with the same call.
+    const camera = {
+      center: [target.coordinates.longitude, target.coordinates.latitude] as [number, number],
       zoom: Math.max(instance.getZoom(), 13),
-      duration: 450,
-    });
+    };
+
+    // Animate when the map can animate; jump when it cannot.
+    //
+    // Two things were wrong here and they hid each other. `easeTo` interpolates linearly and,
+    // asked to cross the state from a New York frame to Jamestown or Buffalo, never arrives —
+    // so `flyTo` is the right call for a locator whose shops span 400 miles. But BOTH animated
+    // methods are silently no-ops while `loaded()` is false, and a selection made before the
+    // style settles hit exactly that: flyTo was called with the correct coordinates, and 1.2s
+    // later the camera was still sitting on its constructor defaults. `jumpTo` always works.
+    // Arriving instantly beats not arriving.
+    if (instance.loaded()) {
+      instance.flyTo({ ...camera, duration: 900, essential: true });
+    } else {
+      instance.jumpTo(camera);
+    }
   }, [selectedSlug, retailers]);
 
   return (
