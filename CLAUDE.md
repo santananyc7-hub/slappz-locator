@@ -38,7 +38,7 @@ Established from public sources (Instagram `@slappz_hq`, retailer sites, NY OCM 
 | License | OCM License Type — Processor, Type 3 (per IG bio) |
 | Positioning (own words) | "Premium Cannabis · NYC Inspired · Culture Focused" |
 | Home base | Queens, New York (posts geotagged Queens; #HowardBeach) |
-| Core product | **1g pre-rolls** (also sold as 10-packs) |
+| Core product | **1g pre-rolls** |
 | B2B line | "Looking to add SLAPPZ HQ 1g pre-rolls to your shop? Send us a DM" — 718-708-8430 |
 | Hashtags | #SLAPPZHQ #TheBrandThatSLAPPZ #Cannafamily #NYCannabis |
 | Trade pillars | Premium Flower · Bold Flavors · Consistent Quality · Shelf Appeal |

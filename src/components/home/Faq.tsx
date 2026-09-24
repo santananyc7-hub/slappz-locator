@@ -66,7 +66,7 @@ export const FAQS: { q: string; a: React.ReactNode; plain: string }[] = [
     q: 'What does SLAPPZ actually make?',
     a: (
       <>
-        1g pre-rolls, sold as singles and in 10-packs. See{' '}
+        1g pre-rolls, sold as singles. See{' '}
         <Link href="/products" className="text-acid underline underline-offset-4">
           products
         </Link>
@@ -74,7 +74,7 @@ export const FAQS: { q: string; a: React.ReactNode; plain: string }[] = [
       </>
     ),
     plain:
-      '1g pre-rolls, sold as singles and in 10-packs. SLAPPZ holds a New York OCM Processor (Type 3) licence.',
+      '1g pre-rolls, sold as singles. SLAPPZ holds a New York OCM Processor (Type 3) licence.',
   },
   {
     q: 'Do I need to be 21?',

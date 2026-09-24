@@ -13,7 +13,7 @@ import { productListLd, breadcrumbLd } from '@/lib/seo';
 export const metadata: Metadata = {
   title: 'Products — SLAPPZ 1g Pre-Rolls',
   description:
-    'SLAPPZ 1g pre-rolls, sold as singles and 10-packs at licensed New York dispensaries. See the range and find the nearest shop carrying it.',
+    'SLAPPZ 1g pre-rolls, sold at licensed New York dispensaries. See the range and find the nearest shop carrying it.',
   alternates: { canonical: '/products' },
 };
 
@@ -38,7 +38,7 @@ export default function ProductsPage() {
               THE <span className="text-acid">LINEUP</span>
             </>
           }
-          lead="Premium New York flower, rolled. Singles and 10-packs, sold through licensed dispensaries across the city."
+          lead="Premium New York flower, rolled. Sold through licensed dispensaries across the city."
         >
           <Link
             href="/#locator"
@@ -51,7 +51,10 @@ export default function ProductsPage() {
 
         <section className="px-4 py-12 sm:px-6 sm:py-16">
           <div className="mx-auto max-w-[1400px]">
-            <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
+            {/* Two columns, not three. With two SKUs a three-column grid leaves a visibly empty
+                third cell, which reads as a product that failed to load rather than a range
+                of two. Restore lg:grid-cols-3 if a third SKU is ever confirmed. */}
+            <div className="grid gap-2.5 sm:grid-cols-2">
               {products.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))}

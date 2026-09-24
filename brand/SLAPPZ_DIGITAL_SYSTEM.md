@@ -20,7 +20,7 @@ brand hasn't defined something, this document says so and makes a *recommendatio
 | Self-description | "Premium Cannabis · NYC Inspired · Culture Focused" |
 | Home | Queens, New York |
 | License | OCM Processor, Type 3 |
-| Product | 1g pre-rolls (singles and 10-packs) |
+| Product | 1g pre-rolls |
 | Attitude | Legacy-to-legal, community-first, event-driven, unmistakably NYC |
 
 The brand's own anniversary graphic states its four pillars as: **BUILT ON COMMUNITY · TRUSTED SINCE DAY 1 ·

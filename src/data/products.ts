@@ -19,6 +19,11 @@ import type { Product } from '@/lib/types';
  *
  * Do NOT add strains from generic cannabis databases — a strain existing in the world is
  * not evidence that SLAPPZ sells it. See CLAUDE.md § RETAILER RULES.
+ *
+ * There is NO 10-pack. One was listed here on the strength of a retailer's menu; SLAPPZ has
+ * since confirmed they do not sell one, and SLAPPZ is the authoritative source for their own
+ * range. A retailer listing is evidence a SKU might exist, not that it does — do not add it
+ * back from a menu.
  */
 export const products: Product[] = [
   {
@@ -41,16 +46,6 @@ export const products: Product[] = [
     strainType: 'INDICA',
     image: '/brand/slappz/product/slappz-bubba-kush-1g.webp',
     tagline: 'The one off the campaign art. Same gram, heavier lean.',
-    verified: true,
-  },
-  {
-    id: 'prd_preroll_10pack',
-    slug: 'preroll-10-pack',
-    name: '10-Pack Pre-Rolls',
-    category: 'multi-pack',
-    format: '10 × 1g',
-    // "grab-and-go format" is the stocking retailer's own description of this SKU.
-    tagline: 'Ten full grams in the box. Grab-and-go.',
     verified: true,
   },
 ];

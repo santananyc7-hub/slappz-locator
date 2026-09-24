@@ -74,7 +74,6 @@ Last updated: 2026-08-31
 | --- | --- | --- | --- | --- | --- |
 | `slappz-perm-marker-1g.webp` | Photo, cut out | Torches NYC product listing (Dutchie CDN) | Product cards | 🟡 Menu shot | 600×600, 24KB, background keyed to transparent |
 | `slappz-bubba-kush-1g.webp` | Photo, cut out | Torches NYC product listing (Dutchie CDN) | Product cards | 🟡 Menu shot | 600×600, 22KB, background keyed to transparent |
-| 10-pack box | Photo | — | Product cards | 🔴 Needed | Card falls back to a typographic treatment |
 
 > **Where these came from.** Both are the menu pack shots a verified stocking retailer publishes for these
 > SKUs. They arrived on a white studio sweep, which would read as a broken white square on this site, so the
@@ -86,7 +85,11 @@ Last updated: 2026-08-31
 > pack shots when available.
 
 **Product data policy:** `src/data/products.ts` contains **only** SKUs evidenced publicly — Perm Marker
-(hybrid) and Bubba Kush (indica) are both listed by name at a verified stocking retailer, plus the 10-pack.
+(hybrid) and Bubba Kush (indica), both listed by name at a verified stocking retailer.
+
+> **A 10-pack was removed on 2026-09-24.** It had been added on the strength of a retailer's menu listing.
+> SLAPPZ confirmed they do not sell one, and SLAPPZ is the authoritative source for their own range — a
+> retailer menu is evidence a SKU *might* exist, not that it does. Do not re-add it from a menu.
 Deliberately excluded: **price** (retailer-set and varies), **THC percentage** (batch-specific), and
 **effects** (a compliance problem for a brand to assert). Strains are **not** attached to any retailer,
 because per-retailer availability has not been verified. Do not populate `availableProducts` without a source.
@@ -294,7 +297,7 @@ or merch drops rather than stockists, and remain out of the app.
 
 1. Logo master files (SVG/AI/EPS/PNG) — **blocks production launch**
 2. Confirmed brand hex values and display typeface licence
-3. Clean product photography (1g tube, 10-pack) on transparent or black
+3. Clean product photography (1g tube) on transparent or black
 4. 6–10 approved lifestyle/campaign images for the `FROM SLAPPZ HQ` strip
 5. **The authoritative stockist list** with menu URLs — the single highest-value input to this product
 6. Per-retailer product availability, if it can be verified
