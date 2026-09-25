@@ -133,10 +133,13 @@ export default function AboutPage() {
             </div>
 
             <div className="relative min-h-[280px] overflow-hidden border border-hairline lg:min-h-full">
+              {/* Real SLAPPZ photography, supplied by SLAPPZ — a setup on a waterfront
+                  deck. It replaced a generated tile. The caption reads OUT OF QUEENS
+                  because that is the brand's documented home base, not a geotag of this
+                  frame: nothing in the photograph names where it was taken. */}
               <Image
-                src="/brand/slappz/lifestyle/wild-marina.webp"
-                alt=""
-                aria-hidden="true"
+                src="/brand/slappz/lifestyle/slappz-waterfront-table-wide.webp"
+                alt="A SLAPPZ HQ branded table set up on a waterfront deck, product and caps laid out, boats moored behind."
                 fill
                 sizes="(min-width: 1024px) 45vw, 100vw"
                 className="object-cover"
@@ -148,7 +151,7 @@ export default function AboutPage() {
                     'linear-gradient(to top, #000 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%)',
                 }}
               />
-              <p className="meta absolute bottom-5 left-5 text-acid">QUEENS, NEW YORK</p>
+              <p className="meta absolute bottom-5 left-5 text-acid">OUT OF QUEENS</p>
             </div>
           </div>
         </section>

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 
 import { Header } from '@/components/site/Header';
 import { Footer } from '@/components/site/Footer';
@@ -31,6 +32,32 @@ export const metadata: Metadata = {
  * real destination for it.
  */
 
+/**
+ * Real SLAPPZ activations in licensed New York shops, photographed by SLAPPZ.
+ *
+ * This is the one thing a buyer actually wants to see and the page had no imagery at all
+ * before. Captions describe the SETUP, never the shop — none of these storefronts is named
+ * in its own frame, and naming a retailer here would read as a claim about that retailer's
+ * current stock, which this site does not make (CLAUDE.md § RETAILER RULES).
+ */
+const SHELF_SHOTS = [
+  {
+    src: '/brand/slappz/lifestyle/slappz-shelf-marble.webp',
+    alt: 'A SLAPPZ HQ branded table set up on the sales floor of a licensed dispensary.',
+    line: 'The full line out on the floor.',
+  },
+  {
+    src: '/brand/slappz/lifestyle/slappz-shelf-woodroom.webp',
+    alt: 'A SLAPPZ HQ branded table laid out with pre-rolls in a wood-panelled dispensary.',
+    line: 'Table, cloth, the whole run laid out.',
+  },
+  {
+    src: '/brand/slappz/lifestyle/slappz-shelf-blueroom.webp',
+    alt: 'A SLAPPZ HQ branded table beside a stocked product wall in a licensed dispensary.',
+    line: 'Front of house, next to the wall.',
+  },
+];
+
 const PILLARS = [
   ['PREMIUM FLOWER', 'Top quality.'],
   ['BOLD FLAVORS', 'Terps that hit.'],
@@ -39,7 +66,7 @@ const PILLARS = [
 ];
 
 const STEPS = [
-  ['01', 'REACH OUT', 'DM @slappz_hq or call. Tell us your shop and where you are.'],
+  ['01', 'REACH OUT', 'Email us or DM @slappz_hq. Tell us your shop and where you are.'],
   ['02', 'WE PULL UP', 'We come to the store, meet the team and drop off samples.'],
   ['03', 'YOU STOCK IT', 'Get SLAPPZ 1g pre-rolls on the shelf and on your menu.'],
 ];
@@ -119,6 +146,49 @@ export default function WholesalePage() {
                 </li>
               ))}
             </ol>
+          </div>
+        </section>
+
+        <section className="border-b border-hairline px-4 py-12 sm:px-6 sm:py-16">
+          <div className="mx-auto max-w-[1400px]">
+            <p className="meta text-acid">WHAT IT LOOKS LIKE</p>
+            <h2 className="display mt-2 text-[30px] text-paper sm:text-[42px]">
+              WE SET IT UP IN YOUR SHOP
+            </h2>
+            <p className="mt-4 max-w-2xl text-[13px] leading-relaxed text-muted">
+              When we pull up, this is what lands: our table, our cloth and the full 1g run
+              laid out. Real setups, in licensed New York shops.
+            </p>
+
+            <ul className="mt-8 grid gap-2.5 sm:grid-cols-3">
+              {SHELF_SHOTS.map((shot) => (
+                <li
+                  key={shot.src}
+                  className="relative overflow-hidden border border-hairline"
+                >
+                  <div className="relative aspect-4/5">
+                    <Image
+                      src={shot.src}
+                      alt={shot.alt}
+                      fill
+                      loading="lazy"
+                      sizes="(min-width: 640px) 33vw, 100vw"
+                      className="object-cover"
+                    />
+                    <div
+                      className="pointer-events-none absolute inset-0"
+                      style={{
+                        background:
+                          'linear-gradient(to top, #000 0%, rgba(0,0,0,0.45) 35%, rgba(0,0,0,0) 65%)',
+                      }}
+                    />
+                  </div>
+                  <p className="display absolute inset-x-0 bottom-0 p-5 text-[18px] text-paper">
+                    {shot.line}
+                  </p>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 

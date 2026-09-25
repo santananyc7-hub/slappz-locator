@@ -161,23 +161,58 @@ because per-retailer availability has not been verified. Do not populate `availa
 
 ## 3. LIFESTYLE — `/public/brand/slappz/lifestyle/`
 
+**SLAPPZ supplied 28 original photographs on 2026-09-25.** This section is no longer a
+placeholder — the culture strip, the About page image and the wholesale proof strip are all
+real SLAPPZ photography now.
+
 | Asset | Source | Usage | Production ready |
 | --- | --- | --- | --- |
-| Dispensary activation photos | 📎 IG reference | `FROM SLAPPZ HQ` strip | 🔴 Needed — request originals |
-| Merch on customers (tees, bucket hats) | 📎 IG reference | Brand strip | 🔴 Needed |
-| Boat / marina content | 📎 IG reference | Brand strip | 🔴 Needed |
-
+| `slappz-midtown-night.webp` | **Supplied by SLAPPZ** | Homepage `WE'RE OUTSIDE` tile 01 | 🟢 Yes, 1100 × 1375, 71KB |
+| `slappz-penn-station.webp` | **Supplied by SLAPPZ** | Homepage `WE'RE OUTSIDE` tile 02 | 🟢 Yes, 1100 × 1375, 183KB |
+| `slappz-cannafamily-cab.webp` | **Supplied by SLAPPZ** | Homepage `WE'RE OUTSIDE` tile 03 | 🟢 Yes, 1100 × 1375, 174KB |
+| `slappz-waterfront-table-wide.webp` | **Supplied by SLAPPZ** | `/about` — `OUT OF QUEENS` | 🟢 Yes, 1100 × 880, 155KB |
+| `slappz-shelf-marble.webp` | **Supplied by SLAPPZ** | `/wholesale` — `WE SET IT UP IN YOUR SHOP` | 🟢 Yes, 1100 × 1375, 172KB |
+| `slappz-shelf-woodroom.webp` | **Supplied by SLAPPZ** | `/wholesale` — same strip | 🟢 Yes, 1100 × 1375, 212KB |
+| `slappz-shelf-blueroom.webp` | **Supplied by SLAPPZ** | `/wholesale` — same strip | 🟢 Yes, 1100 × 1375, 176KB |
 | `slappz-stand.webp` | **Supplied by SLAPPZ** | On the bench — not currently placed | 🟢 Yes, 768 × 1024, 71KB |
+| `wild-handball.webp`, `wild-marina.webp`, `wild-platform.webp` | **AI-generated** | **Retired.** Superseded by the real photographs above | ⚪ Unplaced — kept, not deleted |
 
-Currently the `FROM SLAPPZ HQ` section renders **brand-built graphic tiles**, not photography, precisely so
-that no Instagram CDN URL is ever hotlinked. Swap to real imagery when originals arrive.
+### Where the originals live
 
-> **`slappz-stand.webp` is a real SLAPPZ photograph** — the branded display stand, tubes and tray. It was
-> briefly placed at the head of the culture strip and SLAPPZ asked for the generated tile back, so it is
-> kept here rather than deleted. It is the only real product-in-situ photo the repo has; reach for it first
-> if that section ever moves to photography.
+The 28 originals are in **`/brand/source/lifestyle/`**, not in `/public`. They total ~17MB
+and nothing references them, so serving them would ship 17MB of dead weight to every deploy.
+`/brand` is documentation and is not served.
 
----
+`scripts/prepare-lifestyle-photos.mjs` is the whole pipeline: it reads from
+`/brand/source/lifestyle`, writes to `/public/brand/slappz/lifestyle`, and its `PICKS` array
+records which original became which tile. **Re-run it rather than hand-editing an output**,
+and add to `PICKS` rather than dropping a loose file into `/public`.
+
+### The three rules these tiles follow
+
+1. **Captions come off the frame.** A caption may only state what is legible in the
+   photograph — a storefront sign, a subway entrance that names itself, a strain printed on
+   the tube. Nothing is inferred about where or when a photo was taken. The About page's
+   `OUT OF QUEENS` is the one caption that is about the BRAND rather than the frame, and it
+   is SLAPPZ's documented home base, not a geotag.
+2. **No retailer is named off a shelf shot.** The wholesale tiles show SLAPPZ set up inside
+   licensed dispensaries, but the captions describe the setup, never the shop. Naming a
+   retailer beside a photo would read as a claim about that retailer's current stock, which
+   this site does not make (CLAUDE.md § RETAILER RULES). `slappz-cannafamily-cab.webp` is the
+   exception and only because the storefront sign is legible *in the frame* — and
+   Cannafamily is already a verified retailer in `src/data/retailers.ts`.
+3. **People are not the subject.** The supplied set includes frames where staff, customers
+   and members of the public are clearly identifiable. None of those were placed. The one
+   crowd shot in use is cropped to its top 86% specifically to drop faces out of the frame.
+   If SLAPPZ has permission from the people in the other shots, they can go in — that is
+   SLAPPZ's call to make, not this repo's.
+
+### Not used
+
+The supplied set also contains promotional graphics rather than photographs (a rolling-tray
+promo carrying IGNYTE branding, an illustrated yellow SSR, a logo-over-boat composite) and
+two clean logo lockups. The graphics are busy and carry other parties' marks, so they are not
+placed. The logo lockups are superseded by `/public/brand/slappz/logos/` — see § 1.
 
 ## 4. CAMPAIGN — `/public/brand/slappz/campaign/`
 
@@ -330,9 +365,15 @@ or merch drops rather than stockists, and remain out of the app.
 
 1. Logo master files (SVG/AI/EPS/PNG) — **blocks production launch**
 2. Confirmed brand hex values and display typeface licence
-3. 6–10 approved lifestyle/campaign images for the `FROM SLAPPZ HQ` strip
-4. **The authoritative stockist list** with menu URLs — the single highest-value input to this product
-5. Per-retailer product availability, if it can be verified
+3. **The authoritative stockist list** with menu URLs — the single highest-value input to this product
+4. Per-retailer product availability, if it can be verified
+5. Permission status for the supplied photographs that show identifiable people — only
+   SLAPPZ can say whether those are cleared to publish. Until then only the brand-forward
+   frames are placed. See § 3.
 
-> Product photography was request #3 and is **closed** — SLAPPZ supplied the three strain sheets on
-> 2026-09-25 and the cards now run on pack shots cut from them. See § 2.
+> Product photography is **closed** — SLAPPZ supplied the three strain sheets on 2026-09-25
+> and the cards now run on pack shots cut from them. See § 2.
+>
+> Lifestyle photography is **closed** — SLAPPZ supplied 28 originals on 2026-09-25. The
+> culture strip, the About page and the new wholesale proof strip all run on real
+> photographs; the generated stand-ins are retired. See § 3.

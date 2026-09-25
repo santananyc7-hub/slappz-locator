@@ -96,6 +96,32 @@ See `/brand/SLAPPZ_DIGITAL_SYSTEM.md` before touching color, type, or layout.
 
 ---
 
+## PHOTOGRAPHY
+
+SLAPPZ supplied 28 original photographs on 2026-09-25. The culture strip, the About page image and the
+wholesale proof strip all run on real photographs now — the generated stand-ins that used to fill those
+slots are retired. The hero is still generated and still labelled as such in the manifest.
+
+Three rules govern anything placed from that set. They exist because a photograph on a retail site reads
+as evidence, and evidence that overstates is worse than no evidence:
+
+- **Captions come off the frame.** State only what is legible in the photograph — a storefront sign, a
+  subway entrance that names itself, a strain printed on the tube. Never infer where or when a shot was
+  taken. Never caption a photo with a neighbourhood because it looks like one.
+- **Never name a retailer beside a shelf shot.** It reads as a claim about that shop's current stock,
+  which this site does not make. The one exception in use is a storefront whose own sign is legible in
+  frame *and* which is already a verified retailer in `src/data/retailers.ts`.
+- **People are not the subject.** The supplied set includes identifiable staff, customers and members of
+  the public. None of those frames are placed, and the one crowd shot in use is cropped to drop faces.
+  Whether those are cleared to publish is SLAPPZ's call, not this repo's — it is an open request in
+  `/brand/ASSET_MANIFEST.md` § 9.
+
+Pipeline: `scripts/prepare-lifestyle-photos.mjs`. Originals live in `/brand/source/lifestyle/`, never in
+`/public` — they are ~17MB and would otherwise ship to every deploy. Add to the script's `PICKS` array
+rather than dropping a loose file into `/public`.
+
+---
+
 ## NAVIGATION VS HOMEPAGE
 
 These are two different problems and they get two different answers. **Do not make the

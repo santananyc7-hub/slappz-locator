@@ -9,33 +9,40 @@ import { track } from '@/lib/analytics';
 /**
  * SLAPPZ IN THE WILD — the culture strip.
  *
- * ⚠️ These are GENERATED atmosphere images standing in for real SLAPPZ event, activation and
- * drop photography, which the repo does not have yet. They are placeholders on purpose:
+ * These are REAL SLAPPZ photographs, supplied by SLAPPZ. They replaced the generated
+ * atmosphere tiles that stood here while the repo had no photography (see
+ * /brand/ASSET_MANIFEST.md § 3 for what they were and why).
  *
- *   - none of them depict a real event, retailer, product, logo or identifiable person
- *   - none of them carry text
- *   - the captions describe the PLACE, never a claim that SLAPPZ did something there
+ * Because they are real, two rules changed:
  *
- * That keeps the section honest while it waits for the real thing. Replace with approved
- * photography and the captions can become actual event copy — see
- * /brand/ASSET_MANIFEST.md § 3.
+ *   - They are CONTENT now, not decoration, so they carry real alt text instead of
+ *     aria-hidden. A screen-reader user gets the same proof a sighted one does.
+ *   - Every caption describes only what is VISIBLE IN THE FRAME — a readable storefront
+ *     sign, a subway entrance that names itself, a printed strain on the tube. Nothing is
+ *     inferred about where a photo was taken or when. If a detail cannot be read off the
+ *     photograph, it does not go in the caption.
+ *
+ * Sources and crops: scripts/prepare-lifestyle-photos.mjs.
  */
 
 const TILES = [
   {
-    src: '/brand/slappz/lifestyle/wild-handball.webp',
-    place: 'THE HANDBALL WALL',
-    line: 'Where the summer actually happens.',
+    src: '/brand/slappz/lifestyle/slappz-midtown-night.webp',
+    alt: 'A SLAPPZ 1g Bubba Kush pre-roll tube held up over a packed night-time street, a floodlit tower behind it.',
+    place: 'MIDTOWN',
+    line: 'Bubba Kush, crowd, tower lit up.',
   },
   {
-    src: '/brand/slappz/lifestyle/wild-platform.webp',
-    place: 'THE ELEVATED LINE',
-    line: 'Queens moves above the street.',
+    src: '/brand/slappz/lifestyle/slappz-penn-station.webp',
+    alt: 'A SLAPPZ 1g Perm Marker pre-roll tube held up in front of the 34 Street–Penn Station A, C, E subway entrance.',
+    place: '34 ST · PENN STATION',
+    line: 'Perm Marker at the A, C, E.',
   },
   {
-    src: '/brand/slappz/lifestyle/wild-marina.webp',
-    place: 'HOWARD BEACH',
-    line: 'Water on one side, the city on the other.',
+    src: '/brand/slappz/lifestyle/slappz-cannafamily-cab.webp',
+    alt: 'A SLAPPZ t-shirt and tin laid out on the hood of a yellow cab outside the CannaFamily Dispensary storefront.',
+    place: 'CANNAFAMILY',
+    line: 'Tee on the cab, shop right behind.',
   },
 ];
 
@@ -53,8 +60,7 @@ export function InTheWild() {
             <div className="relative aspect-4/5">
               <Image
                 src={tile.src}
-                alt=""
-                aria-hidden="true"
+                alt={tile.alt}
                 fill
                 loading="lazy"
                 sizes="(min-width: 640px) 33vw, 100vw"
