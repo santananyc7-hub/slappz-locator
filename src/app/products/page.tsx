@@ -51,10 +51,7 @@ export default function ProductsPage() {
 
         <section className="px-4 py-12 sm:px-6 sm:py-16">
           <div className="mx-auto max-w-[1400px]">
-            {/* Two columns, not three. With two SKUs a three-column grid leaves a visibly empty
-                third cell, which reads as a product that failed to load rather than a range
-                of two. Restore lg:grid-cols-3 if a third SKU is ever confirmed. */}
-            <div className="grid gap-2.5 sm:grid-cols-2">
+            <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
               {products.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))}

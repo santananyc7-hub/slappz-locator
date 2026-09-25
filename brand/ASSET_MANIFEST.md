@@ -72,27 +72,46 @@ Last updated: 2026-08-31
 
 | Asset | Type | Source | Usage | Production ready | Notes |
 | --- | --- | --- | --- | --- | --- |
-| `slappz-perm-marker-1g.webp` | Photo, cut out | Torches NYC product listing (Dutchie CDN) | Product cards | 🟡 Menu shot | 600×600, 24KB, background keyed to transparent |
-| `slappz-bubba-kush-1g.webp` | Photo, cut out | Torches NYC product listing (Dutchie CDN) | Product cards | 🟡 Menu shot | 600×600, 22KB, background keyed to transparent |
+| `SlappzPerm.jpeg` | Strain sheet | **Supplied by SLAPPZ** | Master | 🟢 Yes | 1024 × 1536, 326KB |
+| `Slappzbubba.jpeg` | Strain sheet | **Supplied by SLAPPZ** | Master | 🟢 Yes | 1024 × 1536, 333KB |
+| `SlappzSour.jpeg` | Strain sheet | **Supplied by SLAPPZ** | Master | 🟢 Yes | 1024 × 1536, 309KB |
+| `slappz-perm-marker-1g.webp` | Pack shot, feathered | Cut from `SlappzPerm.jpeg` | Product cards | 🟢 Yes | 940 × 250, 64KB |
+| `slappz-bubba-kush-1g.webp` | Pack shot, feathered | Cut from `Slappzbubba.jpeg` | Product cards | 🟢 Yes | 940 × 228, 62KB |
+| `slappz-sour-diesel-1g.webp` | Pack shot, feathered | Cut from `SlappzSour.jpeg` | Product cards | 🟢 Yes | 940 × 228, 60KB |
 
-> **Where these came from.** Both are the menu pack shots a verified stocking retailer publishes for these
-> SKUs. They arrived on a white studio sweep, which would read as a broken white square on this site, so the
-> background was keyed out with `scripts/remove-product-background.mjs` — a border flood-fill that only removes
-> background *connected to the edge*, so the pale pre-roll and the compliance label survive.
+> **These are SLAPPZ's own now.** The cards previously used menu pack shots scraped from a stocking
+> retailer's Dutchie listing — retailer framing, retailer lighting, shot on a white studio sweep that had to
+> be keyed out. Request #3 in § 9 asked SLAPPZ for their own product photography; these sheets are it, and
+> the menu shots are gone.
 >
-> They are good enough to ship and clearly show the real packaging. They are still **menu photography, not
-> brand photography** — the framing and lighting are the retailer's, not SLAPPZ's. Replace with SLAPPZ's own
-> pack shots when available.
+> **How the pack shots are made.** `node scripts/extract-pack-shot.mjs <sheet.jpeg> <out.webp>` finds the
+> tube-and-pre-roll band on the sheet and feathers its edges to transparent. The band is located, not
+> hardcoded — the three sheets place the product at slightly different heights. Re-run it if a sheet is
+> replaced; do not hand-crop.
+>
+> **Why feathered and not keyed.** The cards render `object-contain` on the card surface, so a plain
+> rectangular crop would sit there as a visible box of someone else's background. But keying this artwork
+> means separating a glossy black tube from dark purple smoke, and every threshold that takes the smoke also
+> takes a bite out of the tube. Feathering keeps every drawn pixel and lets the frame fall away instead.
 
-**Product data policy:** `src/data/products.ts` contains **only** SKUs evidenced publicly — Perm Marker
-(hybrid) and Bubba Kush (indica), both listed by name at a verified stocking retailer.
+**Product data policy:** `src/data/products.ts` contains **only** SKUs evidenced publicly — Permanent Marker
+(hybrid), Bubba Kush (indica) and Sour Diesel (sativa), each documented on SLAPPZ's own strain sheet.
+Deliberately excluded: **price** (retailer-set and varies), **THC percentage** (batch-specific), and
+**effects** (a compliance problem for a brand to assert). Strains are **not** attached to any retailer,
+because per-retailer availability has not been verified. Do not populate `availableProducts` without a source.
+
+> **The sheets carry an EFFECTS panel. It stays on the sheet.** Those are SLAPPZ's own words on SLAPPZ's own
+> artwork, and that is where they are allowed to live. Typed into `products.ts` they would become the
+> *site's* structured assertion about how a cannabis product makes you feel — which is the thing the policy
+> above exists to prevent. Same for the strain-info paragraph.
+
+> **Sour Diesel is sold out** as of 2026-09-25, per SLAPPZ. It is still listed, carrying `soldOut: true`, so
+> the range reads correctly — but its card shows SOLD OUT, desaturates the pack shot, and drops the link to
+> the locator rather than sending someone to search 25 shops for it. Clear the flag when it is back.
 
 > **A 10-pack was removed on 2026-09-24.** It had been added on the strength of a retailer's menu listing.
 > SLAPPZ confirmed they do not sell one, and SLAPPZ is the authoritative source for their own range — a
 > retailer menu is evidence a SKU *might* exist, not that it does. Do not re-add it from a menu.
-Deliberately excluded: **price** (retailer-set and varies), **THC percentage** (batch-specific), and
-**effects** (a compliance problem for a brand to assert). Strains are **not** attached to any retailer,
-because per-retailer availability has not been verified. Do not populate `availableProducts` without a source.
 
 ---
 
@@ -297,7 +316,9 @@ or merch drops rather than stockists, and remain out of the app.
 
 1. Logo master files (SVG/AI/EPS/PNG) — **blocks production launch**
 2. Confirmed brand hex values and display typeface licence
-3. Clean product photography (1g tube) on transparent or black
-4. 6–10 approved lifestyle/campaign images for the `FROM SLAPPZ HQ` strip
-5. **The authoritative stockist list** with menu URLs — the single highest-value input to this product
-6. Per-retailer product availability, if it can be verified
+3. 6–10 approved lifestyle/campaign images for the `FROM SLAPPZ HQ` strip
+4. **The authoritative stockist list** with menu URLs — the single highest-value input to this product
+5. Per-retailer product availability, if it can be verified
+
+> Product photography was request #3 and is **closed** — SLAPPZ supplied the three strain sheets on
+> 2026-09-25 and the cards now run on pack shots cut from them. See § 2.

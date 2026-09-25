@@ -4,9 +4,8 @@ import type { Product } from '@/lib/types';
  * SLAPPZ PRODUCTS
  * ===============
  *
- * Only SKUs with public evidence. Perm Marker and Bubba Kush are both listed by name on a
- * verified stocking retailer (Torches NYC), which is also where the pack shots came from —
- * see /brand/ASSET_MANIFEST.md § 2 for provenance.
+ * Only SKUs with public evidence. All three are documented on SLAPPZ's own strain sheets,
+ * which is also where the pack shots are cut from — see /brand/ASSET_MANIFEST.md § 2.
  *
  * What is deliberately NOT here:
  *   - PRICE. Set by each retailer, varies by shop, and stale pricing on a brand site is
@@ -16,6 +15,11 @@ import type { Product } from '@/lib/types';
  *   - EFFECTS. Retailers list these; a brand asserting them is a compliance problem.
  *
  * Strain type is included because it is printed on the pack itself.
+ *
+ * The strain sheets carry an EFFECTS panel and a strain-info paragraph. Those are SLAPPZ's
+ * own words on SLAPPZ's own artwork, and they are deliberately NOT lifted into this data:
+ * the moment they are typed in here they become the SITE's structured assertion about how a
+ * cannabis product makes you feel, which is the compliance problem the rule above describes.
  *
  * Do NOT add strains from generic cannabis databases — a strain existing in the world is
  * not evidence that SLAPPZ sells it. See CLAUDE.md § RETAILER RULES.
@@ -46,6 +50,21 @@ export const products: Product[] = [
     strainType: 'INDICA',
     image: '/brand/slappz/product/slappz-bubba-kush-1g.webp',
     tagline: 'The one off the campaign art. Same gram, heavier lean.',
+    verified: true,
+  },
+  {
+    id: 'prd_sour_diesel_1g',
+    slug: 'sour-diesel-1g',
+    name: 'Sour Diesel',
+    category: 'pre-roll',
+    format: '1g',
+    strainType: 'SATIVA',
+    image: '/brand/slappz/product/slappz-sour-diesel-1g.webp',
+    tagline: 'The legacy sativa. Same gram, other end of the range.',
+    // SLAPPZ says this one is out. Kept listed rather than deleted so the range still reads
+    // correctly and so it comes back by flipping one flag — but the card will not send
+    // anyone to the locator hunting for it. Remove this line when it is back in production.
+    soldOut: true,
     verified: true,
   },
 ];

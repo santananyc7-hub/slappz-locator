@@ -83,6 +83,15 @@ export type Product = {
    * terpenes, effects or awards. See CLAUDE.md § RETAILER RULES.
    */
   tagline?: string;
+  /**
+   * Set when SLAPPZ says the SKU is not currently in production or distribution.
+   *
+   * This is a BRAND-level statement, not a shelf-level one, and only SLAPPZ can make it —
+   * per-retailer stock is not something this site knows or claims (see CLAUDE.md § RETAILER
+   * RULES). A sold-out SKU stays listed so the range still reads correctly; what changes is
+   * that the card stops sending anyone to the locator to look for it.
+   */
+  soldOut?: boolean;
   /** Only true for SKUs evidenced publicly. */
   verified: boolean;
 };

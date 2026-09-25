@@ -108,10 +108,7 @@ export default async function Page({
           lead="1g pre-rolls. Pick the one you want, then find who has it."
           cta={{ label: 'VIEW ALL', href: '/products' }}
         >
-          {/* Two columns, not three. With two SKUs a three-column grid leaves a visibly empty
-              third cell, which reads as a product that failed to load rather than a range
-              of two. Restore lg:grid-cols-3 if a third SKU is ever confirmed. */}
-          <div className="grid gap-2.5 sm:grid-cols-2">
+          <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
             {products.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
