@@ -75,24 +75,38 @@ Last updated: 2026-08-31
 | `SlappzPerm.jpeg` | Strain sheet | **Supplied by SLAPPZ** | Master | 🟢 Yes | 1024 × 1536, 326KB |
 | `Slappzbubba.jpeg` | Strain sheet | **Supplied by SLAPPZ** | Master | 🟢 Yes | 1024 × 1536, 333KB |
 | `SlappzSour.jpeg` | Strain sheet | **Supplied by SLAPPZ** | Master | 🟢 Yes | 1024 × 1536, 309KB |
-| `slappz-perm-marker-1g.webp` | Pack shot, feathered | Cut from `SlappzPerm.jpeg` | Product cards | 🟢 Yes | 940 × 250, 64KB |
-| `slappz-bubba-kush-1g.webp` | Pack shot, feathered | Cut from `Slappzbubba.jpeg` | Product cards | 🟢 Yes | 940 × 228, 62KB |
-| `slappz-sour-diesel-1g.webp` | Pack shot, feathered | Cut from `SlappzSour.jpeg` | Product cards | 🟢 Yes | 940 × 228, 60KB |
+| `slappz-perm-marker-1g.webp` | Pack shot, cut out | Cut from `SlappzPerm.jpeg` | Product cards | 🟢 Yes | 881 × 236, 72KB |
+| `slappz-bubba-kush-1g.webp` | Pack shot, cut out | Cut from `Slappzbubba.jpeg` | Product cards | 🟢 Yes | 881 × 215, 72KB |
+| `slappz-sour-diesel-1g.webp` | Pack shot, cut out | Cut from `SlappzSour.jpeg` | Product cards | 🟢 Yes | 881 × 219, 70KB |
 
 > **These are SLAPPZ's own now.** The cards previously used menu pack shots scraped from a stocking
-> retailer's Dutchie listing — retailer framing, retailer lighting, shot on a white studio sweep that had to
-> be keyed out. Request #3 in § 9 asked SLAPPZ for their own product photography; these sheets are it, and
-> the menu shots are gone.
+> retailer's Dutchie listing — retailer framing, retailer lighting, shot on a white studio sweep. Request #3
+> in § 9 asked SLAPPZ for their own product photography; these sheets are it, and the menu shots are gone.
 >
-> **How the pack shots are made.** `node scripts/extract-pack-shot.mjs <sheet.jpeg> <out.webp>` finds the
-> tube-and-pre-roll band on the sheet and feathers its edges to transparent. The band is located, not
-> hardcoded — the three sheets place the product at slightly different heights. Re-run it if a sheet is
-> replaced; do not hand-crop.
+> **How the pack shots are made.** `node scripts/extract-pack-shot.mjs <sheet.jpeg> <out.webp>`. Re-run it
+> if a sheet is replaced; do not hand-crop.
 >
-> **Why feathered and not keyed.** The cards render `object-contain` on the card surface, so a plain
-> rectangular crop would sit there as a visible box of someone else's background. But keying this artwork
-> means separating a glossy black tube from dark purple smoke, and every threshold that takes the smoke also
-> takes a bite out of the tube. Feathering keeps every drawn pixel and lets the frame fall away instead.
+> **Why it builds a silhouette instead of keying on colour.** Two earlier versions of this failed and the
+> reasons are worth keeping:
+>
+> 1. *Feathering the crop edges* rather than removing anything, on the theory that dark smoke would melt
+>    into a dark card. It did not — the green glow top-right and the purple down the left came through as
+>    visible haze.
+> 2. *Keying on colour.* The smoke is saturated (0.7–1.0) and the tube is neutral (0.00–0.18), which does
+>    separate — but the tube's body is also BLACK, and so is much of the background around it, with no
+>    luminance edge between them: down a column through the tube's top rim the values ramp smoothly from
+>    dark purple through 0,0,0 into dark grey. Any rule dark enough to take that background takes the tube
+>    with it. It went see-through and left the label floating.
+>
+> What works is marking the parts of the product that are NOT black — neutral greys, the bright label, the
+> pre-roll's beige — taking the top and bottom of those in each column, and filling the span between. The
+> tube's black body ends up inside that span and comes back opaque without ever being recognised on its own.
+> A final pass clears smoke that got swept into the margins of the silhouette.
+>
+> **If you retune it, look at the output.** Every parameter in that script was set by looking at a render
+> over both grey and the card's own #0b0b0c, and several plausible settings fail in ways the numbers do not
+> show: too much head room admits the "GOOD FLOWERS GOOD PEOPLE" script, a blanket interior sweep punches
+> holes through the skyline art, and an over-long run requirement clips the tube's top.
 
 **Product data policy:** `src/data/products.ts` contains **only** SKUs evidenced publicly — Permanent Marker
 (hybrid), Bubba Kush (indica) and Sour Diesel (sativa), each documented on SLAPPZ's own strain sheet.
