@@ -39,7 +39,7 @@ Established from public sources (Instagram `@slappz_hq`, retailer sites, NY OCM 
 | Positioning (own words) | "Premium Cannabis · NYC Inspired · Culture Focused" |
 | Home base | Queens, New York (posts geotagged Queens; #HowardBeach) |
 | Core product | **1g pre-rolls** |
-| B2B line | "Looking to add SLAPPZ HQ 1g pre-rolls to your shop? Send us a DM" — 718-708-8430 |
+| B2B line | "Looking to add SLAPPZ HQ 1g pre-rolls to your shop? Send us a DM" — 718-708-8430. **The site does not publish this number.** SLAPPZ asked for it to come off; `/wholesale` routes to `wholesale@slappz.nyc` and Instagram DM. The number is still real, it is just not a route this site offers — do not re-add it |
 | Hashtags | #SLAPPZHQ #TheBrandThatSLAPPZ #Cannafamily #NYCannabis |
 | Trade pillars | Premium Flower · Bold Flavors · Consistent Quality · Shelf Appeal |
 | Trade CTA | "LET'S GROW TOGETHER. LET'S SLAPPZ." |

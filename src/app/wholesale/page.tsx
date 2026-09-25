@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { Header } from '@/components/site/Header';
 import { Footer } from '@/components/site/Footer';
 import { PageHero } from '@/components/site/PageHero';
-import { InstagramIcon, PhoneIcon } from '@/components/brand/Icons';
+import { InstagramIcon, MailIcon } from '@/components/brand/Icons';
 
 export const metadata: Metadata = {
   title: 'Carry SLAPPZ — Wholesale for NY Dispensaries',
@@ -18,7 +18,12 @@ export const metadata: Metadata = {
  *
  * The pillars, the pitch and the contact number are SLAPPZ's own trade copy, taken from
  * their public dispensary-outreach graphic ("ATTENTION DISPENSARY OWNERS, BUYERS &
- * BUDTENDERS" / 718-708-8430 / "LET'S GROW TOGETHER. LET'S SLAPPZ.").
+ * BUDTENDERS" / "LET'S GROW TOGETHER. LET'S SLAPPZ.").
+ *
+ * The phone number was removed from this page on SLAPPZ's instruction — the trade routes are
+ * email and Instagram DM. SLAPPZ's own cab-yellow trade graphic still prints the number, so
+ * it is still a real line; it is just not the route this page offers. Do not re-add it from
+ * the graphic or from CLAUDE.md's fact table.
  *
  * There is deliberately NO wholesale form here: this repo has no CRM, no inbox, and no
  * owner to route submissions to. A form that silently drops a retailer's enquiry would be
@@ -57,11 +62,11 @@ export default function WholesalePage() {
         >
           <div className="mt-8 flex flex-wrap gap-3">
             <a
-              href="tel:7187088430"
+              href="mailto:wholesale@slappz.nyc"
               className="display block-press block-shadow flex h-14 items-center gap-2 bg-acid px-6 text-[16px] text-ink"
             >
-              <PhoneIcon size={16} />
-              718-708-8430
+              <MailIcon size={16} />
+              WHOLESALE@SLAPPZ.NYC
             </a>
             <a
               href="https://www.instagram.com/slappz_hq/"
@@ -127,11 +132,11 @@ export default function WholesalePage() {
 
             <div className="mt-8 flex flex-wrap gap-3">
               <a
-                href="tel:7187088430"
+                href="mailto:wholesale@slappz.nyc"
                 className="display block-press block-shadow flex h-14 items-center gap-2 bg-acid px-6 text-[16px] text-ink"
               >
-                <PhoneIcon size={16} />
-                CALL 718-708-8430
+                <MailIcon size={16} />
+                WHOLESALE@SLAPPZ.NYC
               </a>
               <a
                 href="https://www.instagram.com/slappz_hq/"

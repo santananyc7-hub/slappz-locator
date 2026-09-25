@@ -1,7 +1,7 @@
 /**
  * Inline icon set.
  *
- * Twelve hand-written paths instead of an icon dependency — smaller, and the stroke weight
+ * Thirteen hand-written paths instead of an icon dependency — smaller, and the stroke weight
  * is tuned to match the brand's hard-edged graphic language (2px, square caps, no rounding).
  */
 
@@ -54,6 +54,13 @@ export const SearchIcon = ({ size = 18, className }: IconProps) => (
 export const PhoneIcon = ({ size = 18, className }: IconProps) => (
   <svg {...base(size, className)}>
     <path d="M5 3h4l2 5-2.5 1.5a12 12 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2Z" />
+  </svg>
+);
+
+export const MailIcon = ({ size = 18, className }: IconProps) => (
+  <svg {...base(size, className)}>
+    <path d="M3 5h18v14H3V5Z" />
+    <path d="m3 6 9 7 9-7" />
   </svg>
 );
 

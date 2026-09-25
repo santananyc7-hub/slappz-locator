@@ -54,11 +54,13 @@ export function organizationLd() {
       'SLAPPZ is a licensed New York cannabis brand out of Queens, producing 1g pre-rolls sold through licensed New York dispensaries.',
     sameAs: ['https://www.instagram.com/slappz_hq/'],
     areaServed: { '@type': 'State', name: 'New York' },
-    // The B2B line SLAPPZ publishes itself. Not a consumer support number — labelled as sales.
+    // The wholesale route, labelled as sales rather than consumer support. This carried the
+    // phone number until SLAPPZ asked for it to come off the site; leaving it here would have
+    // kept publishing it to Google after the page stopped showing it.
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'sales',
-      telephone: '+1-718-708-8430',
+      email: 'wholesale@slappz.nyc',
       areaServed: 'US',
       availableLanguage: 'English',
     },
