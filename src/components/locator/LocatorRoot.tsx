@@ -6,7 +6,6 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { SlappzWordmark } from '@/components/brand/SlappzWordmark';
 import { CheckIcon } from '@/components/brand/Icons';
-import { HeroVideo } from './HeroVideo';
 import { NearestCard } from './NearestCard';
 import { RetailerCard } from './RetailerCard';
 import { SearchPanel } from './SearchPanel';
@@ -237,40 +236,59 @@ export function LocatorRoot({
         id="locator-hero"
         className="grain isolate overflow-hidden border-b border-hairline px-4 pt-9 pb-8 sm:px-6 sm:pt-14 sm:pb-11 lg:pt-12 lg:pb-10"
       >
-        {/* Queens at night — the city you're actually searching. Sits behind the headline;
-            the source frame is deliberately dark on the left so the type stays legible
-            without leaning on a heavy overlay. */}
+        {/* A real SLAPPZ cab under the elevated line — SLAPPZ's own drip lettering across the
+            glass, photographed, not overlaid. It replaced a generated night-street frame.
+
+            THE TWO OBJECT-POSITIONS ARE LOAD-BEARING. This hero's aspect runs from 0.67 on
+            a phone to 3.9 on a 1920 monitor while its height barely moves, so object-cover
+            has to eat a lot of one axis or the other. The asset is cut with the wordmark
+            hard against its bottom edge (see scripts/prepare-lifestyle-photos.mjs), so on
+            desktop `object-bottom` means what gets eaten is sky and street rather than the
+            lettering — anchor it centre there and a wide viewport decapitates the word. On
+            a phone the crop is horizontal instead, so `object-center` keeps the full height
+            of the street scene and the lettering reads as texture under the scrim.
+
+            There is no longer an ambient video loop here. The old one was generated FROM
+            the old still, so frame one matched it exactly; over a real photograph it would
+            have cross-faded the cab into a generated street, which is the one thing
+            CLAUDE.md § NEVER is most explicit about. Retired, not deleted — see
+            /brand/ASSET_MANIFEST.md § 4. */}
         <div className="absolute inset-0 -z-10">
           <Image
-            src="/brand/slappz/campaign/hero-queens-night.webp"
+            src="/brand/slappz/campaign/hero-cab-slappz.webp"
             alt=""
             aria-hidden="true"
             fill
             priority
             sizes="100vw"
-            className="object-cover object-[68%_center] lg:object-center"
+            className="object-cover object-center lg:object-bottom"
           />
+          {/* Scrim. Retuned for the cab frame, which is a DAYLIGHT photograph where the old
+              hero was a dark night render — the old values left this one looking grey
+              rather than either bright or black.
 
-          {/* Ambient loop on top of the still. Desktop only, never on reduced-motion — see
-              HeroVideo. Poster is the same still, so the handover is invisible. */}
-          <HeroVideo poster="/brand/slappz/campaign/hero-queens-night.webp" />
-          {/* Scrim: hard on the left where the type sits, fading to black at the bottom so
-              the hero meets the results section with no visible seam.
+              The desktop stop positions are doing one specific job: holding the left half
+              at full black. The photograph's subject is SLAPPZ's wordmark across the glass,
+              and the h1 renders the real SLAPPZ logo over the left of the hero — let the
+              photo through there and the same word appears twice, side by side, which
+              reads as a duplication bug rather than a design. So the left stays solid and
+              the cab emerges on the right, where the yellow body and the tail of the Z
+              carry the frame on their own.
 
-              Two variants, because object-cover crops the source's dark left third away on
-              a narrow viewport — the headline would otherwise sit straight on the neon. */}
+              Mobile keeps its own variant: object-cover crops hard at 0.67 and the type
+              runs the full width, so it needs an even wash rather than a left-to-right one. */}
           <div
             className="absolute inset-0 lg:hidden"
             style={{
               background:
-                'linear-gradient(to bottom, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.7) 42%, rgba(0,0,0,0.86) 72%, #000 100%)',
+                'linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.76) 42%, rgba(0,0,0,0.88) 72%, #000 100%)',
             }}
           />
           <div
             className="absolute inset-0 hidden lg:block"
             style={{
               background:
-                'linear-gradient(to right, #000 0%, rgba(0,0,0,0.92) 26%, rgba(0,0,0,0.62) 55%, rgba(0,0,0,0.5) 100%), linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.15) 45%, #000 100%)',
+                'linear-gradient(to right, #000 0%, #000 30%, rgba(0,0,0,0.72) 48%, rgba(0,0,0,0.22) 100%), linear-gradient(to bottom, rgba(0,0,0,0.42) 0%, rgba(0,0,0,0.12) 45%, #000 100%)',
             }}
           />
         </div>

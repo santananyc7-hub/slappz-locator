@@ -98,9 +98,10 @@ See `/brand/SLAPPZ_DIGITAL_SYSTEM.md` before touching color, type, or layout.
 
 ## PHOTOGRAPHY
 
-SLAPPZ supplied 28 original photographs on 2026-09-25. The culture strip, the About page image and the
-wholesale proof strip all run on real photographs now — the generated stand-ins that used to fill those
-slots are retired. The hero is still generated and still labelled as such in the manifest.
+SLAPPZ supplied 28 original photographs on 2026-09-25. The hero, the culture strip, the About page image
+and the wholesale proof strip all run on real photographs now, and every generated stand-in is retired —
+including the hero's ambient video loop, which was generated FROM the old hero still and could not play
+over a photograph without cross-fading a real cab into an invented street.
 
 Three rules govern anything placed from that set. They exist because a photograph on a retail site reads
 as evidence, and evidence that overstates is worse than no evidence:
@@ -385,9 +386,10 @@ Before approving a major screen, ask:
 - redraw or re-trace the SLAPPZ logo. The real artwork is supplied and in use at
   `public/brand/slappz/logos/` — render that file. It is a custom letterform, so any font
   substitution or hand-drawn approximation reads as counterfeit
-- present generated imagery as real SLAPPZ photography. The hero is AI-generated and labelled
-  as such in the manifest; generated images must never contain the logo, packaging, a real
-  retailer, or an identifiable person
+- present generated imagery as real SLAPPZ photography. **There is no generated imagery left
+  on the site** — the hero and the culture strip both run on SLAPPZ's own photographs now.
+  If any is ever reintroduced it must be labelled in the manifest and must never contain the
+  logo, packaging, a real retailer, or an identifiable person
 - hotlink Instagram CDN assets in production
 - build a generic cannabis template
 - sacrifice mobile usability for visual effects
