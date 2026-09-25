@@ -93,7 +93,7 @@ export function AgeGate() {
       {/* Same frame as the hero, pushed right back so the type stays the subject */}
       <div
         className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-25"
-        style={{ backgroundImage: "url('/brand/slappz/campaign/hero-cab-slappz.webp')" }}
+        style={{ backgroundImage: "url('/brand/slappz/campaign/hero-el-night.webp')" }}
         aria-hidden="true"
       />
       <div

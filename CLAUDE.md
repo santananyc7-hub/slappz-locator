@@ -98,10 +98,15 @@ See `/brand/SLAPPZ_DIGITAL_SYSTEM.md` before touching color, type, or layout.
 
 ## PHOTOGRAPHY
 
-SLAPPZ supplied 28 original photographs on 2026-09-25. The hero, the culture strip, the About page image
-and the wholesale proof strip all run on real photographs now, and every generated stand-in is retired —
-including the hero's ambient video loop, which was generated FROM the old hero still and could not play
-over a photograph without cross-fading a real cab into an invented street.
+SLAPPZ supplied 28 original photographs on 2026-09-25. The culture strip, the About page image and the
+wholesale proof strip all run on those. The HERO is the exception and is generated atmosphere — a real
+photograph was tried there and did not work, for a reason worth remembering:
+
+> **The hero slot needs a WIDE frame with dark, empty space on one side.** Its aspect runs from 0.67 on a
+> phone to 3.9 on a wide monitor while its height barely moves, and the h1 renders the real SLAPPZ logo
+> over the left of it. A close-up cannot survive that. The cab shot that was tried filled the widest crop
+> with a giant photographed wordmark sitting right next to the real one, which reads as a duplication bug.
+> Judge any future hero candidate on that, not on whether the photograph is good.
 
 Three rules govern anything placed from that set. They exist because a photograph on a retail site reads
 as evidence, and evidence that overstates is worse than no evidence:
@@ -386,10 +391,9 @@ Before approving a major screen, ask:
 - redraw or re-trace the SLAPPZ logo. The real artwork is supplied and in use at
   `public/brand/slappz/logos/` — render that file. It is a custom letterform, so any font
   substitution or hand-drawn approximation reads as counterfeit
-- present generated imagery as real SLAPPZ photography. **There is no generated imagery left
-  on the site** — the hero and the culture strip both run on SLAPPZ's own photographs now.
-  If any is ever reintroduced it must be labelled in the manifest and must never contain the
-  logo, packaging, a real retailer, or an identifiable person
+- present generated imagery as real SLAPPZ photography. The HERO is generated and labelled as
+  such in the manifest; everything else on the site is SLAPPZ's own photography. Generated
+  images must never contain the logo, packaging, a real retailer, or an identifiable person
 - hotlink Instagram CDN assets in production
 - build a generic cannabis template
 - sacrifice mobile usability for visual effects

@@ -236,59 +236,52 @@ export function LocatorRoot({
         id="locator-hero"
         className="grain isolate overflow-hidden border-b border-hairline px-4 pt-9 pb-8 sm:px-6 sm:pt-14 sm:pb-11 lg:pt-12 lg:pb-10"
       >
-        {/* A real SLAPPZ cab under the elevated line — SLAPPZ's own drip lettering across the
-            glass, photographed, not overlaid. It replaced a generated night-street frame.
+        {/* Generated atmosphere, NOT a photograph of anywhere real — an outer-borough
+            street under an elevated line, wet asphalt throwing acid-green and violet light,
+            a cab waiting mid-frame. Labelled as generated in /brand/ASSET_MANIFEST.md § 4.
 
-            THE TWO OBJECT-POSITIONS ARE LOAD-BEARING. This hero's aspect runs from 0.67 on
-            a phone to 3.9 on a 1920 monitor while its height barely moves, so object-cover
-            has to eat a lot of one axis or the other. The asset is cut with the wordmark
-            hard against its bottom edge (see scripts/prepare-lifestyle-photos.mjs), so on
-            desktop `object-bottom` means what gets eaten is sky and street rather than the
-            lettering — anchor it centre there and a wide viewport decapitates the word. On
-            a phone the crop is horizontal instead, so `object-center` keeps the full height
-            of the street scene and the lettering reads as texture under the scrim.
+            It carries no text, no logo, no packaging, no real retailer and no identifiable
+            person, so it makes no claim on SLAPPZ's behalf — that is the bar generated
+            imagery has to clear here (CLAUDE.md § NEVER). The locator's subject IS the city
+            you are searching, which is why atmosphere works in this slot where a close-up
+            product photograph did not.
 
-            There is no longer an ambient video loop here. The old one was generated FROM
-            the old still, so frame one matched it exactly; over a real photograph it would
-            have cross-faded the cab into a generated street, which is the one thing
-            CLAUDE.md § NEVER is most explicit about. Retired, not deleted — see
-            /brand/ASSET_MANIFEST.md § 4. */}
+            The left third of the frame is already pure black in the source, which is why the
+            scrim below can be far lighter than the one the cab photograph needed: the
+            headline sits on darkness the image itself provides rather than on a gradient
+            painted over the top of it. */}
         <div className="absolute inset-0 -z-10">
           <Image
-            src="/brand/slappz/campaign/hero-cab-slappz.webp"
+            src="/brand/slappz/campaign/hero-el-night.webp"
             alt=""
             aria-hidden="true"
             fill
             priority
             sizes="100vw"
-            className="object-cover object-center lg:object-bottom"
+            className="object-cover object-center"
           />
-          {/* Scrim. Retuned for the cab frame, which is a DAYLIGHT photograph where the old
-              hero was a dark night render — the old values left this one looking grey
-              rather than either bright or black.
 
-              The desktop stop positions are doing one specific job: holding the left half
-              at full black. The photograph's subject is SLAPPZ's wordmark across the glass,
-              and the h1 renders the real SLAPPZ logo over the left of the hero — let the
-              photo through there and the same word appears twice, side by side, which
-              reads as a duplication bug rather than a design. So the left stays solid and
-              the cab emerges on the right, where the yellow body and the tail of the Z
-              carry the frame on their own.
+          {/* Scrim. Much lighter than the one the cab photograph needed, because this frame
+              brings its own darkness — the left third is black in the source and the whole
+              image is a night scene. The job here is only to deepen the bottom into the
+              results section with no seam, and to take enough heat out of the neon that the
+              muted sub-line and the trust row stay readable over it.
 
-              Mobile keeps its own variant: object-cover crops hard at 0.67 and the type
-              runs the full width, so it needs an even wash rather than a left-to-right one. */}
+              Mobile keeps its own variant: the hero is 0.67 there, so object-cover crops to a
+              narrow vertical slice and the type runs the full width rather than sitting in a
+              dark left column. It needs an even wash instead of a left-to-right one. */}
           <div
             className="absolute inset-0 lg:hidden"
             style={{
               background:
-                'linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.76) 42%, rgba(0,0,0,0.88) 72%, #000 100%)',
+                'linear-gradient(to bottom, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.78) 72%, #000 100%)',
             }}
           />
           <div
             className="absolute inset-0 hidden lg:block"
             style={{
               background:
-                'linear-gradient(to right, #000 0%, #000 30%, rgba(0,0,0,0.72) 48%, rgba(0,0,0,0.22) 100%), linear-gradient(to bottom, rgba(0,0,0,0.42) 0%, rgba(0,0,0,0.12) 45%, #000 100%)',
+                'linear-gradient(to right, #000 0%, rgba(0,0,0,0.82) 22%, rgba(0,0,0,0.3) 48%, rgba(0,0,0,0.12) 100%), linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.08) 45%, #000 100%)',
             }}
           />
         </div>

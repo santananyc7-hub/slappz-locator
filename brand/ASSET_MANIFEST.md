@@ -218,45 +218,41 @@ placed. The logo lockups are superseded by `/public/brand/slappz/logos/` — see
 
 | Asset | Source | Usage | Production ready |
 | --- | --- | --- | --- |
-| `hero-cab-slappz.webp` | **Supplied by SLAPPZ** | Homepage hero + age-gate backdrop | 🟡 Yes, but see the resolution note |
-| `hero-queens-night.webp` | **AI-generated** (Recraft V4.1) | **Retired.** Superseded by the photograph above | ⚪ Unplaced — kept, not deleted |
-| `hero-loop.mp4` | **AI-generated** (Seedance 2.0) | **Retired.** See note | ⚪ Unplaced — kept, not deleted |
+| `hero-el-night.webp` | **AI-generated** (Higgsfield, GPT Image 2.5) | Homepage hero + age-gate backdrop | 🟡 In use — generated, see note |
+| `hero-queens-night.webp` | **AI-generated** (Recraft V4.1) | **Retired.** Superseded by the above | ⚪ Unplaced — kept, not deleted |
+| `hero-loop.mp4` | **AI-generated** (Seedance 2.0) | **Retired.** Was generated from `hero-queens-night` | ⚪ Unplaced — kept, not deleted |
 | Blacklight shark/jellyfish artwork | 📎 IG reference | Reference only | 📎 Reference only |
 | Yellow-cab B2B graphic | 📎 IG reference | Future `/retailers` trade page | 🔴 Needed |
 | 2-year anniversary graphic | 📎 IG reference | Reference only | 📎 Reference only |
 
-> **The hero is a real photograph now.** A yellow cab's rear windshield carrying SLAPPZ's own drip
-> lettering, shot under an elevated line — the exact image the About page copy already reaches for
-> ("the handball wall, the elevated line, Howard Beach, the cab"). Cut by
-> `scripts/prepare-lifestyle-photos.mjs` from the 2026-09-25 batch; the original is
-> `/brand/source/lifestyle/WhatsApp Image 2026-09-25 at 6.45.46 PM.jpeg`.
+> **`hero-el-night.webp` is generated imagery, not a photograph of anywhere real.** An
+> outer-borough street under an elevated line at night: wet asphalt throwing acid-green and
+> violet reflections, a yellow cab waiting mid-frame, a train crossing the top with motion
+> blur. Generated on Higgsfield (GPT Image 2.5, 16:9, quality high, 2K) on 2026-09-25, job
+> `97e12101-5392-463c-b444-e08f01441937`, prompted from SLAPPZ's own night-street photograph
+> as a colour and mood reference. Master of record:
+> `/brand/source/generated/hero-el-night.webp` (2688 × 1520). Served copy optimised to 2400px
+> via `scripts/optimize-brand-image.mjs`.
 >
-> ⚠️ **RESOLUTION — the one thing worth replacing.** That original is a WhatsApp export and the real
-> picture inside it is only **818 × 597** after the 4:5 letterbox bars come off. The asset is upscaled
-> to 1800px wide with lanczos and a light unsharp, which beats letting the browser do it bilinearly,
-> but it adds no detail that was not captured. Other frames in the same batch arrived at 3840 × 5120,
-> so **a better original of this shot almost certainly exists** — ask SLAPPZ for it, drop it in, and
-> remove `width` and `sharpen` from that entry in the script.
+> **It clears the bar generated imagery has to clear here** (CLAUDE.md § NEVER): no text, no
+> lettering, no logo, no packaging, no real retailer and no identifiable person — so it makes
+> no claim on SLAPPZ's behalf. The prompt asked for a cab and an elevated line because the
+> locator's subject *is* the city you are searching, and because the palette echoes SLAPPZ's
+> own campaign graphics.
 >
-> **Crop geometry is load-bearing.** The hero's aspect runs from 0.67 on a phone to 3.9 on a 1920
-> monitor while its height barely changes, so one asset has to survive both. It is cut to 1.63 with
-> the wordmark hard against the bottom edge, and `LocatorRoot` pairs that with
-> `object-center lg:object-bottom`. Desktop then crops away street rather than lettering; mobile crops
-> horizontally and keeps the full height of the scene. Change the crop or the object-position alone and
-> the other breaks. The crop also stops just above a HONEYSUCKLE decal further down the glass — a real
-> collaborator's mark on a real car, but another brand's logo in the homepage hero would read as a
-> partnership claim this site does not make.
->
-> **The scrim was retuned for it.** The old hero was a dark night render; this is a daylight
-> photograph, and the old gradient values left it grey rather than either bright or black. The desktop
-> scrim now holds the left half at full black — the h1 renders the real SLAPPZ logo there, and letting
-> the photographed wordmark through underneath put the same word on screen twice, side by side.
+> **The left third of the frame is pure black in the source.** That is what lets the hero
+> scrim be so much lighter than its predecessors: the headline sits on darkness the image
+> itself provides rather than on a gradient painted over the top. If this asset is ever
+> swapped, check that replacement before assuming the scrim still works.
 
-> **The ambient video loop is retired.** `hero-loop.mp4` was generated *from* `hero-queens-night.webp`,
-> so frame one matched that still exactly and the handover was invisible. Over a photograph it would
-> cross-fade a real cab into an invented street, which is precisely what CLAUDE.md § NEVER forbids.
-> `HeroVideo.tsx` was deleted with it. Both files are kept on disk rather than deleted, so reverting is
-> a one-line change if SLAPPZ ever wants the old hero back.
+> **A real photograph was tried in this slot first and rejected.** A cab's rear windshield
+> carrying SLAPPZ's drip lettering, shot under an elevated line — real, on-brand, and wrong
+> for a hero: it is a close-up, so at the hero's widest aspect it filled the frame with a
+> giant wordmark that collided with the real logo the h1 renders over it. SLAPPZ asked for it
+> to come off. The original is still
+> `/brand/source/lifestyle/WhatsApp Image 2026-09-25 at 6.45.46 PM.jpeg` and the crop that
+> was used is recorded in this file's history, so it is reproducible if wanted. It is a good
+> photograph in a smaller slot — just not this one.
 
 ## 5. TEXTURES — `/public/brand/slappz/textures/`
 
@@ -383,9 +379,10 @@ or merch drops rather than stockists, and remain out of the app.
 5. Permission status for the supplied photographs that show identifiable people — only
    SLAPPZ can say whether those are cleared to publish. Until then only the brand-forward
    frames are placed. See § 3.
-6. **A full-resolution original of the cab shot now used as the homepage hero.** The copy we
-   have is 818 × 597 inside a WhatsApp letterbox; other frames in the same batch came through
-   at 3840 × 5120, so a better one probably exists. See § 4.
+6. **Real campaign or event photography wide enough to carry the homepage hero.** The hero is
+   generated again, which is honest but is still a stand-in. What it needs is a WIDE frame with
+   empty, dark space on one side for the headline — a street, a storefront at night, a table
+   shot from far enough back. Close-ups cannot do this job, as § 4 records.
 
 > Product photography is **closed** — SLAPPZ supplied the three strain sheets on 2026-09-25
 > and the cards now run on pack shots cut from them. See § 2.

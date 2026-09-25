@@ -18,9 +18,13 @@ import { track } from '@/lib/analytics';
  *   - They are CONTENT now, not decoration, so they carry real alt text instead of
  *     aria-hidden. A screen-reader user gets the same proof a sighted one does.
  *   - Every caption describes only what is VISIBLE IN THE FRAME — a readable storefront
- *     sign, a subway entrance that names itself, a printed strain on the tube. Nothing is
+ *     sign, a subway entrance that names itself, the crowd around the shot. Nothing is
  *     inferred about where a photo was taken or when. If a detail cannot be read off the
  *     photograph, it does not go in the caption.
+ *   - The LINE is a place to stand, not a list of contents. An earlier version read
+ *     "Bubba Kush, crowd, tower lit up." — accurate, and an inventory rather than a voice.
+ *     The `place` label above already says where; the line should say what it feels like to
+ *     be there, in the brand's own register (see CLAUDE.md § Writing section headings).
  *
  * Sources and crops: scripts/prepare-lifestyle-photos.mjs.
  */
@@ -30,19 +34,19 @@ const TILES = [
     src: '/brand/slappz/lifestyle/slappz-midtown-night.webp',
     alt: 'A SLAPPZ 1g Bubba Kush pre-roll tube held up over a packed night-time street, a floodlit tower behind it.',
     place: 'MIDTOWN',
-    line: 'Bubba Kush, crowd, tower lit up.',
+    line: 'In the crowd, under the lights.',
   },
   {
     src: '/brand/slappz/lifestyle/slappz-penn-station.webp',
     alt: 'A SLAPPZ 1g Perm Marker pre-roll tube held up in front of the 34 Street–Penn Station A, C, E subway entrance.',
     place: '34 ST · PENN STATION',
-    line: 'Perm Marker at the A, C, E.',
+    line: 'Where the trains let out.',
   },
   {
     src: '/brand/slappz/lifestyle/slappz-cannafamily-cab.webp',
     alt: 'A SLAPPZ t-shirt and tin laid out on the hood of a yellow cab outside the CannaFamily Dispensary storefront.',
     place: 'CANNAFAMILY',
-    line: 'Tee on the cab, shop right behind.',
+    line: 'We pull up to the shop.',
   },
 ];
 

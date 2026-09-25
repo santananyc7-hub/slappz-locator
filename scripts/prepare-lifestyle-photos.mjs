@@ -52,39 +52,6 @@ const QUALITY = 82;
  */
 const PICKS = [
   {
-    from: 'WhatsApp Image 2026-09-25 at 6.45.46 PM.jpeg',
-    to: 'hero-cab-slappz.webp',
-    dir: CAMPAIGN,
-    note: "A yellow cab's rear windshield carrying SLAPPZ in the brand's own drip lettering, shot under an elevated line.",
-    // The frame arrived letterboxed to 4:5 — 213 black rows on top, 214 underneath. Strip
-    // those and the real picture is 818x597.
-    letterbox: [213, 214],
-    // Keep the FULL height of the frame and trim only the bottom 16%. Two jobs:
-    //
-    //  1. The hero's aspect runs from 0.67 on a phone to 3.9 on a 1920 monitor while its
-    //     height barely moves, so one asset has to survive both. Trimming to 1.63 leaves
-    //     the wordmark hard against the bottom edge and the street above it. Wide desktop
-    //     crops vertically and eats the street, keeping the lettering; a phone crops
-    //     horizontally and keeps the full height of the scene. Paired with
-    //     `object-center lg:object-bottom` in LocatorRoot — change one and the other breaks.
-    //     An earlier 2:1 cut looked right on desktop and turned to unreadable blur on a
-    //     phone, which is the wrong way round: mobile is the primary runtime.
-    //  2. It stops just above the HONEYSUCKLE decal further down the glass. That is a real
-    //     collaborator's mark on a real car, not something to erase from the photograph —
-    //     but another brand's logo in the homepage hero reads as a partnership claim this
-    //     site is not making, so the hero crop stops short of it.
-    aspect: 818 / 503,
-    band: [0, 0.843],
-    // UPSCALE, 818 -> 1800 wide. The source is a WhatsApp export and this is the only copy
-    // we have; SLAPPZ's other frames came through at 3840px, so a better original probably
-    // exists and should replace this. Upscaling here rather than leaving it to the browser
-    // is the lesser evil: lanczos plus a light unsharp beats bilinear, and it means most
-    // viewports downscale the asset instead of blowing up an 818px one. It adds no detail
-    // that was not there. Drop `width` and `sharpen` the moment a real original lands.
-    width: 1800,
-    sharpen: true,
-  },
-  {
     from: 'WhatsApp Image 2026-09-25 at 6.45.46 PM (9).jpeg',
     to: 'slappz-midtown-night.webp',
     note: '1g tube held up on a packed street, tower lit blue and orange behind.',
