@@ -128,7 +128,7 @@ export default async function WhereToBuyPage() {
             </h2>
             <p className="mt-3 max-w-2xl text-[14px] leading-relaxed text-muted">
               This list only includes shops we have actually verified. If SLAPPZ hasn&apos;t
-              landed near you yet, tell us where to pull up — naming a specific shop is the
+              reached you yet, tell us where you want it — naming a specific shop is the
               most useful thing you can do.
             </p>
             <Link

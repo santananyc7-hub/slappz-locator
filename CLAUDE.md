@@ -156,7 +156,7 @@ Prefer, in order:
 
 1. **The brand's own words.** `WE'RE OUTSIDE` and `LEGACY TO LEGAL` are lifted straight from
    SLAPPZ's posts and anniversary graphic — they beat anything invented.
-2. **Something concrete.** `BOROUGH BY BOROUGH` says what the section is. `NAME THE BLOCK`
+2. **Something concrete.** `BOROUGH BY BOROUGH` says what the section is. `NAME THE AREA`
    says what to do.
 3. **Plain and short.** `THE LINEUP`, `WHO'S GOT IT`, `STRAIGHT ANSWERS`.
 
@@ -176,7 +176,7 @@ FIND IT → SEE IT → SEE WHERE IT'S AVAILABLE → SEE WHO CARRIES IT
 4. **SLAPPZ NEAR YOU** — a few verified retailers
 5. **THIS IS SLAPPZ** — short brand story → `/about`
 6. **SLAPPZ IN THE WILD** — culture
-7. **WHERE SHOULD WE PULL UP NEXT?** — demand capture
+7. **NAME THE AREA** — demand capture
 8. **FAQ**
 9. **CARRY SLAPPZ** — B2B close → `/wholesale`
 
@@ -268,7 +268,7 @@ When a customer searches somewhere SLAPPZ isn't, record it anonymously:
 
 - **Never** automatically trigger the browser location permission prompt.
 - Only request location when the customer explicitly presses **USE MY LOCATION**.
-- If permission is denied, fall back gracefully to ZIP/address search — copy: `DROP YOUR ZIP INSTEAD.`
+- If permission is denied, fall back gracefully to ZIP/address search — copy: `ENTER YOUR ZIP INSTEAD.`
 
 An automatic geolocation prompt on load is a bug, regardless of what a ticket says.
 

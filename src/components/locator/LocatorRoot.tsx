@@ -143,7 +143,7 @@ export function LocatorRoot({
    */
   const useMyLocation = useCallback(() => {
     if (!('geolocation' in navigator)) {
-      setGeoError('DROP YOUR ZIP INSTEAD.');
+      setGeoError('ENTER YOUR ZIP INSTEAD.');
       return;
     }
 
@@ -167,7 +167,7 @@ export function LocatorRoot({
       (err) => {
         setLocating(false);
         track('geolocation_denied', { code: err.code });
-        setGeoError('DROP YOUR ZIP INSTEAD.');
+        setGeoError('ENTER YOUR ZIP INSTEAD.');
       },
       { enableHighAccuracy: false, timeout: 10_000, maximumAge: 5 * 60_000 },
     );
@@ -252,7 +252,7 @@ export function LocatorRoot({
             painted over the top of it. */}
         <div className="absolute inset-0 -z-10">
           <Image
-            src="/brand/slappz/campaign/hero-el-night.webp"
+            src="/brand/slappz/campaign/hero-ssr-el-night.webp"
             alt=""
             aria-hidden="true"
             fill
@@ -396,7 +396,15 @@ export function LocatorRoot({
               </div>
             )}
 
-            {/* --- 2. Map --- */}
+            {/* --- 2. Map ---
+                The IDLE height is deliberately smaller than the results height. Before a
+                search the map is orientation, not the task — it shows the customer this is a
+                New York thing and roughly where the shops cluster. It used to run 46vh/54vh,
+                which put a tall touch-capturing surface directly under the hero on the one
+                gesture every visitor makes: the first scroll. Shrinking it moves the fold up
+                and gives the thumb somewhere safe to land. The real fix is upstream in
+                MapView's cooperative gestures; this is the half that stops the map dominating
+                a screen the customer has not asked it to dominate yet. */}
             <div
               className={
                 results
@@ -408,7 +416,7 @@ export function LocatorRoot({
                 className={
                   results
                     ? 'sticky top-14 my-8 h-[40vh] min-h-[280px] border-y border-hairline sm:top-16 lg:my-0 lg:h-[calc(100dvh-4rem)] lg:border-y-0'
-                    : 'h-[46vh] min-h-[300px] border-b border-hairline lg:h-[54vh]'
+                    : 'h-[32vh] min-h-[220px] border-b border-hairline lg:h-[44vh]'
                 }
               >
                 <MapView

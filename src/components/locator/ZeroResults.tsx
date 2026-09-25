@@ -80,7 +80,7 @@ export function ZeroResults({
         ) : (
           ' near you'
         )}{' '}
-        yet. Tell us where to pull up and we&apos;ll work on it.
+        yet. Tell us where you want it and we&apos;ll work on it.
       </p>
 
       {state === 'done' ? (
@@ -105,7 +105,7 @@ export function ZeroResults({
         </div>
       ) : (
         <form onSubmit={submit} className="mt-6 max-w-lg">
-          <p className="display text-[22px] text-paper">TELL US WHERE TO PULL UP</p>
+          <p className="display text-[22px] text-paper">TELL US WHERE YOU WANT IT</p>
 
           <div className="mt-3 flex flex-col gap-2.5">
             <div>

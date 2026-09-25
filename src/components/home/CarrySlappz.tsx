@@ -30,7 +30,7 @@ export function CarrySlappz() {
         </h2>
 
         <p className="mt-5 max-w-lg text-[15px] leading-relaxed text-muted">
-          We&apos;ll pull up to your shop, meet the team, drop off samples and talk about
+          We&apos;ll visit your shop, meet the team, leave samples and talk about
           getting SLAPPZ 1g pre-rolls on your shelves.
         </p>
 

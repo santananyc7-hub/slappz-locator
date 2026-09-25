@@ -44,17 +44,17 @@ const SHELF_SHOTS = [
   {
     src: '/brand/slappz/lifestyle/slappz-shelf-marble.webp',
     alt: 'A SLAPPZ HQ branded table set up on the sales floor of a licensed dispensary.',
-    line: 'The full line out on the floor.',
+    line: 'The full range on the sales floor.',
   },
   {
     src: '/brand/slappz/lifestyle/slappz-shelf-woodroom.webp',
     alt: 'A SLAPPZ HQ branded table laid out with pre-rolls in a wood-panelled dispensary.',
-    line: 'Table, cloth, the whole run laid out.',
+    line: 'Table, cloth and the whole range.',
   },
   {
     src: '/brand/slappz/lifestyle/slappz-shelf-blueroom.webp',
     alt: 'A SLAPPZ HQ branded table beside a stocked product wall in a licensed dispensary.',
-    line: 'Front of house, next to the wall.',
+    line: 'Front of house, beside the product wall.',
   },
 ];
 
@@ -67,7 +67,7 @@ const PILLARS = [
 
 const STEPS = [
   ['01', 'REACH OUT', 'Email us or DM @slappz_hq. Tell us your shop and where you are.'],
-  ['02', 'WE PULL UP', 'We come to the store, meet the team and drop off samples.'],
+  ['02', 'WE COME TO YOU', 'We visit the store, meet the team and leave samples.'],
   ['03', 'YOU STOCK IT', 'Get SLAPPZ 1g pre-rolls on the shelf and on your menu.'],
 ];
 
@@ -85,7 +85,7 @@ export default function WholesalePage() {
               <span className="text-acid">YOUR SHELF</span>
             </>
           }
-          lead="We'll pull up to your shop, meet the team, drop off samples and talk about getting SLAPPZ 1g pre-rolls on your shelves."
+          lead="We'll visit your shop, meet the team, leave samples and talk about getting SLAPPZ 1g pre-rolls on your shelves."
         >
           <div className="mt-8 flex flex-wrap gap-3">
             <a
@@ -156,8 +156,8 @@ export default function WholesalePage() {
               WE SET IT UP IN YOUR SHOP
             </h2>
             <p className="mt-4 max-w-2xl text-[13px] leading-relaxed text-muted">
-              When we pull up, this is what lands: our table, our cloth and the full 1g run
-              laid out. Real setups, in licensed New York shops.
+              This is what a SLAPPZ activation looks like in a licensed New York dispensary:
+              our table, our cloth and the full 1g range laid out.
             </p>
 
             <ul className="mt-8 grid gap-2.5 sm:grid-cols-3">

@@ -6,7 +6,10 @@ import { ArrowIcon, CheckIcon, SpinnerIcon } from '@/components/brand/Icons';
 import { getUtm, track } from '@/lib/analytics';
 
 /**
- * WHERE SHOULD WE PULL UP NEXT? — homepage demand capture.
+ * NAME THE AREA — homepage demand capture.
+ *
+ * The file is still called PullUpNext because the route anchor (#pull-up) and the analytics
+ * event are, and renaming those would break inbound links and split the metric series.
  *
  * The zero-results state already captures failed searches passively; this is the version a
  * customer reaches for deliberately, so it asks for a little more: the area, and optionally
@@ -57,7 +60,7 @@ export function PullUpNext() {
       setState('done');
     } catch {
       setState('idle');
-      setError('Something went wrong. Try again in a sec.');
+      setError('Something went wrong. Please try again.');
     }
   }
 
@@ -70,10 +73,10 @@ export function PullUpNext() {
             <h2 className="display mt-2 text-[38px] leading-[0.9] text-paper sm:text-[60px]">
               NAME THE
               <br />
-              <span className="text-acid">BLOCK</span>
+              <span className="text-acid">AREA</span>
             </h2>
             <p className="mt-5 max-w-md text-[15px] leading-relaxed text-muted">
-              SLAPPZ moves shop by shop. Tell us where you are and which spot you want it in —
+              SLAPPZ moves shop by shop. Tell us where you are and which shop you want it in —
               that&apos;s how the next market gets picked.
             </p>
           </div>
@@ -82,10 +85,10 @@ export function PullUpNext() {
             <div className="flex items-start gap-3 self-start border border-acid bg-surface p-6">
               <CheckIcon size={20} className="mt-0.5 shrink-0 text-acid" />
               <div>
-                <p className="display text-[24px] text-acid">GOT IT. WE HEARD YOU.</p>
+                <p className="display text-[24px] text-acid">GOT IT. THANK YOU.</p>
                 <p className="mt-2 text-[13px] leading-relaxed text-muted">
                   {zip} is on the list{shop.trim() ? `, and so is ${shop.trim()}` : ''}. New
-                  spots get announced on{' '}
+                  shops get announced on{' '}
                   <a
                     href="https://www.instagram.com/slappz_hq/"
                     target="_blank"

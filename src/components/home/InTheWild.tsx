@@ -34,19 +34,19 @@ const TILES = [
     src: '/brand/slappz/lifestyle/slappz-midtown-night.webp',
     alt: 'A SLAPPZ 1g Bubba Kush pre-roll tube held up over a packed night-time street, a floodlit tower behind it.',
     place: 'MIDTOWN',
-    line: 'In the crowd, under the lights.',
+    line: 'A street fair, after dark.',
   },
   {
     src: '/brand/slappz/lifestyle/slappz-penn-station.webp',
     alt: 'A SLAPPZ 1g Perm Marker pre-roll tube held up in front of the 34 Street–Penn Station A, C, E subway entrance.',
     place: '34 ST · PENN STATION',
-    line: 'Where the trains let out.',
+    line: 'At the A, C and E entrance.',
   },
   {
     src: '/brand/slappz/lifestyle/slappz-cannafamily-cab.webp',
     alt: 'A SLAPPZ t-shirt and tin laid out on the hood of a yellow cab outside the CannaFamily Dispensary storefront.',
     place: 'CANNAFAMILY',
-    line: 'We pull up to the shop.',
+    line: 'Parked right outside.',
   },
 ];
 

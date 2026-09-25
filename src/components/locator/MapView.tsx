@@ -36,6 +36,18 @@ const BASEMAP_STYLE = 'https://tiles.openfreemap.org/styles/dark';
 
 const NYC_CENTER: [number, number] = [-73.9, 40.73];
 
+/**
+ * The five boroughs, as a `borough` value. Twenty of the twenty-five stockists sit inside
+ * this set; the rest are Westchester, Western New York and the Capital Region.
+ *
+ * The idle map frames THESE and not every pin. Fitting all of them dragged the camera out to
+ * cover Jamestown and Schenectady — roughly four hundred miles of New York State — which
+ * opened the homepage on a map where the city the brand is from was an unreadable cluster and
+ * most of the frame was empty countryside. Searching still frames whatever the search found,
+ * so a customer in Buffalo is not stranded; this is only the opening shot.
+ */
+const NYC_BOROUGHS = new Set(['Queens', 'Brooklyn', 'Manhattan', 'Bronx', 'Staten Island']);
+
 function markerElement(label: string, active: boolean): HTMLButtonElement {
   const el = document.createElement('button');
   el.type = 'button';
@@ -166,12 +178,21 @@ export default function MapView({
       center: NYC_CENTER,
       zoom: 10,
       attributionControl: { compact: true },
-      // Wheel zooms, as asked for. Note what this costs: the map sits inside a scrolling page,
-      // so a wheel or two-finger trackpad gesture over it now zooms instead of scrolling past
-      // — the same behaviour as an embedded Google map. Touch is unaffected (no wheel events
-      // on a phone), so dragging the page on mobile still scrolls normally, and pinch-to-zoom
-      // continues to come from touchZoomRotate.
-      scrollZoom: true,
+      /**
+       * Cooperative gestures: the map only takes a gesture that was clearly meant for it.
+       * Wheel scrolls the PAGE; ctrl/cmd + wheel zooms the map. One finger drags the page;
+       * two fingers pan and zoom the map. MapLibre shows the hint text itself.
+       *
+       * This replaces a plain `scrollZoom: true`. That was added on request so the wheel
+       * would zoom, and the note left here claimed touch was unaffected. That was wrong:
+       * `dragPan` swallows one-finger touchmove, so on a phone the map ate the scroll of
+       * anyone whose thumb landed on it — and it sits directly under the hero, which is
+       * exactly where a thumb lands. SLAPPZ reported the page fighting them.
+       *
+       * Zoom is not lost, it is just no longer something you trigger by accident: ctrl/cmd
+       * + wheel, two fingers, the +/- control, or clicking a pin.
+       */
+      cooperativeGestures: true,
       dragRotate: false,
       pitchWithRotate: false,
       touchPitch: false,
@@ -361,7 +382,15 @@ export default function MapView({
     const instance = map.current;
     if (!instance) return;
 
-    const points: Coordinates[] = retailers.map((r) => r.coordinates);
+    // Idle — no search yet — frames the five boroughs rather than every pin in the state.
+    // Once there is an origin the frame belongs to the search, wherever that is.
+    const inFrame = origin
+      ? retailers
+      : retailers.filter((r) => r.borough && NYC_BOROUGHS.has(r.borough));
+
+    const points: Coordinates[] = (inFrame.length > 0 ? inFrame : retailers).map(
+      (r) => r.coordinates,
+    );
     if (origin) points.push(origin);
     if (points.length === 0) return;
 

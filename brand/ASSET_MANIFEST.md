@@ -218,21 +218,30 @@ placed. The logo lockups are superseded by `/public/brand/slappz/logos/` — see
 
 | Asset | Source | Usage | Production ready |
 | --- | --- | --- | --- |
-| `hero-el-night.webp` | **AI-generated** (Higgsfield, GPT Image 2.5) | Homepage hero + age-gate backdrop | 🟡 In use — generated, see note |
+| `hero-ssr-el-night.webp` | **AI-generated** (Higgsfield, GPT Image 2.5) | Homepage hero + age-gate backdrop | 🟡 In use — generated, see note |
 | `hero-queens-night.webp` | **AI-generated** (Recraft V4.1) | **Retired.** Superseded by the above | ⚪ Unplaced — kept, not deleted |
 | `hero-loop.mp4` | **AI-generated** (Seedance 2.0) | **Retired.** Was generated from `hero-queens-night` | ⚪ Unplaced — kept, not deleted |
 | Blacklight shark/jellyfish artwork | 📎 IG reference | Reference only | 📎 Reference only |
 | Yellow-cab B2B graphic | 📎 IG reference | Future `/retailers` trade page | 🔴 Needed |
 | 2-year anniversary graphic | 📎 IG reference | Reference only | 📎 Reference only |
 
-> **`hero-el-night.webp` is generated imagery, not a photograph of anywhere real.** An
+> **`hero-ssr-el-night.webp` is generated imagery, not a photograph of anywhere real.** An
 > outer-borough street under an elevated line at night: wet asphalt throwing acid-green and
-> violet reflections, a yellow cab waiting mid-frame, a train crossing the top with motion
-> blur. Generated on Higgsfield (GPT Image 2.5, 16:9, quality high, 2K) on 2026-09-25, job
-> `97e12101-5392-463c-b444-e08f01441937`, prompted from SLAPPZ's own night-street photograph
-> as a colour and mood reference. Master of record:
-> `/brand/source/generated/hero-el-night.webp` (2688 × 1520). Served copy optimised to 2400px
-> via `scripts/optimize-brand-image.mjs`.
+> violet reflections, a train crossing the top with motion blur, and **SLAPPZ's yellow
+> Chevrolet SSR** parked at the kerb, three-quarter rear. Generated on Higgsfield (GPT Image
+> 2.5, 16:9, quality high, 2K) on 2026-09-25, job
+> `cf2c9774-ac80-4181-947f-7f0113adec80`, prompted from SLAPPZ's own SSR graphic as the
+> vehicle reference. Master of record: `/brand/source/generated/hero-ssr-el-night.webp`
+> (2688 × 1520). Served copy optimised to 2400px via `scripts/optimize-brand-image.mjs`.
+>
+> **The SSR carries no SLAPPZ livery, and that is deliberate.** SLAPPZ's own SSR graphic has
+> the wordmark across it; a generated vehicle wearing the real logo would be a fabricated
+> SLAPPZ asset, which § NEVER forbids. The truck is recognisably theirs from the model and
+> the colour without the site inventing branding for it.
+>
+> An earlier cab version of the same scene (job `97e12101-5392-463c-b444-e08f01441937`,
+> master kept at `/brand/source/generated/hero-el-night.webp`) was live briefly before SLAPPZ
+> asked for the SSR instead.
 >
 > **It clears the bar generated imagery has to clear here** (CLAUDE.md § NEVER): no text, no
 > lettering, no logo, no packaging, no real retailer and no identifiable person — so it makes
