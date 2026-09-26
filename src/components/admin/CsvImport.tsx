@@ -56,7 +56,7 @@ export function CsvImport({ existing }: { existing: Retailer[] }) {
           rows={8}
           spellCheck={false}
           placeholder={CSV_TEMPLATE}
-          className="mt-4 w-full border border-hairline-strong bg-ink px-3 py-2.5 font-mono text-[13px] text-paper placeholder:text-muted focus:border-acid focus:outline-none"
+          className="mt-4 w-full border border-hairline-strong bg-ink px-3 py-2.5 font-mono text-[15px] text-paper placeholder:text-muted focus:border-acid focus:outline-none"
         />
       </div>
 
@@ -91,16 +91,16 @@ export function CsvImport({ existing }: { existing: Retailer[] }) {
                 <tbody>
                   {report.rows.map((row) => (
                     <tr key={row.line} className="border-b border-hairline align-top">
-                      <td className="py-2.5 pr-4 text-[13px] text-muted tabular">{row.line}</td>
+                      <td className="py-2.5 pr-4 text-[15px] text-muted tabular">{row.line}</td>
                       <td className="py-2.5 pr-4 text-[15px] text-paper">
                         {row.raw.store_name || <span className="text-muted">—</span>}
                       </td>
-                      <td className="py-2.5 pr-4 text-[13px] text-muted">
+                      <td className="py-2.5 pr-4 text-[15px] text-muted">
                         {[row.raw.address, row.raw.city, row.raw.state, row.raw.zip]
                           .filter(Boolean)
                           .join(', ')}
                       </td>
-                      <td className="py-2.5 text-[13px]">
+                      <td className="py-2.5 text-[15px]">
                         {row.errors.length > 0 ? (
                           <ul className="text-magenta">
                             {row.errors.map((err) => (
@@ -123,7 +123,7 @@ export function CsvImport({ existing }: { existing: Retailer[] }) {
             </div>
           )}
 
-          <p className="mt-4 text-[12px] leading-relaxed text-muted">
+          <p className="mt-4 text-[14px] leading-relaxed text-muted">
             Rows with errors are skipped. Every valid row is geocoded during import — any
             address that can&apos;t be resolved is reported back by name rather than being
             dropped on the map at the wrong spot.
@@ -151,7 +151,7 @@ export function CsvImport({ existing }: { existing: Retailer[] }) {
         >
           <p className={`meta ${state.ok ? 'text-acid' : 'text-magenta'}`}>{state.message}</p>
           {state.failed && state.failed.length > 0 && (
-            <ul className="mt-3 text-[13px] text-cab">
+            <ul className="mt-3 text-[15px] text-cab">
               {state.failed.map((f) => (
                 <li key={f.name}>
                   {f.name} — {f.reason}

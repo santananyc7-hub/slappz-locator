@@ -268,7 +268,8 @@ When a customer searches somewhere SLAPPZ isn't, record it anonymously:
 
 - **Never** automatically trigger the browser location permission prompt.
 - Only request location when the customer explicitly presses **USE MY LOCATION**.
-- If permission is denied, fall back gracefully to ZIP/address search — copy: `ENTER YOUR ZIP INSTEAD.`
+- If permission is denied, fall back gracefully to ZIP/address search — copy: `Enter your ZIP instead.`
+  Sentence case on purpose: it is an error a stuck customer has to read, not a label.
 
 An automatic geolocation prompt on load is a bug, regardless of what a ticket says.
 

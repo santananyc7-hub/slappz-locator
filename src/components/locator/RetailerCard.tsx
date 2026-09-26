@@ -75,16 +75,16 @@ export function RetailerCard({
       </p>
 
       <div className="mt-3 flex flex-wrap items-center gap-2">
-        <span className="meta inline-block bg-acid px-2 py-1 text-[11px] text-ink">
+        <span className="meta inline-block bg-acid px-2 py-1 text-[13px] text-ink">
           SLAPPZ HERE
         </span>
         {retailer.featured && (
-          <span className="meta inline-block border border-violet px-2 py-1 text-[11px] text-violet">
+          <span className="meta inline-block border border-violet px-2 py-1 text-[13px] text-violet">
             FLAGSHIP
           </span>
         )}
         {retailer.lastVerified && (
-          <span className="meta text-[11px] text-muted">
+          <span className="meta text-[13px] text-muted">
             VERIFIED {retailer.lastVerified.replaceAll('-', '.')}
           </span>
         )}

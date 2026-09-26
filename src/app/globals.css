@@ -20,7 +20,9 @@
   --color-raised: #161618;
   --color-hairline: #26262a;
   --color-hairline-strong: #3a3a41;
-  --color-muted: #8a8a93;
+  /* Was #8a8a93 — 6.1:1 on black. It passed WCAG AA and still read washed out, because
+     grey-on-black loses far more perceived contrast than the ratio suggests. 8.7:1. */
+  --color-muted: #a6a6b0;
   --color-paper: #ffffff;
 
   /* Type */
@@ -54,6 +56,9 @@ body {
   background: var(--color-ink);
   color: var(--color-paper);
   font-family: var(--font-sans);
+  /* Inter is variable, and 450 holds up better than 400 as light text on a black page —
+     thin strokes bloom on dark backgrounds and lose their shape. */
+  font-weight: 450;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
@@ -81,12 +86,16 @@ body {
   /* Condensed on purpose. SLAPPZ_DIGITAL_SYSTEM.md § 4 records the brand's headline voice as
      a HEAVY CONDENSED sans in all caps with tight tracking and tight leading — widening this
      toward a rounded geometric would be a different brand wearing the same logo. */
-  font-variation-settings: 'wdth' 88;
+  /* 88 -> 92 and -0.03em -> -0.02em. Still unmistakably condensed, which the brand
+     requires, but the counters and the gaps between letters are no longer fighting each
+     other at the sizes this is used SMALL — card titles and captions around 18-29px, where
+     heavy condensed caps with hard negative tracking turn into a wall. */
+  font-variation-settings: 'wdth' 92;
   text-transform: uppercase;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   /* 0.9 -> 0.86. Condensed caps can take much tighter leading than a normal-width face, and
      the headings read as a solid block rather than a stack of separate lines. */
-  line-height: 0.86;
+  line-height: 0.88;
 }
 
 /* Letterspaced small caps — the counterweight to the display type. */

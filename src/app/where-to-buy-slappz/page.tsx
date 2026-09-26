@@ -139,7 +139,7 @@ export default async function WhereToBuyPage() {
               <ArrowIcon size={13} />
             </Link>
 
-            <p className="mt-8 border-t border-hairline pt-6 text-[13px] leading-relaxed text-muted">
+            <p className="mt-8 border-t border-hairline pt-6 text-[15px] leading-relaxed text-muted">
               Listings are verified periodically and do not reflect real-time inventory. Stock
               and hours are set by each retailer — confirm before you travel. 21+ only.
             </p>

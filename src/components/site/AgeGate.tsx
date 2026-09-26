@@ -172,7 +172,7 @@ export function AgeGate() {
               </button>
             </div>
 
-            <p className="mt-8 text-[12px] leading-relaxed text-muted">
+            <p className="mt-8 text-[14px] leading-relaxed text-muted">
               SLAPPZ products are sold only through licensed New York State cannabis
               retailers. Keep out of reach of children and pets.
             </p>

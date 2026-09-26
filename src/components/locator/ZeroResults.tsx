@@ -143,7 +143,7 @@ export function ZeroResults({
           </div>
 
           {error && (
-            <p id="demand-error" role="alert" className="meta mt-2.5 text-magenta">
+            <p id="demand-error" role="alert" className="mt-2.5 text-[15px] text-magenta">
               {error}
             </p>
           )}
@@ -157,7 +157,7 @@ export function ZeroResults({
             BRING SLAPPZ HERE
           </button>
 
-          <p className="mt-3 text-[12px] leading-relaxed text-muted">
+          <p className="mt-3 text-[14px] leading-relaxed text-muted">
             We only store your ZIP and, if you give it, your contact. No precise location is
             saved.
           </p>

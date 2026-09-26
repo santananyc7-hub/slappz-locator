@@ -52,8 +52,8 @@ export function Merch() {
 
             <div className="border-t border-hairline p-4">
               <h3 className="display text-[19px] text-paper">{item.name}</h3>
-              <p className="mt-1.5 text-[13px] leading-relaxed text-muted">{item.detail}</p>
-              <p className="mt-2 text-[12px] leading-relaxed text-muted">
+              <p className="mt-1.5 text-[15px] leading-relaxed text-muted">{item.detail}</p>
+              <p className="mt-2 text-[14px] leading-relaxed text-muted">
                 <span className="text-acid">PRINT · </span>
                 {item.artwork}
               </p>

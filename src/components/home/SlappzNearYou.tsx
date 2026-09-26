@@ -47,7 +47,7 @@ function ShopCard({ retailer }: { retailer: Retailer }) {
         <div className="flex items-start justify-between gap-3">
           <h3 className="display text-[29px] text-paper">{retailer.name}</h3>
           {retailer.featured && (
-            <span className="meta shrink-0 border border-violet px-2 py-1 text-[10px] text-violet">
+            <span className="meta shrink-0 border border-violet px-2 py-1 text-[12px] text-violet">
               FLAGSHIP
             </span>
           )}

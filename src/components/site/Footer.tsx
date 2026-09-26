@@ -16,7 +16,7 @@ export function Footer() {
           </span>
         </div>
 
-        <div className="mt-8 grid gap-6 border-t border-hairline pt-8 text-[13px] leading-relaxed text-muted sm:grid-cols-2">
+        <div className="mt-8 grid gap-6 border-t border-hairline pt-8 text-[15px] leading-relaxed text-muted sm:grid-cols-2">
           <p>
             For adults 21 and over. SLAPPZ products are sold exclusively through licensed New
             York State cannabis retailers. Please consume responsibly and keep out of reach of

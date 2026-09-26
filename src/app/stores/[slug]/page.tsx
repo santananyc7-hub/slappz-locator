@@ -167,7 +167,7 @@ export default async function StorePage({ params }: { params: Promise<{ slug: st
           </section>
         )}
 
-        <p className="mt-10 border-t border-hairline pt-6 text-[13px] leading-relaxed text-muted">
+        <p className="mt-10 border-t border-hairline pt-6 text-[15px] leading-relaxed text-muted">
           SLAPPZ availability at {retailer.name} is verified periodically and does not reflect
           real-time inventory. Call ahead or check the store menu before you travel. 21+ only.
         </p>

@@ -143,7 +143,7 @@ export function LocatorRoot({
    */
   const useMyLocation = useCallback(() => {
     if (!('geolocation' in navigator)) {
-      setGeoError('ENTER YOUR ZIP INSTEAD.');
+      setGeoError('Enter your ZIP instead.');
       return;
     }
 
@@ -167,7 +167,7 @@ export function LocatorRoot({
       (err) => {
         setLocating(false);
         track('geolocation_denied', { code: err.code });
-        setGeoError('ENTER YOUR ZIP INSTEAD.');
+        setGeoError('Enter your ZIP instead.');
       },
       { enableHighAccuracy: false, timeout: 10_000, maximumAge: 5 * 60_000 },
     );
@@ -309,7 +309,12 @@ export function LocatorRoot({
             <SlappzWordmark size="hero" alt="SLAPPZ" className="mt-2 sm:mt-3" />
           </h1>
 
-          <p className="meta rise rise-1 mt-4 max-w-lg text-muted">
+          {/* Sentence case, not `meta`. SLAPPZ_DIGITAL_SYSTEM.md § 4 puts supporting lines
+              in letterspaced small caps, and that is right for a SHORT label — "THE BRAND
+              THAT SLAPPZ", a date, a badge. Applying it to a full sentence was a
+              misreading: caps plus 0.16em tracking flattens the word shapes a reader scans
+              by, and this is the first line anyone reads under the headline. */}
+          <p className="rise rise-1 mt-4 max-w-xl text-[17px] leading-relaxed text-muted sm:text-[19px]">
             Licensed New York dispensaries carrying SLAPPZ. Nearest first.
           </p>
 
@@ -338,10 +343,12 @@ export function LocatorRoot({
             that IS real and verifiable: licensed shops, markets covered, last verified.
             All three are derived from the retailer data, so they can never drift.
           */}
-          <ul className="rise rise-3 mt-6 flex flex-wrap items-center gap-x-5 gap-y-2">
+          {/* items-start, not items-center. The borough list wraps to three lines on a
+              phone, and centring left its tick floating beside the middle line. */}
+          <ul className="rise rise-3 mt-6 flex flex-wrap items-start gap-x-5 gap-y-2">
             {trustPoints.map((point) => (
-              <li key={point} className="meta flex items-center gap-1.5 text-muted">
-                <CheckIcon size={13} className="text-acid" />
+              <li key={point} className="meta flex items-start gap-1.5 text-muted">
+                <CheckIcon size={13} className="mt-0.5 shrink-0 text-acid" />
                 {point}
               </li>
             ))}
@@ -467,7 +474,7 @@ export function LocatorRoot({
                 </div>
               )}
 
-              <p className="mt-6 text-[12px] leading-relaxed text-muted">
+              <p className="mt-6 text-[14px] leading-relaxed text-muted">
                 Availability is verified periodically, not in real time. Confirm with the shop
                 before you travel.
               </p>

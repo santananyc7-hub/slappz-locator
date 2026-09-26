@@ -42,7 +42,7 @@ export default async function LocationsPage() {
         )}
       </div>
 
-      <p className="mt-8 border-t border-hairline pt-6 text-[13px] leading-relaxed text-muted">
+      <p className="mt-8 border-t border-hairline pt-6 text-[15px] leading-relaxed text-muted">
         Retailers seeded in the repository are deactivated rather than deleted, so their
         verification history survives. Only retailers created here can be removed outright.
       </p>

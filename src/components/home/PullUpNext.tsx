@@ -145,7 +145,7 @@ export function PullUpNext() {
               </div>
 
               {error && (
-                <p role="alert" className="meta mt-3 text-magenta">
+                <p role="alert" className="mt-3 text-[15px] text-magenta">
                   {error}
                 </p>
               )}
@@ -159,7 +159,7 @@ export function PullUpNext() {
                 BRING SLAPPZ HERE
               </button>
 
-              <p className="mt-3 text-[12px] leading-relaxed text-muted">
+              <p className="mt-3 text-[14px] leading-relaxed text-muted">
                 We store your ZIP and whatever you type here. No precise location, no tracking.
               </p>
             </form>

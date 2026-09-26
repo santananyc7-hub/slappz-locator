@@ -219,7 +219,7 @@ export default function WholesalePage() {
               </a>
             </div>
 
-            <p className="mt-8 max-w-2xl text-[13px] leading-relaxed text-muted">
+            <p className="mt-8 max-w-2xl text-[15px] leading-relaxed text-muted">
               Wholesale enquiries are for licensed New York cannabis retailers only. SLAPPZ
               operates under a New York OCM Processor (Type 3) licence.
             </p>

@@ -85,7 +85,7 @@ export function NearestCard({ retailer }: { retailer: RetailerResult }) {
         )}
       </div>
 
-      <p className="mt-4 text-[12px] leading-relaxed text-muted">
+      <p className="mt-4 text-[14px] leading-relaxed text-muted">
         Stock changes. Call ahead or check the store menu to confirm SLAPPZ is on the shelf
         today.
       </p>

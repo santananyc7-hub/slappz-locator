@@ -42,7 +42,7 @@ function Field({
         required={required}
         className={inputClass}
       />
-      {hint && <p className="mt-1 text-[12px] text-muted">{hint}</p>}
+      {hint && <p className="mt-1 text-[14px] text-muted">{hint}</p>}
     </div>
   );
 }
@@ -89,7 +89,7 @@ export function RetailerForm({ retailer }: { retailer?: Retailer }) {
           <Field label="ZIP" name="zip" defaultValue={retailer?.address.zip} required />
         </div>
 
-        <p className="mt-4 text-[12px] leading-relaxed text-muted">
+        <p className="mt-4 text-[14px] leading-relaxed text-muted">
           Coordinates are geocoded automatically whenever the address changes. The manual
           fields below are only applied if you save without editing the address.
         </p>
@@ -176,7 +176,7 @@ export function RetailerForm({ retailer }: { retailer?: Retailer }) {
             placeholder={products.map((p) => p.slug).join(', ')}
             className={inputClass}
           />
-          <p className="mt-1 text-[12px] leading-relaxed text-muted">
+          <p className="mt-1 text-[14px] leading-relaxed text-muted">
             Comma-separated product slugs. Only list what has actually been confirmed at this
             store — an empty field means &ldquo;unverified&rdquo;, and the site renders nothing
             rather than implying stock. Known slugs:{' '}

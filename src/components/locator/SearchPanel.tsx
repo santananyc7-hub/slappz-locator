@@ -92,7 +92,7 @@ export function SearchPanel({
         </button>
 
         {geoError && (
-          <p className="meta text-magenta" role="status">
+          <p className="text-[15px] text-magenta" role="status">
             {geoError}
           </p>
         )}

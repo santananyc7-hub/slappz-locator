@@ -32,12 +32,12 @@ export function ProductCard({ product }: { product: Product }) {
         <div className="flex items-center justify-between gap-3">
           <p className="meta text-muted">{product.category?.replace('-', ' ')}</p>
           {product.soldOut ? (
-            <span className="meta border border-magenta px-2 py-1 text-[10px] text-magenta">
+            <span className="meta border border-magenta px-2 py-1 text-[12px] text-magenta">
               SOLD OUT
             </span>
           ) : (
             product.strainType && (
-              <span className="meta border border-hairline-strong px-2 py-1 text-[10px] text-acid">
+              <span className="meta border border-hairline-strong px-2 py-1 text-[12px] text-acid">
                 {product.strainType}
               </span>
             )

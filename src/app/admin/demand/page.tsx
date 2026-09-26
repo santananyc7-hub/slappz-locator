@@ -65,7 +65,7 @@ export default async function DemandPage() {
       {recent.some((s) => s.contact) && (
         <section className="mt-8">
           <h2 className="display text-[27px] text-paper">RECENT REQUESTS WITH CONTACT</h2>
-          <p className="mt-1.5 text-[13px] text-muted">
+          <p className="mt-1.5 text-[15px] text-muted">
             Self-submitted through BRING SLAPPZ HERE. Treat as opt-in for launch news only.
           </p>
           <ul className="mt-4 flex flex-col gap-2">
@@ -87,7 +87,7 @@ export default async function DemandPage() {
         </section>
       )}
 
-      <p className="mt-8 border-t border-hairline pt-6 text-[13px] leading-relaxed text-muted">
+      <p className="mt-8 border-t border-hairline pt-6 text-[15px] leading-relaxed text-muted">
         Signals are anonymous. Coordinates are rounded to roughly one kilometre before they are
         stored, and no IP address, device identifier or session is recorded. Contact details
         appear only when a customer typed them in themselves.

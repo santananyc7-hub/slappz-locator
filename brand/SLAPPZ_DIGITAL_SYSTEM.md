@@ -130,6 +130,34 @@ Sampled from repeated appearances across packaging, campaign art, merch and sign
   italic sans** for headlines like `ATTENTION DISPENSARY OWNERS, BUYERS & BUDTENDERS` and `WE'RE OUTSIDE TOMORROW!`.
   Set in **all caps, tight tracking, tight leading**, frequently with a keyline or drop shadow, and frequently
   with one word colored acid for emphasis inside an otherwise white sentence.
+### Legibility
+
+Revised again the same day, after SLAPPZ said it was still hard to read. Size was only part
+of it — three separate things were working against the reader:
+
+| Fix | Before | After |
+| --- | --- | --- |
+| `--color-muted` (nearly all body copy) | `#8a8a93`, 6.1:1 | **`#a6a6b0`, 8.7:1** |
+| Body weight | 400 | **450** |
+| `.display` width axis | `wdth 88` | **`wdth 92`** |
+| `.display` tracking | −0.03em | **−0.02em** |
+| Smallest UI sizes | 10–13px | **12–15px** |
+
+**The worst offender was not a size at all.** The hero's opening line — the first sentence
+anyone reads under the headline — was set in `.meta`: uppercase, 0.16em tracking, 12px, grey.
+Caps plus wide tracking destroys the word shapes a reader scans by, so the one line that has
+to land was the hardest line on the page. It is sentence case now, at 17–19px.
+
+**Rule that follows from it:** `.meta` is for LABELS — a kicker, a badge, a date, a count,
+`THE BRAND THAT SLAPPZ`. It is never for a sentence. § 4 describes the brand's letterspaced
+small caps as a treatment for *supporting lines*, and a full sentence is not one. Error
+messages are sentence case for the same reason: they are read by someone who is already
+stuck.
+
+**On contrast:** the old grey passed WCAG AA at 6.1:1 and still read washed out. Light text
+on a pure black field loses more perceived contrast than the ratio predicts, because thin
+strokes bloom. Passing the check is the floor, not the goal.
+
 ### Scale
 
 Revised 2026-09-25 after SLAPPZ said the site read small. The whole scale moved up in one
