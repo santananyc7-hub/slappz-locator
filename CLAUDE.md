@@ -154,8 +154,11 @@ and the marquee, so headings do not need it.
 
 Prefer, in order:
 
-1. **The brand's own words.** `WE'RE OUTSIDE` and `LEGACY TO LEGAL` are lifted straight from
-   SLAPPZ's posts and anniversary graphic — they beat anything invented.
+1. **The brand's own words.** `LEGACY TO LEGAL` is lifted straight from SLAPPZ's anniversary
+   graphic, and it beats anything invented. But the brand gets the final say on its own
+   phrases: `WE'RE OUTSIDE` sat on the culture strip for exactly this reason and SLAPPZ asked
+   for it to come off on 2026-09-25. "It is their phrase" is a reason to reach for something
+   first, not a reason to keep it after they have said no.
 2. **Something concrete.** `BOROUGH BY BOROUGH` says what the section is. `NAME THE AREA`
    says what to do.
 3. **Plain and short.** `THE LINEUP`, `WHO'S GOT IT`, `STRAIGHT ANSWERS`.

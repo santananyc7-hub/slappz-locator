@@ -167,9 +167,9 @@ real SLAPPZ photography now.
 
 | Asset | Source | Usage | Production ready |
 | --- | --- | --- | --- |
-| `slappz-midtown-night.webp` | **Supplied by SLAPPZ** | Homepage `WE'RE OUTSIDE` tile 01 | 🟢 Yes, 1100 × 1375, 71KB |
-| `slappz-penn-station.webp` | **Supplied by SLAPPZ** | Homepage `WE'RE OUTSIDE` tile 02 | 🟢 Yes, 1100 × 1375, 183KB |
-| `slappz-cannafamily-cab.webp` | **Supplied by SLAPPZ** | Homepage `WE'RE OUTSIDE` tile 03 | 🟢 Yes, 1100 × 1375, 174KB |
+| `slappz-midtown-night.webp` | **Supplied by SLAPPZ** | Homepage `WE SHOW UP` tile 01 | 🟢 Yes, 1100 × 1375, 71KB |
+| `slappz-penn-station.webp` | **Supplied by SLAPPZ** | Homepage `WE SHOW UP` tile 02 | 🟢 Yes, 1100 × 1375, 183KB |
+| `slappz-cannafamily-cab.webp` | **Supplied by SLAPPZ** | Homepage `WE SHOW UP` tile 03 | 🟢 Yes, 1100 × 1375, 174KB |
 | `slappz-waterfront-table-wide.webp` | **Supplied by SLAPPZ** | `/about` — `OUT OF QUEENS` | 🟢 Yes, 1100 × 880, 155KB |
 | `slappz-shelf-marble.webp` | **Supplied by SLAPPZ** | `/wholesale` — `WE SET IT UP IN YOUR SHOP` | 🟢 Yes, 1100 × 1375, 172KB |
 | `slappz-shelf-woodroom.webp` | **Supplied by SLAPPZ** | `/wholesale` — same strip | 🟢 Yes, 1100 × 1375, 212KB |

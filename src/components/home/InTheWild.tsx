@@ -54,9 +54,13 @@ export function InTheWild() {
   return (
     <Section
       kicker="THE CULTURE"
-      // The brand's own phrase. Beats any invented "in the wild" framing.
-      title="WE'RE OUTSIDE"
-      lead="Drops, activations and the city it all comes out of. The full run lives on Instagram."
+      // SLAPPZ asked for WE'RE OUTSIDE to come off, so it is gone. This says the same thing
+      // about how the brand actually operates without the slang, and it is already the
+      // site's own language — /about's growth section reads "We show up in person, with
+      // product in hand", and CLAUDE.md describes the brand as one that "shows up in
+      // person". Concrete about behaviour, which is what the three tiles below evidence.
+      title="WE SHOW UP"
+      lead="Pop-ups, activations and the city it all comes out of. There's more on Instagram."
     >
       <div className="grid gap-2.5 sm:grid-cols-3">
         {TILES.map((tile, i) => (
