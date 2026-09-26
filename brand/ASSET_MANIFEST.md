@@ -218,7 +218,8 @@ placed. The logo lockups are superseded by `/public/brand/slappz/logos/` — see
 
 | Asset | Source | Usage | Production ready |
 | --- | --- | --- | --- |
-| `hero-ssr-el-night.webp` | **AI-generated** (Higgsfield, GPT Image 2.5) | Homepage hero + age-gate backdrop | 🟡 In use — generated, see note |
+| `hero-ssr-el-night.webp` | **AI-generated** (Higgsfield, GPT Image 2.5) | Homepage hero ≥640px + age-gate backdrop | 🟡 In use — generated, see note |
+| `hero-ssr-el-night-tall.webp` | **AI-generated** (Higgsfield, GPT Image 2.5) | Homepage hero <640px | 🟡 In use — generated, see note |
 | `hero-queens-night.webp` | **AI-generated** (Recraft V4.1) | **Retired.** Superseded by the above | ⚪ Unplaced — kept, not deleted |
 | `hero-loop.mp4` | **AI-generated** (Seedance 2.0) | **Retired.** Was generated from `hero-queens-night` | ⚪ Unplaced — kept, not deleted |
 | Blacklight shark/jellyfish artwork | 📎 IG reference | Reference only | 📎 Reference only |
@@ -234,6 +235,20 @@ placed. The logo lockups are superseded by `/public/brand/slappz/logos/` — see
 > vehicle reference. Master of record: `/brand/source/generated/hero-ssr-el-night.webp`
 > (2688 × 1520). Served copy optimised to 2400px via `scripts/optimize-brand-image.mjs`.
 >
+> **The phone gets its own portrait frame, and it has to.** The hero box runs from 0.62 on a
+> phone to 3.9 on a wide monitor. Cover-cropping a landscape frame into a portrait box can
+> only ever slide it SIDEWAYS — once the height fits, the vertical framing is fixed — so on a
+> phone the truck sat stranded behind the search box and no `object-position` could lift it
+> out. `hero-ssr-el-night-tall.webp` is a separate 2:3 generation (job
+> `faffb163-b2bd-4cba-91ca-8a010179630c`), cut so the truck lands in the empty space beside
+> the wordmark. That placement is measured, not eyeballed: truck at x 165–326 in a 390px
+> viewport, where the wordmark ends at x 167. **If either the crop or the hero's type sizes
+> change, re-measure** — the whole point of this asset is where the truck sits relative to
+> the mark.
+>
+> Served through a plain `<picture>` rather than two `next/image` elements, because two
+> `<Image>`s toggled with `hidden`/`block` both download and this is the LCP element.
+
 > **The SSR carries no SLAPPZ livery, and that is deliberate.** SLAPPZ's own SSR graphic has
 > the wordmark across it; a generated vehicle wearing the real logo would be a fabricated
 > SLAPPZ asset, which § NEVER forbids. The truck is recognisably theirs from the model and

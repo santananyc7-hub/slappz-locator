@@ -1,7 +1,6 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import Image from 'next/image';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { SlappzWordmark } from '@/components/brand/SlappzWordmark';
@@ -251,15 +250,34 @@ export function LocatorRoot({
             headline sits on darkness the image itself provides rather than on a gradient
             painted over the top of it. */}
         <div className="absolute inset-0 -z-10">
-          <Image
-            src="/brand/slappz/campaign/hero-ssr-el-night.webp"
-            alt=""
-            aria-hidden="true"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-center"
-          />
+          {/* ART DIRECTION, not just a resize. The hero box runs from 0.62 on a phone to 3.9
+              on a wide monitor. A single landscape frame cover-cropped into a portrait box
+              can only ever slide SIDEWAYS — the vertical framing is fixed once the height
+              fits — so the truck sat stranded behind the search box on a phone and no
+              object-position could lift it out. The phone gets its own portrait cut, framed
+              so the truck lands in the empty space beside the wordmark: measured at x
+              165-326 in a 390px viewport, where the wordmark ends at 167.
+
+              Plain <picture> rather than two next/image elements, because two <Image>s
+              toggled with `hidden`/`block` both download — and this is the LCP element on
+              the page that has to clear a five-second bar over cell data. A <picture>
+              fetches exactly one. That costs next/image's automatic srcset, which is a fair
+              trade when there are only two hand-cut sources to begin with. */}
+          <picture>
+            <source
+              media="(min-width: 640px)"
+              srcSet="/brand/slappz/campaign/hero-ssr-el-night.webp"
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/brand/slappz/campaign/hero-ssr-el-night-tall.webp"
+              alt=""
+              aria-hidden="true"
+              fetchPriority="high"
+              decoding="async"
+              className="absolute inset-0 h-full w-full object-cover object-center"
+            />
+          </picture>
 
           {/* Scrim. Much lighter than the one the cab photograph needed, because this frame
               brings its own darkness — the left third is black in the source and the whole
