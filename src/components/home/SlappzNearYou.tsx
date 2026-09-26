@@ -47,7 +47,7 @@ function ShopCard({ retailer }: { retailer: Retailer }) {
         <div className="flex items-start justify-between gap-3">
           <h3 className="display text-[29px] text-paper">{retailer.name}</h3>
           {retailer.featured && (
-            <span className="meta shrink-0 border border-violet px-2 py-1 text-[12px] text-violet">
+            <span className="meta shrink-0 bg-violet px-2 py-1 text-[12px] text-paper">
               FLAGSHIP
             </span>
           )}
@@ -92,7 +92,7 @@ function ShopCard({ retailer }: { retailer: Retailer }) {
 
         <Link
           href={`/stores/${retailer.slug}`}
-          className="meta flex min-h-11 items-center px-1 text-muted underline underline-offset-4 transition-colors hover:text-acid"
+          className="meta flex min-h-11 items-center border border-transparent px-3 text-muted underline underline-offset-4 transition-colors hover:border-hairline hover:text-acid"
         >
           DETAILS
         </Link>

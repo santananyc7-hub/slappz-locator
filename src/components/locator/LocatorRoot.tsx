@@ -297,6 +297,18 @@ export function LocatorRoot({
               the most important page on the site read "Find SLAPPZFIND" to anything
               crawling text content. Do not reintroduce a hidden duplicate here: the visible
               word and the alt already say it once each. */}
+          {/* CATEGORY LINE. "FIND SLAPPZ" tells a stranger nothing — it is a brand name and
+              a verb, and someone arriving cold from an Instagram link has no idea what is
+              being sold. This states the category and the format before the headline does
+              anything else, which is what CLAUDE.md § MOBILE-FIRST's five-second bar
+              actually requires.
+
+              It is TYPE, not an icon, on purpose. The obvious way to say "cannabis" in a
+              hero is a leaf or a wisp of smoke, and § BRAND RULE bans both outright — along
+              with Rasta palettes and neon-green-on-black dispensary templates. The honest
+              signals available to this brand are the words and the product itself. */}
+          <p className="meta rise mb-3 text-acid">NEW YORK CANNABIS · 1G PRE-ROLLS</p>
+
           <h1 className="rise">
             {/* Desktop is the LARGEST step, not a step down. This used to read
                 70 / 98 / 88 — the headline shrank going from tablet to desktop while the
@@ -314,7 +326,11 @@ export function LocatorRoot({
               THAT SLAPPZ", a date, a badge. Applying it to a full sentence was a
               misreading: caps plus 0.16em tracking flattens the word shapes a reader scans
               by, and this is the first line anyone reads under the headline. */}
-          <p className="rise rise-1 mt-4 max-w-xl text-[17px] leading-relaxed text-muted sm:text-[19px]">
+          {/* text-paper, not text-muted. Everywhere else on the site muted grey sits on a
+              flat black or surface panel and reads fine; here it sits on a night PHOTOGRAPH,
+              where a mid grey has almost nothing to separate it from the image behind. The
+              hero is the one place the secondary text has to be as bright as the primary. */}
+          <p className="rise rise-1 mt-4 max-w-2xl text-[17px] leading-relaxed text-paper/90 sm:text-[19px]">
             Licensed New York dispensaries carrying SLAPPZ. Nearest first.
           </p>
 
@@ -347,7 +363,7 @@ export function LocatorRoot({
               phone, and centring left its tick floating beside the middle line. */}
           <ul className="rise rise-3 mt-6 flex flex-wrap items-start gap-x-5 gap-y-2">
             {trustPoints.map((point) => (
-              <li key={point} className="meta flex items-start gap-1.5 text-muted">
+              <li key={point} className="meta flex items-start gap-1.5 text-paper/75">
                 <CheckIcon size={13} className="mt-0.5 shrink-0 text-acid" />
                 {point}
               </li>

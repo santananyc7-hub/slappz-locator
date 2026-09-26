@@ -79,7 +79,7 @@ export function RetailerCard({
           SLAPPZ HERE
         </span>
         {retailer.featured && (
-          <span className="meta inline-block border border-violet px-2 py-1 text-[13px] text-violet">
+          <span className="meta inline-block bg-violet px-2 py-1 text-[13px] text-paper">
             FLAGSHIP
           </span>
         )}

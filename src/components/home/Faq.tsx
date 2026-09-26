@@ -107,7 +107,14 @@ export const FAQS: { q: string; a: React.ReactNode; plain: string }[] = [
 export function Faq() {
   return (
     <section className="border-t border-hairline px-4 py-12 sm:px-6 sm:py-16">
-      <div className="mx-auto max-w-[900px]">
+      {/* The container is max-w-[1400px] like every other section on the page, and the
+          READING column inside it is capped separately. This used to be a centred
+          max-w-[900px], which left the FAQ heading sitting 240px to the right of every other
+          heading on the homepage — the only section that did not line up. Keep the two
+          concerns separate: the outer box sets the page gutter, the inner one sets the
+          measure. */}
+      <div className="mx-auto max-w-[1400px]">
+        <div className="max-w-[900px]">
         <p className="meta text-acid">QUESTIONS</p>
         <h2 className="display mt-2 text-[38px] text-paper sm:text-[58px]">STRAIGHT ANSWERS</h2>
 
@@ -124,6 +131,7 @@ export function Faq() {
               <div className="pb-5 text-[15px] leading-relaxed text-muted">{faq.a}</div>
             </details>
           ))}
+          </div>
         </div>
       </div>
     </section>

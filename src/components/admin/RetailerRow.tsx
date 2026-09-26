@@ -31,7 +31,7 @@ export function RetailerRow({ retailer }: { retailer: Retailer }) {
             </span>
           )}
           {retailer.featured && (
-            <span className="meta border border-violet px-1.5 py-0.5 text-[12px] text-violet">
+            <span className="meta bg-violet px-1.5 py-0.5 text-[12px] text-paper">
               FEATURED
             </span>
           )}

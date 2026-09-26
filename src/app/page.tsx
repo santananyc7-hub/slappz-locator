@@ -10,7 +10,6 @@ import { WhereSlappzHits } from '@/components/home/WhereSlappzHits';
 import { SlappzNearYou } from '@/components/home/SlappzNearYou';
 import { ThisIsSlappz } from '@/components/home/ThisIsSlappz';
 import { InTheWild } from '@/components/home/InTheWild';
-import { Merch } from '@/components/home/Merch';
 import { PullUpNext } from '@/components/home/PullUpNext';
 import { Faq, FAQS } from '@/components/home/Faq';
 import { CarrySlappz } from '@/components/home/CarrySlappz';
@@ -127,9 +126,15 @@ export default async function Page({
         {/* 6 — SEE THE CULTURE */}
         <InTheWild />
 
-        {/* 6b — WEAR IT. Sits with the culture block rather than next to products: merch is
-            brand depth, not part of the find-it/buy-it path, and shouldn't compete with it. */}
-        <Merch />
+        {/* 6b — WEAR IT. PULLED ON SLAPPZ'S INSTRUCTION, 2026-09-25, until there is real
+            inventory to sell. The section rendered garments that are not currently stocked,
+            which is the merch equivalent of listing a retailer we cannot evidence.
+
+            Deliberately commented out rather than deleted: the component, the renderer and
+            src/data/merch.ts are all intact and still build, so restoring it is uncommenting
+            this line. Do not delete them — and do not put it back without SLAPPZ confirming
+            there is stock. */}
+        {/* <Merch /> */}
 
         {/* 7 — ASK FOR IT HERE */}
         <div id="pull-up">
