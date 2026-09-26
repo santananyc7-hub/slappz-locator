@@ -216,16 +216,9 @@ export function LocatorRoot({
   const markets = [
     ...new Set(allRetailers.map((r) => r.borough ?? r.address.city)),
   ];
-  const lastVerified = allRetailers
-    .map((r) => r.lastVerified)
-    .filter((d): d is string => Boolean(d))
-    .sort()
-    .at(-1);
-
   const trustPoints = [
     `${allRetailers.length} LICENSED SHOPS`,
     markets.join(' · ').toUpperCase(),
-    lastVerified ? `VERIFIED ${lastVerified.replaceAll('-', '.')}` : 'VERIFIED LISTINGS',
   ];
 
   return (
@@ -374,8 +367,13 @@ export function LocatorRoot({
             Trust strip. Every hero-section framework puts proof directly under the CTA —
             usually a star rating. SLAPPZ has no review corpus, and inventing one on a
             cannabis brand's site is not a trade-off worth making, so this carries the proof
-            that IS real and verifiable: licensed shops, markets covered, last verified.
-            All three are derived from the retailer data, so they can never drift.
+            that IS real and verifiable: licensed shops and markets covered. Both are
+            derived from the retailer data, so they can never drift.
+
+            A third point carried the last-verified date. SLAPPZ asked for it off the hero
+            on 2026-09-25 — do not put it back here. The dates are NOT gone: every retailer
+            still carries `lastVerified`, and it is still shown on the retailer cards and the
+            store pages, which is where someone actually checking a specific shop will look.
           */}
           {/* items-start, not items-center. The borough list wraps to three lines on a
               phone, and centring left its tick floating beside the middle line. */}
