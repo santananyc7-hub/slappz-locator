@@ -42,7 +42,7 @@ export default function ProductsPage() {
         >
           <Link
             href="/#locator"
-            className="display block-press block-shadow mt-7 inline-flex h-14 items-center gap-2 bg-acid px-6 text-[16px] text-ink"
+            className="display block-press block-shadow mt-7 inline-flex h-14 items-center gap-2 bg-acid px-6 text-[17px] text-ink"
           >
             FIND A SHOP
             <ArrowIcon size={16} />
@@ -58,14 +58,14 @@ export default function ProductsPage() {
             </div>
 
             <div className="mt-10 border-t border-hairline pt-8">
-              <h2 className="display text-[26px] text-paper">A NOTE ON WHAT&apos;S LISTED</h2>
-              <p className="mt-3 max-w-2xl text-[14px] leading-relaxed text-muted">
+              <h2 className="display text-[29px] text-paper">A NOTE ON WHAT&apos;S LISTED</h2>
+              <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-muted">
                 SLAPPZ products are made under a New York OCM Processor (Type 3) licence and
                 tested under the state&apos;s regulated framework before they reach a shelf.
                 Which SKUs a given shop has in stock is up to that shop and changes
                 constantly — this page shows the range, not any single store&apos;s menu.
               </p>
-              <p className="mt-3 max-w-2xl text-[14px] leading-relaxed text-muted">
+              <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-muted">
                 Availability at a specific retailer is only shown on that retailer&apos;s page
                 when it has actually been confirmed.
               </p>

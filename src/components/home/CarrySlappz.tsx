@@ -23,13 +23,13 @@ export function CarrySlappz() {
       <div className="mx-auto max-w-[1400px]">
         <p className="meta text-cab">FOR SHOP OWNERS, BUYERS &amp; BUDTENDERS</p>
 
-        <h2 className="display mt-3 max-w-4xl text-[40px] leading-[0.9] text-paper sm:text-[68px]">
+        <h2 className="display mt-3 max-w-4xl text-[45px] leading-[0.9] text-paper sm:text-[74px]">
           PUT IT ON
           <br />
           <span className="text-acid">YOUR SHELF</span>
         </h2>
 
-        <p className="mt-5 max-w-lg text-[15px] leading-relaxed text-muted">
+        <p className="mt-5 max-w-lg text-[16px] leading-relaxed text-muted">
           We&apos;ll visit your shop, meet the team, leave samples and talk about
           getting SLAPPZ 1g pre-rolls on your shelves.
         </p>
@@ -38,7 +38,7 @@ export function CarrySlappz() {
           {PILLARS.map(([label, body]) => (
             <li key={label} className="border border-hairline bg-ink p-5">
               <p className="meta text-acid">{label}</p>
-              <p className="mt-2 text-[13px] text-muted">{body}</p>
+              <p className="mt-2 text-[15px] text-muted">{body}</p>
             </li>
           ))}
         </ul>
@@ -46,13 +46,13 @@ export function CarrySlappz() {
         <div className="mt-9 flex flex-wrap items-center gap-4">
           <Link
             href="/wholesale"
-            className="display block-press block-shadow flex h-14 items-center justify-center gap-2 bg-acid px-7 text-[17px] text-ink"
+            className="display block-press block-shadow flex h-14 items-center justify-center gap-2 bg-acid px-7 text-[18px] text-ink"
           >
             CARRY SLAPPZ
             <ArrowIcon size={16} />
           </Link>
 
-          <p className="display text-[20px] text-paper">
+          <p className="display text-[23px] text-paper">
             LET&apos;S GROW TOGETHER. <span className="text-acid">LET&apos;S SLAPPZ.</span>
           </p>
         </div>

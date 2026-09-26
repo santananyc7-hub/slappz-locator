@@ -9,7 +9,7 @@ import { products } from '@/data/products';
 import type { Retailer } from '@/lib/types';
 
 const inputClass =
-  'mt-1.5 h-11 w-full border border-hairline-strong bg-ink px-3 text-[13px] text-paper placeholder:text-muted focus:border-acid focus:outline-none';
+  'mt-1.5 h-11 w-full border border-hairline-strong bg-ink px-3 text-[15px] text-paper placeholder:text-muted focus:border-acid focus:outline-none';
 
 function Field({
   label,
@@ -42,7 +42,7 @@ function Field({
         required={required}
         className={inputClass}
       />
-      {hint && <p className="mt-1 text-[11px] text-muted">{hint}</p>}
+      {hint && <p className="mt-1 text-[12px] text-muted">{hint}</p>}
     </div>
   );
 }
@@ -89,7 +89,7 @@ export function RetailerForm({ retailer }: { retailer?: Retailer }) {
           <Field label="ZIP" name="zip" defaultValue={retailer?.address.zip} required />
         </div>
 
-        <p className="mt-4 text-[11px] leading-relaxed text-muted">
+        <p className="mt-4 text-[12px] leading-relaxed text-muted">
           Coordinates are geocoded automatically whenever the address changes. The manual
           fields below are only applied if you save without editing the address.
         </p>
@@ -176,7 +176,7 @@ export function RetailerForm({ retailer }: { retailer?: Retailer }) {
             placeholder={products.map((p) => p.slug).join(', ')}
             className={inputClass}
           />
-          <p className="mt-1 text-[11px] leading-relaxed text-muted">
+          <p className="mt-1 text-[12px] leading-relaxed text-muted">
             Comma-separated product slugs. Only list what has actually been confirmed at this
             store — an empty field means &ldquo;unverified&rdquo;, and the site renders nothing
             rather than implying stock. Known slugs:{' '}
@@ -193,7 +193,7 @@ export function RetailerForm({ retailer }: { retailer?: Retailer }) {
             name="notes"
             rows={3}
             defaultValue={retailer?.notes}
-            className="mt-1.5 w-full border border-hairline-strong bg-ink px-3 py-2.5 text-[13px] text-paper placeholder:text-muted focus:border-acid focus:outline-none"
+            className="mt-1.5 w-full border border-hairline-strong bg-ink px-3 py-2.5 text-[15px] text-paper placeholder:text-muted focus:border-acid focus:outline-none"
             placeholder="Never shown on the consumer site."
           />
         </div>
@@ -238,7 +238,7 @@ export function RetailerForm({ retailer }: { retailer?: Retailer }) {
         <button
           type="submit"
           disabled={pending}
-          className="display block-press block-shadow-sm bg-acid px-6 py-3.5 text-[16px] text-ink disabled:opacity-60"
+          className="display block-press block-shadow-sm bg-acid px-6 py-3.5 text-[17px] text-ink disabled:opacity-60"
         >
           {pending ? 'SAVING…' : 'SAVE RETAILER'}
         </button>

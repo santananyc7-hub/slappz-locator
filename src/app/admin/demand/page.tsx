@@ -17,15 +17,15 @@ export default async function DemandPage() {
 
   return (
     <div>
-      <h1 className="display text-[36px] text-paper">WHERE PEOPLE WANT SLAPPZ</h1>
+      <h1 className="display text-[40px] text-paper">WHERE PEOPLE WANT SLAPPZ</h1>
       <p className="meta mt-2 text-muted">
         {signals.length} SIGNALS · {rows.length} ZIPS · {totalRequests} DIRECT REQUESTS
       </p>
 
       {rows.length === 0 ? (
         <div className="mt-8 border border-hairline bg-surface p-8">
-          <p className="display text-[24px] text-paper">NOTHING YET.</p>
-          <p className="mt-2 max-w-lg text-[13px] leading-relaxed text-muted">
+          <p className="display text-[27px] text-paper">NOTHING YET.</p>
+          <p className="mt-2 max-w-lg text-[15px] leading-relaxed text-muted">
             Every search that finds no SLAPPZ nearby lands here, along with anyone who submits
             BRING SLAPPZ HERE. Ranked by volume, it becomes a distribution map.
           </p>
@@ -36,14 +36,14 @@ export default async function DemandPage() {
             {rows.map((row) => (
               <li key={row.zip}>
                 <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                  <span className="display text-[20px] text-paper tabular">{row.zip}</span>
+                  <span className="display text-[23px] text-paper tabular">{row.zip}</span>
                   <span className="meta text-muted">
                     {row.label}
                     {row.requests > 0 && (
                       <span className="ml-3 text-acid">{row.requests} ASKED DIRECTLY</span>
                     )}
                   </span>
-                  <span className="display text-[20px] text-acid tabular">{row.count}</span>
+                  <span className="display text-[23px] text-acid tabular">{row.count}</span>
                 </div>
 
                 <div
@@ -64,8 +64,8 @@ export default async function DemandPage() {
 
       {recent.some((s) => s.contact) && (
         <section className="mt-8">
-          <h2 className="display text-[24px] text-paper">RECENT REQUESTS WITH CONTACT</h2>
-          <p className="mt-1.5 text-[12px] text-muted">
+          <h2 className="display text-[27px] text-paper">RECENT REQUESTS WITH CONTACT</h2>
+          <p className="mt-1.5 text-[13px] text-muted">
             Self-submitted through BRING SLAPPZ HERE. Treat as opt-in for launch news only.
           </p>
           <ul className="mt-4 flex flex-col gap-2">
@@ -76,8 +76,8 @@ export default async function DemandPage() {
                   key={s.id}
                   className="flex flex-wrap items-baseline gap-x-4 gap-y-1 border border-hairline bg-surface p-3.5"
                 >
-                  <span className="display text-[16px] text-paper tabular">{s.zip}</span>
-                  <span className="text-[13px] text-acid">{s.contact}</span>
+                  <span className="display text-[17px] text-paper tabular">{s.zip}</span>
+                  <span className="text-[15px] text-acid">{s.contact}</span>
                   <span className="meta ml-auto text-muted">
                     {new Date(s.createdAt).toLocaleDateString()}
                   </span>
@@ -87,7 +87,7 @@ export default async function DemandPage() {
         </section>
       )}
 
-      <p className="mt-8 border-t border-hairline pt-6 text-[12px] leading-relaxed text-muted">
+      <p className="mt-8 border-t border-hairline pt-6 text-[13px] leading-relaxed text-muted">
         Signals are anonymous. Coordinates are rounded to roughly one kilometre before they are
         stored, and no IP address, device identifier or session is recorded. Contact details
         appear only when a customer typed them in themselves.

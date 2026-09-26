@@ -26,7 +26,7 @@ export function StoreActions({ retailer }: { retailer: Retailer }) {
         target="_blank"
         rel="noopener noreferrer"
         onClick={() => track('directions_click', { retailer: retailer.slug, placement: 'store-page' })}
-        className="display block-press block-shadow-sm flex items-center justify-center gap-2 bg-acid px-6 py-3.5 text-[16px] text-ink"
+        className="display block-press block-shadow-sm flex items-center justify-center gap-2 bg-acid px-6 py-3.5 text-[17px] text-ink"
       >
         <NavIcon size={16} />
         GET DIRECTIONS
@@ -38,7 +38,7 @@ export function StoreActions({ retailer }: { retailer: Retailer }) {
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => track('menu_click', { retailer: retailer.slug, placement: 'store-page' })}
-          className="display flex items-center justify-center gap-2 border border-hairline-strong px-6 py-3.5 text-[16px] text-paper transition-colors hover:border-acid hover:text-acid"
+          className="display flex items-center justify-center gap-2 border border-hairline-strong px-6 py-3.5 text-[17px] text-paper transition-colors hover:border-acid hover:text-acid"
         >
           <BagIcon size={16} />
           SHOP STORE
@@ -48,7 +48,7 @@ export function StoreActions({ retailer }: { retailer: Retailer }) {
       {retailer.phone && (
         <a
           href={`tel:${retailer.phone}`}
-          className="display flex items-center justify-center gap-2 border border-hairline-strong px-6 py-3.5 text-[16px] text-paper transition-colors hover:border-acid hover:text-acid"
+          className="display flex items-center justify-center gap-2 border border-hairline-strong px-6 py-3.5 text-[17px] text-paper transition-colors hover:border-acid hover:text-acid"
         >
           <PhoneIcon size={16} />
           CALL

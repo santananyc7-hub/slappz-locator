@@ -64,14 +64,14 @@ export function SearchPanel({
             inputMode="text"
             enterKeyHint="search"
             spellCheck={false}
-            className="meta h-14 w-full border border-hairline-strong bg-surface pr-4 pl-11 text-[13px] text-paper placeholder:text-muted focus:border-acid focus:outline-none sm:h-[58px]"
+            className="meta h-14 w-full border border-hairline-strong bg-surface pr-4 pl-11 text-[15px] text-paper placeholder:text-muted focus:border-acid focus:outline-none sm:h-[58px]"
           />
         </div>
 
         <button
           type="submit"
           disabled={busy}
-          className="display block-press block-shadow flex h-14 items-center justify-center gap-2 bg-acid px-7 text-[17px] text-ink disabled:opacity-60 sm:h-[58px]"
+          className="display block-press block-shadow flex h-14 items-center justify-center gap-2 bg-acid px-7 text-[18px] text-ink disabled:opacity-60 sm:h-[58px]"
         >
           {busy ? <SpinnerIcon size={18} /> : null}
           FIND SLAPPZ

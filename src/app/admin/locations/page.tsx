@@ -12,7 +12,7 @@ export default async function LocationsPage() {
     <div>
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1 className="display text-[36px] text-paper">LOCATIONS</h1>
+          <h1 className="display text-[40px] text-paper">LOCATIONS</h1>
           <p className="meta mt-2 text-muted">
             {active} ACTIVE · {retailers.length} TOTAL
           </p>
@@ -34,7 +34,7 @@ export default async function LocationsPage() {
 
       <div className="mt-8 flex flex-col gap-2">
         {retailers.length === 0 ? (
-          <p className="border border-hairline bg-surface p-6 text-[14px] text-muted">
+          <p className="border border-hairline bg-surface p-6 text-[15px] text-muted">
             No retailers yet. Add one, or bulk import a CSV.
           </p>
         ) : (
@@ -42,7 +42,7 @@ export default async function LocationsPage() {
         )}
       </div>
 
-      <p className="mt-8 border-t border-hairline pt-6 text-[12px] leading-relaxed text-muted">
+      <p className="mt-8 border-t border-hairline pt-6 text-[13px] leading-relaxed text-muted">
         Retailers seeded in the repository are deactivated rather than deleted, so their
         verification history survives. Only retailers created here can be removed outright.
       </p>

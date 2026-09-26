@@ -7,8 +7,8 @@ export default function NewRetailerPage() {
       <Link href="/admin/locations" className="meta text-muted hover:text-acid">
         ← LOCATIONS
       </Link>
-      <h1 className="display mt-6 text-[36px] text-paper">ADD RETAILER</h1>
-      <p className="mt-2 max-w-2xl text-[13px] leading-relaxed text-muted">
+      <h1 className="display mt-6 text-[40px] text-paper">ADD RETAILER</h1>
+      <p className="mt-2 max-w-2xl text-[15px] leading-relaxed text-muted">
         Only add a shop once you can point to evidence that it carries SLAPPZ. Record that
         evidence in the verification section — it is what keeps the locator trustworthy.
       </p>

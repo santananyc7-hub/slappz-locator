@@ -87,7 +87,7 @@ export default async function StorePage({ params }: { params: Promise<{ slug: st
 
         <p className="meta mt-8 text-acid">SLAPPZ HERE</p>
 
-        <h1 className="display mt-3 text-[48px] leading-[0.9] text-paper sm:text-[76px]">
+        <h1 className="display mt-3 text-[54px] leading-[0.9] text-paper sm:text-[82px]">
           {retailer.name}
         </h1>
 
@@ -95,7 +95,7 @@ export default async function StorePage({ params }: { params: Promise<{ slug: st
 
         <div className="mt-8 grain block-shadow border border-acid bg-surface p-5 sm:p-7">
           <p className="meta text-muted">ADDRESS</p>
-          <address className="mt-2 text-[16px] leading-relaxed text-paper not-italic">
+          <address className="mt-2 text-[17px] leading-relaxed text-paper not-italic">
             {retailer.address.street}
             <br />
             {retailer.address.city}, {retailer.address.state} {retailer.address.zip}
@@ -108,7 +108,7 @@ export default async function StorePage({ params }: { params: Promise<{ slug: st
           {phone && (
             <div>
               <dt className="meta text-muted">PHONE</dt>
-              <dd className="mt-1.5 text-[15px] text-paper">
+              <dd className="mt-1.5 text-[16px] text-paper">
                 <a href={`tel:${retailer.phone}`} className="hover:text-acid">
                   {phone}
                 </a>
@@ -119,7 +119,7 @@ export default async function StorePage({ params }: { params: Promise<{ slug: st
           {retailer.website && (
             <div>
               <dt className="meta text-muted">WEBSITE</dt>
-              <dd className="mt-1.5 text-[15px] break-all text-paper">
+              <dd className="mt-1.5 text-[16px] break-all text-paper">
                 <a
                   href={retailer.website}
                   target="_blank"
@@ -135,14 +135,14 @@ export default async function StorePage({ params }: { params: Promise<{ slug: st
           {retailer.licenseNumber && (
             <div>
               <dt className="meta text-muted">NY OCM LICENSE</dt>
-              <dd className="mt-1.5 text-[15px] text-paper tabular">{retailer.licenseNumber}</dd>
+              <dd className="mt-1.5 text-[16px] text-paper tabular">{retailer.licenseNumber}</dd>
             </div>
           )}
 
           {retailer.lastVerified && (
             <div>
               <dt className="meta text-muted">LAST VERIFIED</dt>
-              <dd className="mt-1.5 text-[15px] text-paper tabular">
+              <dd className="mt-1.5 text-[16px] text-paper tabular">
                 {retailer.lastVerified.replaceAll('-', '.')}
               </dd>
             </div>
@@ -152,7 +152,7 @@ export default async function StorePage({ params }: { params: Promise<{ slug: st
         {/* Products render only when availability was actually confirmed for this store. */}
         {verifiedProducts.length > 0 && (
           <section className="mt-10 border-t border-hairline pt-8">
-            <h2 className="display text-[26px] text-paper">CONFIRMED HERE</h2>
+            <h2 className="display text-[29px] text-paper">CONFIRMED HERE</h2>
             <ul className="mt-4 flex flex-wrap gap-2">
               {verifiedProducts.map((p) => (
                 <li
@@ -167,7 +167,7 @@ export default async function StorePage({ params }: { params: Promise<{ slug: st
           </section>
         )}
 
-        <p className="mt-10 border-t border-hairline pt-6 text-[12px] leading-relaxed text-muted">
+        <p className="mt-10 border-t border-hairline pt-6 text-[13px] leading-relaxed text-muted">
           SLAPPZ availability at {retailer.name} is verified periodically and does not reflect
           real-time inventory. Call ahead or check the store menu before you travel. 21+ only.
         </p>

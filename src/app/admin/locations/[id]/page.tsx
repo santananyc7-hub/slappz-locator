@@ -23,7 +23,7 @@ export default async function EditRetailerPage({
       </Link>
 
       <div className="mt-6 flex flex-wrap items-baseline justify-between gap-3">
-        <h1 className="display text-[36px] text-paper">{retailer.name}</h1>
+        <h1 className="display text-[40px] text-paper">{retailer.name}</h1>
         <a
           href={`/stores/${retailer.slug}`}
           target="_blank"

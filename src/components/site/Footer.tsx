@@ -11,12 +11,12 @@ export function Footer() {
       <div className="mx-auto max-w-[1400px] px-4 py-10 sm:px-6 sm:py-12">
         <div className="flex flex-wrap items-center justify-between gap-6">
           <SlappzWordmark size="md" />
-          <span className="display border-2 border-acid px-3 py-1.5 text-[20px] text-acid">
+          <span className="display border-2 border-acid px-3 py-1.5 text-[23px] text-acid">
             21+
           </span>
         </div>
 
-        <div className="mt-8 grid gap-6 border-t border-hairline pt-8 text-[12px] leading-relaxed text-muted sm:grid-cols-2">
+        <div className="mt-8 grid gap-6 border-t border-hairline pt-8 text-[13px] leading-relaxed text-muted sm:grid-cols-2">
           <p>
             For adults 21 and over. SLAPPZ products are sold exclusively through licensed New
             York State cannabis retailers. Please consume responsibly and keep out of reach of

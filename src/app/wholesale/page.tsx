@@ -90,7 +90,7 @@ export default function WholesalePage() {
           <div className="mt-8 flex flex-wrap gap-3">
             <a
               href="mailto:wholesale@slappz.nyc"
-              className="display block-press block-shadow flex h-14 items-center gap-2 bg-acid px-6 text-[16px] text-ink"
+              className="display block-press block-shadow flex h-14 items-center gap-2 bg-acid px-6 text-[17px] text-ink"
             >
               <MailIcon size={16} />
               WHOLESALE@SLAPPZ.NYC
@@ -99,7 +99,7 @@ export default function WholesalePage() {
               href="https://www.instagram.com/slappz_hq/"
               target="_blank"
               rel="noopener noreferrer"
-              className="display flex h-14 items-center gap-2 border border-hairline-strong px-6 text-[16px] text-paper transition-colors hover:border-acid hover:text-acid"
+              className="display flex h-14 items-center gap-2 border border-hairline-strong px-6 text-[17px] text-paper transition-colors hover:border-acid hover:text-acid"
             >
               <InstagramIcon size={16} />
               DM @SLAPPZ_HQ
@@ -110,7 +110,7 @@ export default function WholesalePage() {
         <section className="border-b border-hairline px-4 py-12 sm:px-6 sm:py-16">
           <div className="mx-auto max-w-[1400px]">
             <p className="meta text-acid">WHY IT MOVES</p>
-            <h2 className="display mt-2 text-[30px] text-paper sm:text-[42px]">
+            <h2 className="display mt-2 text-[34px] text-paper sm:text-[48px]">
               WHAT YOU&apos;RE PUTTING ON THE SHELF
             </h2>
 
@@ -118,7 +118,7 @@ export default function WholesalePage() {
               {PILLARS.map(([label, body]) => (
                 <li key={label} className="border border-hairline bg-surface p-5">
                   <p className="meta text-acid">{label}</p>
-                  <p className="mt-2 text-[13px] text-muted">{body}</p>
+                  <p className="mt-2 text-[15px] text-muted">{body}</p>
                 </li>
               ))}
             </ul>
@@ -128,7 +128,7 @@ export default function WholesalePage() {
         <section className="border-b border-hairline px-4 py-12 sm:px-6 sm:py-16">
           <div className="mx-auto max-w-[1400px]">
             <p className="meta text-acid">HOW IT WORKS</p>
-            <h2 className="display mt-2 text-[30px] text-paper sm:text-[42px]">
+            <h2 className="display mt-2 text-[34px] text-paper sm:text-[48px]">
               THREE STEPS
             </h2>
 
@@ -136,13 +136,13 @@ export default function WholesalePage() {
               {STEPS.map(([num, title, body]) => (
                 <li key={num} className="grain border border-hairline bg-surface p-6">
                   <p
-                    className="display text-[52px] leading-none text-acid"
+                    className="display text-[58px] leading-none text-acid"
                     style={{ textShadow: '3px 3px 0 var(--color-violet)' }}
                   >
                     {num}
                   </p>
-                  <p className="display mt-5 text-[22px] text-paper">{title}</p>
-                  <p className="mt-2 text-[13px] leading-relaxed text-muted">{body}</p>
+                  <p className="display mt-5 text-[25px] text-paper">{title}</p>
+                  <p className="mt-2 text-[15px] leading-relaxed text-muted">{body}</p>
                 </li>
               ))}
             </ol>
@@ -152,10 +152,10 @@ export default function WholesalePage() {
         <section className="border-b border-hairline px-4 py-12 sm:px-6 sm:py-16">
           <div className="mx-auto max-w-[1400px]">
             <p className="meta text-acid">WHAT IT LOOKS LIKE</p>
-            <h2 className="display mt-2 text-[30px] text-paper sm:text-[42px]">
+            <h2 className="display mt-2 text-[34px] text-paper sm:text-[48px]">
               WE SET IT UP IN YOUR SHOP
             </h2>
-            <p className="mt-4 max-w-2xl text-[13px] leading-relaxed text-muted">
+            <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-muted">
               This is what a SLAPPZ activation looks like in a licensed New York dispensary:
               our table, our cloth and the full 1g range laid out.
             </p>
@@ -183,7 +183,7 @@ export default function WholesalePage() {
                       }}
                     />
                   </div>
-                  <p className="display absolute inset-x-0 bottom-0 p-5 text-[18px] text-paper">
+                  <p className="display absolute inset-x-0 bottom-0 p-5 text-[19px] text-paper">
                     {shot.line}
                   </p>
                 </li>
@@ -194,7 +194,7 @@ export default function WholesalePage() {
 
         <section className="grain bg-surface px-4 py-14 sm:px-6 sm:py-20">
           <div className="mx-auto max-w-[1400px]">
-            <h2 className="display max-w-3xl text-[36px] leading-[0.9] text-paper sm:text-[58px]">
+            <h2 className="display max-w-3xl text-[40px] leading-[0.9] text-paper sm:text-[64px]">
               LET&apos;S GROW TOGETHER.
               <br />
               <span className="text-acid">LET&apos;S SLAPPZ.</span>
@@ -203,7 +203,7 @@ export default function WholesalePage() {
             <div className="mt-8 flex flex-wrap gap-3">
               <a
                 href="mailto:wholesale@slappz.nyc"
-                className="display block-press block-shadow flex h-14 items-center gap-2 bg-acid px-6 text-[16px] text-ink"
+                className="display block-press block-shadow flex h-14 items-center gap-2 bg-acid px-6 text-[17px] text-ink"
               >
                 <MailIcon size={16} />
                 WHOLESALE@SLAPPZ.NYC
@@ -212,14 +212,14 @@ export default function WholesalePage() {
                 href="https://www.instagram.com/slappz_hq/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="display flex h-14 items-center gap-2 border border-hairline-strong px-6 text-[16px] text-paper transition-colors hover:border-acid hover:text-acid"
+                className="display flex h-14 items-center gap-2 border border-hairline-strong px-6 text-[17px] text-paper transition-colors hover:border-acid hover:text-acid"
               >
                 <InstagramIcon size={16} />
                 DM @SLAPPZ_HQ
               </a>
             </div>
 
-            <p className="mt-8 max-w-2xl text-[12px] leading-relaxed text-muted">
+            <p className="mt-8 max-w-2xl text-[13px] leading-relaxed text-muted">
               Wholesale enquiries are for licensed New York cannabis retailers only. SLAPPZ
               operates under a New York OCM Processor (Type 3) licence.
             </p>

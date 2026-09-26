@@ -51,9 +51,9 @@ export function Merch() {
             </div>
 
             <div className="border-t border-hairline p-4">
-              <h3 className="display text-[18px] text-paper">{item.name}</h3>
-              <p className="mt-1.5 text-[12px] leading-relaxed text-muted">{item.detail}</p>
-              <p className="mt-2 text-[11px] leading-relaxed text-muted">
+              <h3 className="display text-[19px] text-paper">{item.name}</h3>
+              <p className="mt-1.5 text-[13px] leading-relaxed text-muted">{item.detail}</p>
+              <p className="mt-2 text-[12px] leading-relaxed text-muted">
                 <span className="text-acid">PRINT · </span>
                 {item.artwork}
               </p>
@@ -73,7 +73,7 @@ export function Merch() {
           <InstagramIcon size={14} />
           DM FOR DROPS
         </a>
-        <p className="text-[13px] text-muted">
+        <p className="text-[15px] text-muted">
           Drops get announced on Instagram first, and land at pop-ups before anywhere else.
         </p>
       </div>

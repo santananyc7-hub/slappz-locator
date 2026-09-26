@@ -112,13 +112,13 @@ export function AgeGate() {
           <>
             <h2
               id="age-gate-title"
-              className="display mt-9 text-[44px] leading-[0.9] text-paper sm:text-[64px]"
+              className="display mt-9 text-[50px] leading-[0.9] text-paper sm:text-[70px]"
             >
               COME BACK
               <br />
               <span className="text-magenta">AT 21.</span>
             </h2>
-            <p className="mx-auto mt-5 max-w-sm text-[14px] leading-relaxed text-muted">
+            <p className="mx-auto mt-5 max-w-sm text-[15px] leading-relaxed text-muted">
               No hard feelings. SLAPPZ is an adult-use cannabis brand and New York law puts
               the line at 21.
             </p>
@@ -135,7 +135,7 @@ export function AgeGate() {
             {/* The number is the hero here — acid on the violet extrude, the wordmark's
                 own construction at display scale. */}
             <p
-              className="display mt-8 text-[104px] leading-[0.8] text-acid sm:text-[144px]"
+              className="display mt-8 text-[110px] leading-[0.8] text-acid sm:text-[150px]"
               style={{ textShadow: '6px 6px 0 var(--color-violet)' }}
               aria-hidden="true"
             >
@@ -144,12 +144,12 @@ export function AgeGate() {
 
             <h2
               id="age-gate-title"
-              className="display mt-6 text-[30px] leading-[0.95] text-paper sm:text-[40px]"
+              className="display mt-6 text-[34px] leading-[0.95] text-paper sm:text-[45px]"
             >
               ARE YOU 21 OR OLDER?
             </h2>
 
-            <p className="mx-auto mt-4 max-w-sm text-[14px] leading-relaxed text-muted">
+            <p className="mx-auto mt-4 max-w-sm text-[15px] leading-relaxed text-muted">
               You have to be 21+ to be here. We&apos;ll remember you for 30 days.
             </p>
 
@@ -158,7 +158,7 @@ export function AgeGate() {
                 ref={confirmRef}
                 type="button"
                 onClick={confirm}
-                className="display block-press block-shadow flex h-14 items-center justify-center gap-2 bg-acid px-8 text-[17px] text-ink"
+                className="display block-press block-shadow flex h-14 items-center justify-center gap-2 bg-acid px-8 text-[18px] text-ink"
               >
                 YES, I&apos;M 21+
                 <ArrowIcon size={16} />
@@ -166,13 +166,13 @@ export function AgeGate() {
               <button
                 type="button"
                 onClick={() => setDeclined(true)}
-                className="display flex h-14 items-center justify-center border border-hairline-strong px-8 text-[17px] text-paper transition-colors hover:border-magenta hover:text-magenta"
+                className="display flex h-14 items-center justify-center border border-hairline-strong px-8 text-[18px] text-paper transition-colors hover:border-magenta hover:text-magenta"
               >
                 NO
               </button>
             </div>
 
-            <p className="mt-8 text-[11px] leading-relaxed text-muted">
+            <p className="mt-8 text-[12px] leading-relaxed text-muted">
               SLAPPZ products are sold only through licensed New York State cannabis
               retailers. Keep out of reach of children and pets.
             </p>

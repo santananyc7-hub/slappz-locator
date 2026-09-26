@@ -45,9 +45,9 @@ function ShopCard({ retailer }: { retailer: Retailer }) {
     <article className="flex flex-col justify-between border-l-[3px] border-l-hairline bg-surface p-5 transition-colors hover:border-l-acid">
       <div>
         <div className="flex items-start justify-between gap-3">
-          <h3 className="display text-[26px] text-paper">{retailer.name}</h3>
+          <h3 className="display text-[29px] text-paper">{retailer.name}</h3>
           {retailer.featured && (
-            <span className="meta shrink-0 border border-violet px-2 py-1 text-[9px] text-violet">
+            <span className="meta shrink-0 border border-violet px-2 py-1 text-[10px] text-violet">
               FLAGSHIP
             </span>
           )}
@@ -59,7 +59,7 @@ function ShopCard({ retailer }: { retailer: Retailer }) {
             .join(' · ')}
         </p>
 
-        <p className="mt-3 text-[13px] leading-snug text-muted">
+        <p className="mt-3 text-[15px] leading-snug text-muted">
           {retailer.address.street}, {retailer.address.city}, {retailer.address.state}{' '}
           {retailer.address.zip}
         </p>

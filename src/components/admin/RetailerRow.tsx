@@ -24,25 +24,25 @@ export function RetailerRow({ retailer }: { retailer: Retailer }) {
     >
       <div className="min-w-[220px] flex-1">
         <div className="flex flex-wrap items-center gap-2">
-          <h2 className="display text-[20px] text-paper">{retailer.name}</h2>
+          <h2 className="display text-[23px] text-paper">{retailer.name}</h2>
           {!retailer.active && (
-            <span className="meta border border-magenta px-1.5 py-0.5 text-[9px] text-magenta">
+            <span className="meta border border-magenta px-1.5 py-0.5 text-[10px] text-magenta">
               INACTIVE
             </span>
           )}
           {retailer.featured && (
-            <span className="meta border border-violet px-1.5 py-0.5 text-[9px] text-violet">
+            <span className="meta border border-violet px-1.5 py-0.5 text-[10px] text-violet">
               FEATURED
             </span>
           )}
         </div>
 
-        <p className="mt-1 text-[12px] text-muted">
+        <p className="mt-1 text-[13px] text-muted">
           {retailer.address.street}, {retailer.address.city}, {retailer.address.state}{' '}
           {retailer.address.zip}
         </p>
 
-        <p className="meta mt-1.5 flex flex-wrap gap-x-3 gap-y-1 text-[10px] text-muted">
+        <p className="meta mt-1.5 flex flex-wrap gap-x-3 gap-y-1 text-[11px] text-muted">
           <span>{retailer.slug}</span>
           {retailer.lastVerified && <span>VERIFIED {retailer.lastVerified}</span>}
           {retailer.verification && (

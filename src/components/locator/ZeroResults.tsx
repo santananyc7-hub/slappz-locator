@@ -64,13 +64,13 @@ export function ZeroResults({
     <section className="grain border border-hairline-strong bg-surface p-6 sm:p-9">
       <p className="meta text-magenta">NO SLAPPZ NEARBY</p>
 
-      <h2 className="display mt-3 text-[42px] text-paper sm:text-[64px]">
+      <h2 className="display mt-3 text-[48px] text-paper sm:text-[70px]">
         DAMN.
         <br />
         <span className="text-acid">NOT THERE YET.</span>
       </h2>
 
-      <p className="mt-4 max-w-lg text-[15px] leading-relaxed text-muted">
+      <p className="mt-4 max-w-lg text-[16px] leading-relaxed text-muted">
         SLAPPZ hasn&apos;t landed
         {origin?.label ? (
           <>
@@ -87,8 +87,8 @@ export function ZeroResults({
         <div className="mt-6 flex items-start gap-3 border border-acid bg-ink p-5">
           <CheckIcon size={20} className="mt-0.5 shrink-0 text-acid" />
           <div>
-            <p className="display text-[20px] text-acid">GOT IT. WE HEARD YOU.</p>
-            <p className="mt-1.5 text-[13px] text-muted">
+            <p className="display text-[23px] text-acid">GOT IT. WE HEARD YOU.</p>
+            <p className="mt-1.5 text-[15px] text-muted">
               {zip} is on the list. Keep an eye on{' '}
               <a
                 href="https://www.instagram.com/slappz_hq/"
@@ -105,7 +105,7 @@ export function ZeroResults({
         </div>
       ) : (
         <form onSubmit={submit} className="mt-6 max-w-lg">
-          <p className="display text-[22px] text-paper">TELL US WHERE YOU WANT IT</p>
+          <p className="display text-[25px] text-paper">TELL US WHERE YOU WANT IT</p>
 
           <div className="mt-3 flex flex-col gap-2.5">
             <div>
@@ -123,7 +123,7 @@ export function ZeroResults({
                 placeholder="11373"
                 aria-describedby={error ? 'demand-error' : undefined}
                 aria-invalid={error ? 'true' : undefined}
-                className="meta mt-1.5 h-14 w-full border border-hairline-strong bg-ink px-4 text-[13px] text-paper placeholder:text-muted focus:border-acid focus:outline-none"
+                className="meta mt-1.5 h-14 w-full border border-hairline-strong bg-ink px-4 text-[15px] text-paper placeholder:text-muted focus:border-acid focus:outline-none"
               />
             </div>
 
@@ -137,7 +137,7 @@ export function ZeroResults({
                 onChange={(e) => setContact(e.target.value)}
                 autoComplete="email"
                 placeholder="so we can tell you when it lands"
-                className="meta mt-1.5 h-14 w-full border border-hairline-strong bg-ink px-4 text-[13px] text-paper placeholder:text-muted placeholder:normal-case focus:border-acid focus:outline-none"
+                className="meta mt-1.5 h-14 w-full border border-hairline-strong bg-ink px-4 text-[15px] text-paper placeholder:text-muted placeholder:normal-case focus:border-acid focus:outline-none"
               />
             </div>
           </div>
@@ -151,13 +151,13 @@ export function ZeroResults({
           <button
             type="submit"
             disabled={state === 'sending'}
-            className="display block-press block-shadow mt-4 flex h-14 w-full items-center justify-center gap-2 bg-acid px-6 text-[17px] text-ink disabled:opacity-60 sm:w-auto"
+            className="display block-press block-shadow mt-4 flex h-14 w-full items-center justify-center gap-2 bg-acid px-6 text-[18px] text-ink disabled:opacity-60 sm:w-auto"
           >
             {state === 'sending' ? <SpinnerIcon size={16} /> : <ArrowIcon size={16} />}
             BRING SLAPPZ HERE
           </button>
 
-          <p className="mt-3 text-[11px] leading-relaxed text-muted">
+          <p className="mt-3 text-[12px] leading-relaxed text-muted">
             We only store your ZIP and, if you give it, your contact. No precise location is
             saved.
           </p>
@@ -168,12 +168,12 @@ export function ZeroResults({
         <div className="mt-8 border-t border-hairline pt-6">
           <p className="meta text-muted">CLOSEST SLAPPZ ANYWHERE</p>
           <div className="mt-3 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-            <h3 className="display text-[26px] text-paper">{closest.name}</h3>
+            <h3 className="display text-[29px] text-paper">{closest.name}</h3>
             <span className="meta tabular text-acid">
               {formatDistance(closest.distanceMiles)} AWAY
             </span>
           </div>
-          <p className="mt-1.5 text-[13px] text-muted">
+          <p className="mt-1.5 text-[15px] text-muted">
             {closest.address.street}, {closest.address.city}, {closest.address.state}
           </p>
           <a

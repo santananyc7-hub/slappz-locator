@@ -83,7 +83,7 @@ export function InTheWild() {
               <p className="meta text-acid">
                 {String(i + 1).padStart(2, '0')} · {tile.place}
               </p>
-              <p className="display mt-1.5 text-[20px] text-paper">{tile.line}</p>
+              <p className="display mt-1.5 text-[23px] text-paper">{tile.line}</p>
             </figcaption>
           </figure>
         ))}

@@ -109,7 +109,7 @@ export function Faq() {
     <section className="border-t border-hairline px-4 py-12 sm:px-6 sm:py-16">
       <div className="mx-auto max-w-[900px]">
         <p className="meta text-acid">QUESTIONS</p>
-        <h2 className="display mt-2 text-[34px] text-paper sm:text-[52px]">STRAIGHT ANSWERS</h2>
+        <h2 className="display mt-2 text-[38px] text-paper sm:text-[58px]">STRAIGHT ANSWERS</h2>
 
         <div className="mt-8 border-t border-hairline">
           {FAQS.map((faq) => (
@@ -121,7 +121,7 @@ export function Faq() {
                   className="relative block h-3 w-3 shrink-0 text-acid before:absolute before:top-1/2 before:left-0 before:h-px before:w-3 before:-translate-y-1/2 before:bg-current after:absolute after:top-0 after:left-1/2 after:h-3 after:w-px after:-translate-x-1/2 after:bg-current after:transition-transform group-open:after:scale-y-0"
                 />
               </summary>
-              <div className="pb-5 text-[14px] leading-relaxed text-muted">{faq.a}</div>
+              <div className="pb-5 text-[15px] leading-relaxed text-muted">{faq.a}</div>
             </details>
           ))}
         </div>

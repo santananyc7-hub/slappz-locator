@@ -70,12 +70,12 @@ export function PullUpNext() {
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
           <div>
             <p className="meta text-magenta">DEMAND</p>
-            <h2 className="display mt-2 text-[38px] leading-[0.9] text-paper sm:text-[60px]">
+            <h2 className="display mt-2 text-[43px] leading-[0.9] text-paper sm:text-[66px]">
               NAME THE
               <br />
               <span className="text-acid">AREA</span>
             </h2>
-            <p className="mt-5 max-w-md text-[15px] leading-relaxed text-muted">
+            <p className="mt-5 max-w-md text-[16px] leading-relaxed text-muted">
               SLAPPZ moves shop by shop. Tell us where you are and which shop you want it in —
               that&apos;s how the next market gets picked.
             </p>
@@ -85,8 +85,8 @@ export function PullUpNext() {
             <div className="flex items-start gap-3 self-start border border-acid bg-surface p-6">
               <CheckIcon size={20} className="mt-0.5 shrink-0 text-acid" />
               <div>
-                <p className="display text-[24px] text-acid">GOT IT. THANK YOU.</p>
-                <p className="mt-2 text-[13px] leading-relaxed text-muted">
+                <p className="display text-[27px] text-acid">GOT IT. THANK YOU.</p>
+                <p className="mt-2 text-[15px] leading-relaxed text-muted">
                   {zip} is on the list{shop.trim() ? `, and so is ${shop.trim()}` : ''}. New
                   shops get announced on{' '}
                   <a
@@ -153,13 +153,13 @@ export function PullUpNext() {
               <button
                 type="submit"
                 disabled={state === 'sending'}
-                className="display block-press block-shadow mt-5 flex h-14 w-full items-center justify-center gap-2 bg-acid px-6 text-[17px] text-ink disabled:opacity-60 sm:w-auto"
+                className="display block-press block-shadow mt-5 flex h-14 w-full items-center justify-center gap-2 bg-acid px-6 text-[18px] text-ink disabled:opacity-60 sm:w-auto"
               >
                 {state === 'sending' ? <SpinnerIcon size={16} /> : <ArrowIcon size={16} />}
                 BRING SLAPPZ HERE
               </button>
 
-              <p className="mt-3 text-[11px] leading-relaxed text-muted">
+              <p className="mt-3 text-[12px] leading-relaxed text-muted">
                 We store your ZIP and whatever you type here. No precise location, no tracking.
               </p>
             </form>
@@ -209,7 +209,7 @@ function Field({
         inputMode={inputMode}
         autoComplete={autoComplete}
         aria-invalid={invalid ? 'true' : undefined}
-        className="meta mt-1.5 h-14 w-full border border-hairline-strong bg-ink px-4 text-[13px] text-paper placeholder:text-muted placeholder:normal-case focus:border-acid focus:outline-none"
+        className="meta mt-1.5 h-14 w-full border border-hairline-strong bg-ink px-4 text-[15px] text-paper placeholder:text-muted placeholder:normal-case focus:border-acid focus:outline-none"
       />
     </div>
   );

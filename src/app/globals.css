@@ -78,17 +78,25 @@ body {
 @utility display {
   font-family: var(--font-display);
   font-weight: 800;
+  /* Condensed on purpose. SLAPPZ_DIGITAL_SYSTEM.md § 4 records the brand's headline voice as
+     a HEAVY CONDENSED sans in all caps with tight tracking and tight leading — widening this
+     toward a rounded geometric would be a different brand wearing the same logo. */
   font-variation-settings: 'wdth' 88;
   text-transform: uppercase;
   letter-spacing: -0.03em;
-  line-height: 0.9;
+  /* 0.9 -> 0.86. Condensed caps can take much tighter leading than a normal-width face, and
+     the headings read as a solid block rather than a stack of separate lines. */
+  line-height: 0.86;
 }
 
 /* Letterspaced small caps — the counterweight to the display type. */
 @utility meta {
   font-family: var(--font-sans);
   font-weight: 600;
-  font-size: 0.6875rem;
+  /* 11px -> 12px. This one utility sets every kicker, label, trust point and button on the
+     site, so it was the single biggest contributor to the whole page reading small. At 11px
+     with 0.16em tracking it was thin enough to look like fine print. */
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.16em;
   line-height: 1.2;

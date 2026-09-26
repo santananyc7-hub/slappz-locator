@@ -29,7 +29,7 @@ export function NearestCard({ retailer }: { retailer: RetailerResult }) {
         <SlappzMark size={26} />
       </div>
 
-      <h2 id="nearest-name" className="display mt-3 text-[38px] text-paper sm:text-[54px]">
+      <h2 id="nearest-name" className="display mt-3 text-[43px] text-paper sm:text-[60px]">
         {retailer.name}
       </h2>
 
@@ -39,12 +39,12 @@ export function NearestCard({ retailer }: { retailer: RetailerResult }) {
           .join(' · ')}
       </p>
 
-      <p className="display mt-4 text-[30px] text-acid tabular sm:text-[38px]">
+      <p className="display mt-4 text-[34px] text-acid tabular sm:text-[43px]">
         {formatDistance(retailer.distanceMiles)}{' '}
         <span className="text-paper">AWAY</span>
       </p>
 
-      <p className="mt-3 text-[13px] leading-snug text-muted">
+      <p className="mt-3 text-[15px] leading-snug text-muted">
         {retailer.address.street}, {retailer.address.city}, {retailer.address.state}{' '}
         {retailer.address.zip}
       </p>
@@ -55,7 +55,7 @@ export function NearestCard({ retailer }: { retailer: RetailerResult }) {
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => track('directions_click', { retailer: retailer.slug, placement: 'nearest' })}
-          className="display block-press block-shadow-sm flex h-13 items-center justify-center gap-2 bg-acid px-6 py-3.5 text-[16px] text-ink"
+          className="display block-press block-shadow-sm flex h-13 items-center justify-center gap-2 bg-acid px-6 py-3.5 text-[17px] text-ink"
         >
           <NavIcon size={16} />
           GET DIRECTIONS
@@ -67,7 +67,7 @@ export function NearestCard({ retailer }: { retailer: RetailerResult }) {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => track('menu_click', { retailer: retailer.slug, placement: 'nearest' })}
-            className="display flex items-center justify-center gap-2 border border-hairline-strong px-6 py-3.5 text-[16px] text-paper transition-colors hover:border-acid hover:text-acid"
+            className="display flex items-center justify-center gap-2 border border-hairline-strong px-6 py-3.5 text-[17px] text-paper transition-colors hover:border-acid hover:text-acid"
           >
             <BagIcon size={16} />
             SHOP STORE
@@ -77,7 +77,7 @@ export function NearestCard({ retailer }: { retailer: RetailerResult }) {
         {phone && (
           <a
             href={`tel:${retailer.phone}`}
-            className="display flex items-center justify-center gap-2 border border-hairline-strong px-6 py-3.5 text-[16px] text-paper transition-colors hover:border-acid hover:text-acid sm:hidden"
+            className="display flex items-center justify-center gap-2 border border-hairline-strong px-6 py-3.5 text-[17px] text-paper transition-colors hover:border-acid hover:text-acid sm:hidden"
           >
             <PhoneIcon size={16} />
             CALL
@@ -85,7 +85,7 @@ export function NearestCard({ retailer }: { retailer: RetailerResult }) {
         )}
       </div>
 
-      <p className="mt-4 text-[11px] leading-relaxed text-muted">
+      <p className="mt-4 text-[12px] leading-relaxed text-muted">
         Stock changes. Call ahead or check the store menu to confirm SLAPPZ is on the shelf
         today.
       </p>

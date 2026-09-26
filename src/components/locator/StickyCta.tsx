@@ -65,7 +65,7 @@ export function StickyCta({ target }: { target: Retailer | RetailerResult | null
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => track('directions_click', { retailer: target.slug, placement: 'sticky' })}
-          className="display block-press block-shadow-sm flex h-14 items-center justify-center gap-2 bg-acid text-[17px] text-ink"
+          className="display block-press block-shadow-sm flex h-14 items-center justify-center gap-2 bg-acid text-[18px] text-ink"
         >
           <NavIcon size={17} />
           GET DIRECTIONS — {target.name}
@@ -73,7 +73,7 @@ export function StickyCta({ target }: { target: Retailer | RetailerResult | null
       ) : (
         <a
           href="#locator"
-          className="display block-press block-shadow-sm flex h-14 items-center justify-center gap-2 bg-acid text-[17px] text-ink"
+          className="display block-press block-shadow-sm flex h-14 items-center justify-center gap-2 bg-acid text-[18px] text-ink"
         >
           <CrosshairIcon size={17} />
           FIND SLAPPZ NEAR ME

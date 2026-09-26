@@ -81,11 +81,11 @@ export default function AboutPage() {
         <section className="border-b border-hairline px-4 py-12 sm:px-6 sm:py-16">
           <div className="mx-auto grid max-w-[1400px] gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:gap-16">
             <div>
-              <h2 className="display text-[30px] text-paper sm:text-[42px]">
+              <h2 className="display text-[34px] text-paper sm:text-[48px]">
                 WE STARTED THIS BECAUSE WE WANTED IT
               </h2>
 
-              <div className="mt-5 space-y-4 text-[15px] leading-relaxed text-muted sm:text-[16px]">
+              <div className="mt-5 space-y-4 text-[16px] leading-relaxed text-muted sm:text-[17px]">
                 <p>
                   <span className="text-paper">
                     SLAPPZ started with a pretty simple idea: make a pre-roll we&apos;d
@@ -115,7 +115,7 @@ export default function AboutPage() {
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link
                   href="/#locator"
-                  className="display block-press block-shadow flex h-14 items-center gap-2 bg-acid px-6 text-[16px] text-ink"
+                  className="display block-press block-shadow flex h-14 items-center gap-2 bg-acid px-6 text-[17px] text-ink"
                 >
                   FIND SLAPPZ
                   <ArrowIcon size={16} />
@@ -160,10 +160,10 @@ export default function AboutPage() {
         <section className="border-b border-hairline px-4 py-12 sm:px-6 sm:py-16">
           <div className="mx-auto max-w-[1400px]">
             <p className="meta text-acid">HOW WE GROW</p>
-            <h2 className="display mt-2 max-w-3xl text-[30px] leading-[0.95] text-paper sm:text-[46px]">
+            <h2 className="display mt-2 max-w-3xl text-[34px] leading-[0.95] text-paper sm:text-[52px]">
               ACTIVATIONS AND EDUCATION, NOT ADVERTISING
             </h2>
-            <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-muted">
+            <p className="mt-4 max-w-2xl text-[16px] leading-relaxed text-muted">
               Awareness for a brand like ours doesn&apos;t come from spend. It comes from
               being in the room.
             </p>
@@ -172,13 +172,13 @@ export default function AboutPage() {
               {HOW.map((item) => (
                 <li key={item.num} className="grain border border-hairline bg-surface p-6">
                   <p
-                    className="display text-[46px] leading-none text-acid"
+                    className="display text-[52px] leading-none text-acid"
                     style={{ textShadow: '3px 3px 0 var(--color-violet)' }}
                   >
                     {item.num}
                   </p>
-                  <p className="display mt-5 text-[22px] text-paper">{item.label}</p>
-                  <p className="mt-2.5 text-[13px] leading-relaxed text-muted">{item.body}</p>
+                  <p className="display mt-5 text-[25px] text-paper">{item.label}</p>
+                  <p className="mt-2.5 text-[15px] leading-relaxed text-muted">{item.body}</p>
                 </li>
               ))}
             </ol>
@@ -188,7 +188,7 @@ export default function AboutPage() {
         <section className="border-b border-hairline px-4 py-12 sm:px-6 sm:py-16">
           <div className="mx-auto max-w-[1400px]">
             <p className="meta text-acid">WHAT IT STANDS ON</p>
-            <h2 className="display mt-2 text-[30px] text-paper sm:text-[42px]">
+            <h2 className="display mt-2 text-[34px] text-paper sm:text-[48px]">
               TWO YEARS OF THIS
             </h2>
 
@@ -196,7 +196,7 @@ export default function AboutPage() {
               {PILLARS.map((pillar) => (
                 <li key={pillar.label} className="border border-hairline bg-surface p-5">
                   <p className="meta text-acid">{pillar.label}</p>
-                  <p className="mt-2.5 text-[13px] leading-relaxed text-muted">{pillar.body}</p>
+                  <p className="mt-2.5 text-[15px] leading-relaxed text-muted">{pillar.body}</p>
                 </li>
               ))}
             </ul>
@@ -205,10 +205,10 @@ export default function AboutPage() {
 
         <section className="px-4 py-12 sm:px-6 sm:py-16">
           <div className="mx-auto max-w-[1400px]">
-            <h2 className="display text-[30px] text-paper sm:text-[42px]">
+            <h2 className="display text-[34px] text-paper sm:text-[48px]">
               WANT IT ON YOUR SHELF?
             </h2>
-            <p className="mt-3 max-w-2xl text-[14px] leading-relaxed text-muted">
+            <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-muted">
               We work directly with licensed New York retailers — and we&apos;ll come to you.
             </p>
             <Link

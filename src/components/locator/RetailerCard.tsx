@@ -48,7 +48,7 @@ export function RetailerCard({
     >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <h3 className="display text-[22px] text-paper sm:text-[26px]">
+          <h3 className="display text-[25px] text-paper sm:text-[29px]">
             {typeof rank === 'number' && (
               <span className="mr-2 text-muted tabular">{String(rank).padStart(2, '0')}</span>
             )}
@@ -69,22 +69,22 @@ export function RetailerCard({
         )}
       </div>
 
-      <p className="mt-3 text-[13px] leading-snug text-muted">
+      <p className="mt-3 text-[15px] leading-snug text-muted">
         {retailer.address.street}, {retailer.address.city}, {retailer.address.state}{' '}
         {retailer.address.zip}
       </p>
 
       <div className="mt-3 flex flex-wrap items-center gap-2">
-        <span className="meta inline-block bg-acid px-2 py-1 text-[10px] text-ink">
+        <span className="meta inline-block bg-acid px-2 py-1 text-[11px] text-ink">
           SLAPPZ HERE
         </span>
         {retailer.featured && (
-          <span className="meta inline-block border border-violet px-2 py-1 text-[10px] text-violet">
+          <span className="meta inline-block border border-violet px-2 py-1 text-[11px] text-violet">
             FLAGSHIP
           </span>
         )}
         {retailer.lastVerified && (
-          <span className="meta text-[10px] text-muted">
+          <span className="meta text-[11px] text-muted">
             VERIFIED {retailer.lastVerified.replaceAll('-', '.')}
           </span>
         )}

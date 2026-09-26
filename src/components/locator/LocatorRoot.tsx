@@ -298,7 +298,12 @@ export function LocatorRoot({
               crawling text content. Do not reintroduce a hidden duplicate here: the visible
               word and the alt already say it once each. */}
           <h1 className="rise">
-            <span className="display block text-[64px] leading-[0.85] text-paper sm:text-[92px] lg:text-[80px]">
+            {/* Desktop is the LARGEST step, not a step down. This used to read
+                70 / 98 / 88 — the headline shrank going from tablet to desktop while the
+                wordmark beneath it grew to 112px, so the two halves of the same h1 were
+                scaling in opposite directions. Matching FIND to the mark's height pairs
+                them. */}
+            <span className="display block text-[70px] leading-[0.85] text-paper sm:text-[98px] lg:text-[112px]">
               FIND
             </span>
             <SlappzWordmark size="hero" alt="SLAPPZ" className="mt-2 sm:mt-3" />
@@ -358,10 +363,10 @@ export function LocatorRoot({
 
         {status === 'unresolved' && (
           <div className="border-b border-hairline px-4 py-8 sm:px-6">
-            <p className="display text-[28px] text-paper">
+            <p className="display text-[32px] text-paper">
               COULDN&apos;T FIND <span className="text-magenta">{query}</span>
             </p>
-            <p className="mt-2 text-[14px] text-muted">
+            <p className="mt-2 text-[15px] text-muted">
               Try a 5-digit ZIP, a neighborhood, or a full street address.
             </p>
           </div>
@@ -369,8 +374,8 @@ export function LocatorRoot({
 
         {status === 'error' && (
           <div className="border-b border-hairline px-4 py-8 sm:px-6">
-            <p className="display text-[28px] text-paper">SOMETHING BROKE.</p>
-            <p className="mt-2 text-[14px] text-muted">
+            <p className="display text-[32px] text-paper">SOMETHING BROKE.</p>
+            <p className="mt-2 text-[15px] text-muted">
               Try that search again in a second.
             </p>
           </div>
@@ -438,14 +443,14 @@ export function LocatorRoot({
               }`}
             >
               <div className="mb-4 flex items-baseline justify-between gap-3">
-                <h2 className="display text-[24px] text-paper sm:text-[30px]">MORE NEARBY</h2>
+                <h2 className="display text-[27px] text-paper sm:text-[34px]">MORE NEARBY</h2>
                 <span className="meta tabular text-muted">
                   {rest.length} {rest.length === 1 ? 'SHOP' : 'SHOPS'}
                 </span>
               </div>
 
               {rest.length === 0 ? (
-                <p className="text-[14px] text-muted">
+                <p className="text-[15px] text-muted">
                   That&apos;s the only spot in range right now.
                 </p>
               ) : (
@@ -462,7 +467,7 @@ export function LocatorRoot({
                 </div>
               )}
 
-              <p className="mt-6 text-[11px] leading-relaxed text-muted">
+              <p className="mt-6 text-[12px] leading-relaxed text-muted">
                 Availability is verified periodically, not in real time. Confirm with the shop
                 before you travel.
               </p>

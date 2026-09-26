@@ -20,11 +20,11 @@ export function PageHero({
     <section className="grain border-b border-hairline px-4 pt-10 pb-10 sm:px-6 sm:pt-16 sm:pb-14">
       <div className="mx-auto max-w-[1400px]">
         <p className="meta text-acid">{kicker}</p>
-        <h1 className="display mt-3 max-w-4xl text-[44px] leading-[0.88] text-paper sm:text-[80px]">
+        <h1 className="display mt-3 max-w-4xl text-[50px] leading-[0.88] text-paper sm:text-[88px]">
           {title}
         </h1>
         {lead && (
-          <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-muted sm:text-[17px]">
+          <p className="mt-5 max-w-xl text-[16px] leading-relaxed text-muted sm:text-[18px]">
             {lead}
           </p>
         )}

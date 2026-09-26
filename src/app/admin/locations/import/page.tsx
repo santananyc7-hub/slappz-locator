@@ -14,8 +14,8 @@ export default async function ImportPage() {
         ← LOCATIONS
       </Link>
 
-      <h1 className="display mt-6 text-[36px] text-paper">BULK IMPORT</h1>
-      <p className="mt-2 max-w-2xl text-[13px] leading-relaxed text-muted">
+      <h1 className="display mt-6 text-[40px] text-paper">BULK IMPORT</h1>
+      <p className="mt-2 max-w-2xl text-[15px] leading-relaxed text-muted">
         Required columns: <span className="text-paper">store_name, address, city, state, zip</span>.
         Optional: menu_url, website, phone, neighborhood, instagram. Existing shops matched by
         name are updated rather than duplicated.

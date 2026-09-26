@@ -58,7 +58,7 @@ export default async function WhereToBuyPage() {
         >
           <Link
             href="/#locator"
-            className="display block-press block-shadow mt-7 inline-flex h-14 items-center gap-2 bg-acid px-6 text-[16px] text-ink"
+            className="display block-press block-shadow mt-7 inline-flex h-14 items-center gap-2 bg-acid px-6 text-[17px] text-ink"
           >
             SEARCH BY ZIP
             <ArrowIcon size={16} />
@@ -78,7 +78,7 @@ export default async function WhereToBuyPage() {
             >
               <div className="mx-auto max-w-[1400px]">
                 <div className="flex flex-wrap items-baseline justify-between gap-3">
-                  <h2 className="display text-[34px] text-paper sm:text-[48px]">
+                  <h2 className="display text-[38px] text-paper sm:text-[54px]">
                     {market.name}
                   </h2>
                   <p className="meta tabular text-acid">
@@ -95,16 +95,16 @@ export default async function WhereToBuyPage() {
                       className="border-l-[3px] border-l-hairline bg-surface p-5 transition-colors hover:border-l-acid"
                     >
                       <Link href={`/stores/${retailer.slug}`} className="block">
-                        <h3 className="display text-[24px] text-paper">{retailer.name}</h3>
+                        <h3 className="display text-[27px] text-paper">{retailer.name}</h3>
                         <p className="meta mt-1.5 text-muted">{retailer.neighborhood}</p>
-                        <p className="mt-3 text-[13px] leading-snug text-muted">
+                        <p className="mt-3 text-[15px] leading-snug text-muted">
                           {retailer.address.street}
                           <br />
                           {retailer.address.city}, {retailer.address.state}{' '}
                           {retailer.address.zip}
                         </p>
                         {retailer.phone && (
-                          <p className="mt-2 text-[13px] text-muted tabular">
+                          <p className="mt-2 text-[15px] text-muted tabular">
                             {formatPhone(retailer.phone)}
                           </p>
                         )}
@@ -123,10 +123,10 @@ export default async function WhereToBuyPage() {
 
         <section className="px-4 py-12 sm:px-6 sm:py-16">
           <div className="mx-auto max-w-[1400px]">
-            <h2 className="display text-[30px] text-paper sm:text-[40px]">
+            <h2 className="display text-[34px] text-paper sm:text-[45px]">
               NOT SEEING YOUR AREA?
             </h2>
-            <p className="mt-3 max-w-2xl text-[14px] leading-relaxed text-muted">
+            <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-muted">
               This list only includes shops we have actually verified. If SLAPPZ hasn&apos;t
               reached you yet, tell us where you want it — naming a specific shop is the
               most useful thing you can do.
@@ -139,7 +139,7 @@ export default async function WhereToBuyPage() {
               <ArrowIcon size={13} />
             </Link>
 
-            <p className="mt-8 border-t border-hairline pt-6 text-[12px] leading-relaxed text-muted">
+            <p className="mt-8 border-t border-hairline pt-6 text-[13px] leading-relaxed text-muted">
               Listings are verified periodically and do not reflect real-time inventory. Stock
               and hours are set by each retailer — confirm before you travel. 21+ only.
             </p>

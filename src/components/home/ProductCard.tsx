@@ -32,12 +32,12 @@ export function ProductCard({ product }: { product: Product }) {
         <div className="flex items-center justify-between gap-3">
           <p className="meta text-muted">{product.category?.replace('-', ' ')}</p>
           {product.soldOut ? (
-            <span className="meta border border-magenta px-2 py-1 text-[9px] text-magenta">
+            <span className="meta border border-magenta px-2 py-1 text-[10px] text-magenta">
               SOLD OUT
             </span>
           ) : (
             product.strainType && (
-              <span className="meta border border-hairline-strong px-2 py-1 text-[9px] text-acid">
+              <span className="meta border border-hairline-strong px-2 py-1 text-[10px] text-acid">
                 {product.strainType}
               </span>
             )
@@ -61,7 +61,7 @@ export function ProductCard({ product }: { product: Product }) {
           </div>
         ) : (
           <p
-            className="display mt-6 text-[64px] leading-[0.85] text-acid sm:text-[80px]"
+            className="display mt-6 text-[70px] leading-[0.85] text-acid sm:text-[88px]"
             style={{ textShadow: '4px 4px 0 var(--color-violet)' }}
             aria-hidden="true"
           >
@@ -71,9 +71,9 @@ export function ProductCard({ product }: { product: Product }) {
       </div>
 
       <div className="mt-8">
-        <h3 className="display text-[24px] text-paper sm:text-[28px]">{product.name}</h3>
+        <h3 className="display text-[27px] text-paper sm:text-[32px]">{product.name}</h3>
         {product.tagline && (
-          <p className="mt-2 text-[13px] leading-relaxed text-muted">{product.tagline}</p>
+          <p className="mt-2 text-[15px] leading-relaxed text-muted">{product.tagline}</p>
         )}
 
         {product.soldOut ? (

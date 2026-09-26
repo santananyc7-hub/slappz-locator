@@ -30,14 +30,14 @@ export function WhereSlappzHits({ retailers }: { retailers: Retailer[] }) {
             className="group flex flex-col justify-between border border-hairline bg-surface p-5 transition-colors hover:border-acid sm:min-h-[190px]"
           >
             <div className="flex items-start justify-between gap-3">
-              <h3 className="display text-[30px] text-paper transition-colors group-hover:text-acid sm:text-[36px]">
+              <h3 className="display text-[34px] text-paper transition-colors group-hover:text-acid sm:text-[40px]">
                 {market.name}
               </h3>
               <PinIcon size={18} className="mt-1 shrink-0 text-violet" />
             </div>
 
             <div className="mt-6">
-              <p className="text-[13px] leading-relaxed text-muted">
+              <p className="text-[15px] leading-relaxed text-muted">
                 {market.neighborhoods.join(' · ')}
               </p>
               <p className="meta tabular mt-3 text-acid">

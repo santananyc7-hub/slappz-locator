@@ -37,9 +37,9 @@ export function Section({
         <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-4">
           <div className="max-w-2xl">
             {kicker && <p className="meta text-acid">{kicker}</p>}
-            <h2 className="display mt-2 text-[34px] text-paper sm:text-[52px]">{title}</h2>
+            <h2 className="display mt-2 text-[38px] text-paper sm:text-[58px]">{title}</h2>
             {lead && (
-              <p className="mt-3 text-[14px] leading-relaxed text-muted sm:text-[15px]">{lead}</p>
+              <p className="mt-3 text-[15px] leading-relaxed text-muted sm:text-[16px]">{lead}</p>
             )}
           </div>
 

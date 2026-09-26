@@ -130,6 +130,36 @@ Sampled from repeated appearances across packaging, campaign art, merch and sign
   italic sans** for headlines like `ATTENTION DISPENSARY OWNERS, BUYERS & BUDTENDERS` and `WE'RE OUTSIDE TOMORROW!`.
   Set in **all caps, tight tracking, tight leading**, frequently with a keyline or drop shadow, and frequently
   with one word colored acid for emphasis inside an otherwise white sentence.
+### Scale
+
+Revised 2026-09-25 after SLAPPZ said the site read small. The whole scale moved up in one
+pass — body and UI by roughly 15%, display by roughly 12%, so the hierarchy opened rather than
+everything merely inflating.
+
+| Role | Before | After |
+| --- | --- | --- |
+| `.meta` — kickers, labels, trust points, buttons | 11px | **12px** |
+| Body copy (the site's most-used size) | 13px | **15px** |
+| Section headings, mobile | 30px | **34px** |
+| Section headings, desktop | 42px | **48px** |
+| Hero headline, desktop | 80px | **112px** |
+| `.display` line-height | 0.9 | **0.86** |
+
+Two notes worth keeping:
+
+- **`.meta` was the single biggest offender.** It sets every kicker, label, trust point and
+  button on the site, so one 11px value was making whole pages read like fine print — at
+  0.16em tracking it was thin enough to look like a footnote.
+- **The desktop hero headline had been *smaller* than the tablet one** (80px against 92px)
+  while the wordmark beneath it grew to 112px, so the two halves of the same `h1` scaled in
+  opposite directions. `FIND` is now matched to the mark's height.
+
+The reference SLAPPZ pointed at (aardvarkbookclub.com) contributed the scale contrast and the
+tight display leading. It did **not** contribute its pill buttons, rounded tilted cards or
+bright flat pastel panels — this system is hard-edged, dark, and built on offset block
+shadows, and importing that shape language would have produced a different brand wearing the
+SLAPPZ logo, which is exactly what CLAUDE.md § DESIGN REVIEW TEST asks you to catch.
+
 - **Secondary:** a **plain, wide-ish grotesque** for supporting lines (`THE BRAND THAT SLAPPZ`, event details,
   the four trade pillars) — often letterspaced *out* in small caps, the opposite of the headline treatment.
 - **Body:** minimal. SLAPPZ writes in captions, not paragraphs.
