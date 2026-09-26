@@ -111,6 +111,26 @@ body {
   line-height: 1.2;
 }
 
+/**
+ * Type that sits directly on PHOTOGRAPHY.
+ *
+ * The hero scrim averages out fine — white over the mean background behind the headline
+ * measures 18:1 and behind the lead 15:1. But a photograph is not its average. Measured
+ * against the BRIGHTEST pixels those same blocks cross — the truck's bodywork, a reflection
+ * on wet asphalt — it collapses to 4.99:1 and 4.16:1, and the letters visibly dissolve into
+ * the image. That is what "the white lettering blends in" actually is: a local failure, not
+ * an average one.
+ *
+ * A dark shadow restores contrast exactly where it is lost and nowhere else. The alternative
+ * — a heavier scrim — dims the whole frame to fix a few hundred pixels, and the frame is
+ * there to be seen.
+ */
+@utility on-image {
+  text-shadow:
+    0 1px 2px rgb(0 0 0 / 0.8),
+    0 2px 16px rgb(0 0 0 / 0.7);
+}
+
 @utility tabular {
   font-variant-numeric: tabular-nums;
 }

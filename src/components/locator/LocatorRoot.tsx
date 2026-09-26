@@ -278,14 +278,26 @@ export function LocatorRoot({
               results section with no seam, and to take enough heat out of the neon that the
               muted sub-line and the trust row stay readable over it.
 
-              Mobile keeps its own variant: the hero is 0.67 there, so object-cover crops to a
-              narrow vertical slice and the type runs the full width rather than sitting in a
-              dark left column. It needs an even wash instead of a left-to-right one. */}
+              Mobile needs its own variant, and it is not an even wash — it is shaped around
+              where the type actually sits. The type runs the full width there, so a
+              left-to-right gradient is useless, but a flat wash is too blunt: it either dims
+              the truck or lets the wet-asphalt highlights swallow the lead.
+
+              Measured, white-on-peak-background inside each text block:
+
+                stop 0.30 stays LIGHT (0.46) — that band is the truck, and it is the subject
+                stop 0.52 goes DARK (0.76)  — that band is the lead and the search panel
+
+              FIND lands in the light band at 4.03:1, which is fine: it is 70px at weight 800,
+              so the large-text threshold of 3:1 applies. The lead is 17px and needs 4.5:1,
+              and sits at 4.86:1. The previous even wash had them at 4.99 and 4.16 — the
+              headline over-served and the lead actually failing, which is what SLAPPZ was
+              seeing when the lettering looked like it was blending in. */}
           <div
             className="absolute inset-0 lg:hidden"
             style={{
               background:
-                'linear-gradient(to bottom, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.78) 72%, #000 100%)',
+                'linear-gradient(to bottom, rgba(0,0,0,0.58) 0%, rgba(0,0,0,0.46) 30%, rgba(0,0,0,0.76) 52%, rgba(0,0,0,0.86) 78%, #000 100%)',
             }}
           />
           <div
@@ -318,7 +330,7 @@ export function LocatorRoot({
               hero is a leaf or a wisp of smoke, and § BRAND RULE bans both outright — along
               with Rasta palettes and neon-green-on-black dispensary templates. The honest
               signals available to this brand are the words and the product itself. */}
-          <p className="meta rise mb-3 text-acid">NEW YORK CANNABIS · 1G PRE-ROLLS</p>
+          <p className="meta on-image rise mb-3 text-acid">NEW YORK CANNABIS · 1G PRE-ROLLS</p>
 
           <h1 className="rise">
             {/* Desktop is the LARGEST step, not a step down. This used to read
@@ -326,7 +338,7 @@ export function LocatorRoot({
                 wordmark beneath it grew to 112px, so the two halves of the same h1 were
                 scaling in opposite directions. Matching FIND to the mark's height pairs
                 them. */}
-            <span className="display block text-[70px] leading-[0.85] text-paper sm:text-[98px] lg:text-[112px]">
+            <span className="display on-image block text-[70px] leading-[0.85] text-paper sm:text-[98px] lg:text-[112px]">
               FIND
             </span>
             <SlappzWordmark size="hero" alt="SLAPPZ" className="mt-2 sm:mt-3" />
@@ -341,7 +353,7 @@ export function LocatorRoot({
               flat black or surface panel and reads fine; here it sits on a night PHOTOGRAPH,
               where a mid grey has almost nothing to separate it from the image behind. The
               hero is the one place the secondary text has to be as bright as the primary. */}
-          <p className="rise rise-1 mt-4 max-w-2xl text-[17px] leading-relaxed text-paper/90 sm:text-[19px]">
+          <p className="on-image rise rise-1 mt-4 max-w-2xl text-[17px] leading-relaxed text-paper sm:text-[19px]">
             Licensed New York dispensaries carrying SLAPPZ. Nearest first.
           </p>
 
@@ -379,7 +391,7 @@ export function LocatorRoot({
               phone, and centring left its tick floating beside the middle line. */}
           <ul className="rise rise-3 mt-6 flex flex-wrap items-start gap-x-5 gap-y-2">
             {trustPoints.map((point) => (
-              <li key={point} className="meta flex items-start gap-1.5 text-paper/75">
+              <li key={point} className="meta on-image flex items-start gap-1.5 text-paper/80">
                 <CheckIcon size={13} className="mt-0.5 shrink-0 text-acid" />
                 {point}
               </li>
