@@ -21,10 +21,16 @@ import { track } from '@/lib/analytics';
  *     sign, a subway entrance that names itself, the crowd around the shot. Nothing is
  *     inferred about where a photo was taken or when. If a detail cannot be read off the
  *     photograph, it does not go in the caption.
- *   - The LINE is a place to stand, not a list of contents. An earlier version read
- *     "Bubba Kush, crowd, tower lit up." — accurate, and an inventory rather than a voice.
- *     The `place` label above already says where; the line should say what it feels like to
- *     be there, in the brand's own register (see CLAUDE.md § Writing section headings).
+ *   - The LINE is SLAPPZ's, written by them on 2026-09-27, and it is brand voice rather
+ *     than a description of the frame: origin, a value, and what the brand actually does.
+ *     That is a deliberate change of register — earlier versions described the photograph
+ *     ("A street fair, after dark.") and read as captions on someone else's pictures.
+ *
+ *     It does not loosen the evidence rule. None of the three makes a claim about a
+ *     retailer, a shelf or stock; they are statements about SLAPPZ, and each is already
+ *     documented — Queens origin and the pop-up/activation model are both in CLAUDE.md's
+ *     fact table. The `place` label above still comes strictly off the frame, and that is
+ *     the part doing the evidentiary work.
  *
  * Sources and crops: scripts/prepare-lifestyle-photos.mjs.
  */
@@ -34,19 +40,19 @@ const TILES = [
     src: '/brand/slappz/lifestyle/slappz-midtown-night.webp',
     alt: 'A SLAPPZ 1g Bubba Kush pre-roll tube held up over a packed night-time street, a floodlit tower behind it.',
     place: 'MIDTOWN',
-    line: 'A street fair, after dark.',
+    line: 'Born and raised in New York City',
   },
   {
     src: '/brand/slappz/lifestyle/slappz-penn-station.webp',
     alt: 'A SLAPPZ 1g Perm Marker pre-roll tube held up in front of the 34 Street–Penn Station A, C, E subway entrance.',
     place: '34 ST · PENN STATION',
-    line: 'At the A, C and E entrance.',
+    line: 'Support local',
   },
   {
     src: '/brand/slappz/lifestyle/slappz-cannafamily-cab.webp',
     alt: 'A SLAPPZ t-shirt and tin laid out on the hood of a yellow cab outside the CannaFamily Dispensary storefront.',
     place: 'CANNAFAMILY',
-    line: 'Parked right outside.',
+    line: 'Live pop-ups and activations',
   },
 ];
 
@@ -60,7 +66,7 @@ export function InTheWild() {
       // product in hand", and CLAUDE.md describes the brand as one that "shows up in
       // person". Concrete about behaviour, which is what the three tiles below evidence.
       title="WE SHOW UP"
-      lead="Pop-ups, activations and the city it all comes out of. There's more on Instagram."
+      lead="The city it all comes out of. There's more on Instagram."
     >
       <div className="grid gap-2.5 sm:grid-cols-3">
         {TILES.map((tile, i) => (
