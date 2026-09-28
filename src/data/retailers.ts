@@ -292,32 +292,6 @@ export const retailers: Retailer[] = [
       "Resolved 2026-08-31. SLAPPZ listed this as Upper West Side, but the brand’s only Manhattan store is the Upper East Side one at 1190 Lexington Ave — its own site (emeralddispensary.nyc) and the OCM registry agree, and there is no UWS Emerald. Same operator as the Bushwick store, different website.",
   },
   {
-    id: "ret_sweetlife",
-    slug: "sweetlife",
-    name: "Sweetlife",
-    address: {
-      street: "1662 1st Ave",
-      city: "New York",
-      state: "NY",
-      zip: "10028",
-    },
-    coordinates: { latitude: 40.777233, longitude: -73.948794 },
-    neighborhood: "Yorkville",
-    borough: "Manhattan",
-    website: "https://www.sweetlife.nyc",
-    menuUrl: "https://www.sweetlife.nyc/stores/sweet-life-nyc",
-    phone: "6466784357",
-    licenseNumber: "OCM-RETL-24-000107",
-    active: true,
-    lastVerified: "2026-08-31",
-    verification: {
-      source:
-        "Supplied by SLAPPZ HQ as a stocking retailer; address and licence number cross-checked against the NYS OCM licence registry",
-      confidence: "high",
-      url: "https://data.ny.gov/resource/jskf-tt3q.json",
-    },
-  },
-  {
     id: "ret_brooklyn_urban",
     slug: "brooklyn-urban",
     name: "Brooklyn Urban",
@@ -686,7 +660,10 @@ export const retailers: Retailer[] = [
   {
     id: "ret_terp_bros_ozone_park",
     slug: "terp-bros-ozone-park",
-    name: "Terp Bros",
+    // Suffixed once Astoria was added — two rows both reading "Terp Bros" look like a
+    // duplicate. Matches how IGNYTE Whitestone / IGNYTE Red Hook are already handled. The
+    // slug is unchanged, so /stores/terp-bros-ozone-park keeps working.
+    name: "Terp Bros Ozone Park",
     address: {
       street: "135-26 Cross Bay Blvd",
       city: "Ozone Park",
@@ -710,5 +687,60 @@ export const retailers: Retailer[] = [
     },
     notes:
       "Not on the list SLAPPZ supplied, but retained: Terp Bros publishes a dedicated SLAPPZ brand page, the strongest public evidence of any listing here. Confirm before removing.",
+  },
+  {
+    id: "ret_terp_bros_astoria",
+    slug: "terp-bros-astoria",
+    name: "Terp Bros Astoria",
+    address: {
+      street: "36-10 Ditmars Blvd",
+      city: "Astoria",
+      state: "NY",
+      zip: "11105",
+    },
+    coordinates: { latitude: 40.773966, longitude: -73.908061 },
+    neighborhood: "Astoria",
+    borough: "Queens",
+    website: "https://terpbrosnyc.com/astoria",
+    menuUrl: "https://terpbrosnyc.com/brands/slappz",
+    licenseNumber: "OCM-CAURD-23-000020",
+    active: true,
+    lastVerified: "2026-09-28",
+    verification: {
+      source:
+        "Supplied by SLAPPZ HQ as a stocking retailer; licence OCM-CAURD-23-000020 (Kush Culture Industry LLC, dba Terp Bros) confirmed Active/Active in the NYS OCM registry, address confirmed on the retailer's own Astoria page, and terpbrosnyc.com publishes a dedicated SLAPPZ brand page",
+      confidence: "high",
+      url: "https://data.ny.gov/resource/jskf-tt3q.json",
+    },
+    notes:
+      "SEPARATE LICENSEE from the Ozone Park store despite the shared name and website: Astoria is Kush Culture Industry LLC (OCM-CAURD-23-000020), Ozone Park is Gourmet Budz LLC (OCM-CAURD-25-000294). Two licences, two rows. The registry writes the address unhyphenated as 3610 Ditmars Blvd; the retailer's own page writes 36-10, which is the correct Queens form and is what is stored here.",
+  },
+  {
+    id: "ret_dynasty_commodities",
+    slug: "dynasty-commodities",
+    name: "Dynasty Commodities",
+    address: {
+      street: "2119 Frederick Douglass Blvd",
+      city: "New York",
+      state: "NY",
+      zip: "10026",
+    },
+    coordinates: { latitude: 40.803601, longitude: -73.956387 },
+    neighborhood: "Harlem",
+    borough: "Manhattan",
+    website: "https://dynastyc.com",
+    menuUrl: "https://dynastyc.com/shop/",
+    phone: "6464490978",
+    licenseNumber: "OCM-CAURD-25-000244",
+    active: true,
+    lastVerified: "2026-09-28",
+    verification: {
+      source:
+        "Supplied by SLAPPZ HQ as a stocking retailer; licence OCM-CAURD-25-000244 confirmed Active/Active in the NYS OCM registry at this address, and the shop's own site (dynastyc.com) confirms the name, address, phone and a live Dutchie menu",
+      confidence: "high",
+      url: "https://data.ny.gov/resource/jskf-tt3q.json",
+    },
+    notes:
+      "THE OCM REGISTRY'S DBA FIELD IS STALE FOR THIS LICENCE. It still reads \"Paint Puff N' Peace\" against Dynasty Commodities, Inc., and this entry was briefly created under that name on the assumption the registry was current. It is not: the shop trades as Dynasty Commodities, has its own site at dynastyc.com under that name, and Harlem press covered its opening as Dynasty Commodities. Same licence, same address, current name. Do not \"correct\" this back to the registry DBA.",
   },
 ];
