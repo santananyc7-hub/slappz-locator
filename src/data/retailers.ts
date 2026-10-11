@@ -743,4 +743,32 @@ export const retailers: Retailer[] = [
     notes:
       "THE OCM REGISTRY'S DBA FIELD IS STALE FOR THIS LICENCE. It still reads \"Paint Puff N' Peace\" against Dynasty Commodities, Inc., and this entry was briefly created under that name on the assumption the registry was current. It is not: the shop trades as Dynasty Commodities, has its own site at dynastyc.com under that name, and Harlem press covered its opening as Dynasty Commodities. Same licence, same address, current name. Do not \"correct\" this back to the registry DBA.",
   },
+  {
+    id: "ret_kushmart_kings_highway",
+    slug: "kushmart-kings-highway",
+    name: "Kushmart Kings Highway",
+    address: {
+      street: "1413 Kings Hwy",
+      city: "Brooklyn",
+      state: "NY",
+      zip: "11229",
+    },
+    coordinates: { latitude: 40.60886, longitude: -73.95874 },
+    neighborhood: "Sheepshead Bay",
+    borough: "Brooklyn",
+    website: "https://kushmart.com/location/brooklyn-ny",
+    menuUrl: "https://kushmart.com/location/brooklyn-ny/shop",
+    phone: "2123818355",
+    licenseNumber: "OCM-CAURD-24-000219",
+    active: true,
+    lastVerified: "2026-10-11",
+    verification: {
+      source:
+        "Supplied by SLAPPZ HQ as a stocking retailer; licence OCM-CAURD-24-000219 (Kushmart NY, LLC) confirmed Active/Active in the NYS OCM registry at this address, and the retailer's own Kings Hwy page confirms the address and phone and carries a live menu",
+      confidence: "high",
+      url: "https://data.ny.gov/resource/jskf-tt3q.json",
+    },
+    notes:
+      "Suffixed because Kushmart is a multi-licensee name, not one chain: the Kings Highway store is Kushmart NY, LLC, while Haverstraw (OCM-RETL-24-000060) is OKKERSNY LLC and Lancaster (OCM-RETL-24-000072) is Notorious Tree NY LLC. A Staten Island Kushmart under the same Brooklyn licensee is still In-Process and Non-Operational — do not add it until the registry shows it Active.",
+  },
 ];
