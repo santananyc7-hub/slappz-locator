@@ -38,7 +38,7 @@ export default function ProductsPage() {
               THE <span className="text-acid">LINEUP</span>
             </>
           }
-          lead="Premium New York flower, rolled. Sold through licensed dispensaries across the city."
+          lead="Premium New York flower, rolled. Sold through licensed dispensaries across the city. More flavors on the way."
         >
           <Link
             href="/#locator"

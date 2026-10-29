@@ -101,10 +101,15 @@ export default async function Page({
         />
 
         {/* 2 — SEE IT */}
+        {/* Two of the three SKUs are currently sold out, so the lead says "more on the way"
+            rather than letting the page read as a range that has quietly emptied. That half
+            is SLAPPZ's own word (2026-10-29) and is deliberately vague — no strain names, no
+            dates, nothing the site would have to walk back. Drop it when the new SKUs land
+            and the cards speak for themselves. */}
         <Section
           kicker="PRODUCTS"
           title="THE LINEUP"
-          lead="1g pre-rolls. Pick the one you want, then find who has it."
+          lead="1g pre-rolls. Pick the one you want, then find who has it. More flavors on the way."
           cta={{ label: 'VIEW ALL', href: '/products' }}
         >
           <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">

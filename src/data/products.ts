@@ -39,6 +39,10 @@ export const products: Product[] = [
     strainType: 'HYBRID',
     image: '/brand/slappz/product/slappz-perm-marker-1g.webp',
     tagline: 'One full gram, rolled and ready.',
+    // SLAPPZ says this one is out. Same handling as Sour Diesel below — kept listed so the
+    // range still reads correctly, but the card stops sending anyone to the locator for it.
+    // Remove this line when it is back in production.
+    soldOut: true,
     verified: true,
   },
   {
